@@ -9,14 +9,16 @@ bibliography uses the generic `unsrt` style, and the author-biography section is
 same source can accompany a submission to any venue. Float placement is constrained with `placeins` so
 figures appear next to their discussion rather than drifting to the end.
 
-## 1. Files to upload
+## 1. Files to upload — TeX SOURCE, never the PDF
 
-Upload these (as a single `.zip`/`.tar.gz`, preserving the `figures/` subdirectory):
+arXiv rejects compiled PDFs ("appears to have been produced by TeX"); it requires the source so it can
+build HTML/MathML/EPUB, hyperlinks, and accessible formats
+(<https://info.arxiv.org/help/faq/whytex.html>). Upload `arxiv_submission.tar.gz`, which contains
+exactly:
 
 ```
 arxiv.tex
-arxiv.bbl          <- include! arXiv does NOT run BibTeX
-references.bib     (optional once .bbl is present, but harmless)
+arxiv.bbl          <- REQUIRED: arXiv does NOT run BibTeX
 figures/fig1_concept.png
 figures/fig2_convergence.png
 figures/fig3_regime_map.png
@@ -25,7 +27,36 @@ figures/fig5_erosion.png
 figures/fig6_vs_aer.png
 ```
 
-Do **not** upload `main.tex`, `ieeeaccess.cls`, `IEEEtran.cls`, `tqe.tex`, or the IEEE branding PNGs.
+Do **not** upload `arxiv.pdf`, `references.bib`, build artifacts (`.aux/.log/.out`), `main.tex`, or any
+publisher class/branding files.
+
+### Why the earlier attempt failed and what was fixed
+
+- The compiled `arxiv.pdf` was uploaded instead of the source. arXiv auto-rejects that.
+- `\pdfoutput=1` is now the third line of `arxiv.tex` (before `\documentclass`). Because all figures
+  are PNG, this forces arXiv onto the pdfLaTeX path; without it arXiv may try latex->dvi->ps and fail
+  on the PNGs.
+- `arxiv.bbl` is now shipped, so citations resolve without BibTeX.
+
+### Verification performed
+
+The package was compiled in a clean directory containing only the files above, with **pdflatex three
+times and no BibTeX and no `.bib`** — i.e. exactly what arXiv does. Result: **20 pages, 0 errors,
+0 undefined citations or references**. Required packages are all standard TeX Live
+(`geometry, graphicx, amsmath, amssymb, booktabs, algorithm, algpseudocode, caption, url, hyperref,
+placeins`).
+
+### Rebuilding the package
+
+```bash
+cd paper
+python make_arxiv.py                                   # regenerate arxiv.tex from main.tex
+pdflatex arxiv && bibtex arxiv && pdflatex arxiv && pdflatex arxiv   # produces arxiv.bbl
+mkdir -p arxiv_pkg/figures
+cp arxiv.tex arxiv.bbl arxiv_pkg/ && cp figures/fig?_*.png arxiv_pkg/figures/
+cd arxiv_pkg && pdflatex arxiv && pdflatex arxiv && pdflatex arxiv   # verify WITHOUT bibtex
+tar -czf ../arxiv_submission.tar.gz .
+```
 
 ## 2. Repository visibility — resolved
 

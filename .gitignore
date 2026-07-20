@@ -43,3 +43,5 @@ venv/
 paper/main.pdf
 paper/_add_repo_link.py
 paper/TQE_Template.zip
+paper/arxiv_pkg/
+paper/arxiv_submission/

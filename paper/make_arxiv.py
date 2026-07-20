@@ -54,6 +54,8 @@ body = body.replace("In accordance with IEEE policy, the author discloses",
 
 # ---- assemble -----------------------------------------------------------
 out = r"""%% arXiv preprint version, generated from main.tex by make_arxiv.py -- do not edit directly.
+%% arXiv requires the TeX SOURCE (this file + arxiv.bbl + figures/), never the compiled PDF.
+\pdfoutput=1  % must appear within the first 5 lines: forces pdfLaTeX (figures are PNG)
 \documentclass[11pt]{article}
 
 \usepackage[margin=1in]{geometry}
