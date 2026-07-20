@@ -1,0 +1,35 @@
+# A3 characterization sweep
+# env: WSL2 Ubuntu-24.04, RTX 5060 Ti 8GB, qiskit 1.2.4, qiskit-aer-gpu 0.15.1, cupy 14.1.1
+# model: per-qubit Z-dephasing (gamma=1), observable mean_i<X_i>, exact event sampling ; seed 20260719
+#
+# --- A3a regime map: variance vs gamma*t (C1 idle, n=12, N=2000) ---
+block,gt,var_std,var_proj,var_analog,proj_over_std,analog_over_std
+a3a,0.10,0.0278,0.0122,0.0057,0.439,0.206
+a3a,0.20,0.0448,0.0172,0.0140,0.385,0.313
+a3a,0.35,0.0642,0.0209,0.0238,0.325,0.371
+a3a,0.50,0.0761,0.0184,0.0317,0.242,0.417
+a3a,0.70,0.0769,0.0152,0.0379,0.198,0.492
+a3a,1.00,0.0780,0.0099,0.0416,0.127,0.534
+a3a,1.50,0.0853,0.0038,0.0407,0.045,0.477
+# crossover analog<->projector near gt~0.35 (analog best weak, projector best strong)
+#
+# --- A3b circuit-class map: N-to-target-SE (n=12, gt=1.5, N=2000) ---
+# NOTE: ghz row uninformative (observable mean<X_i>=0 for GHZ, var~0); rotated uses RX which
+#       commutes with X observable so absorbing window not eroded (~idle). Genuine erosion test = future work.
+block,circuit,N_std,N_proj,N_analog,speedup_proj,speedup_analog
+a3b,idle,829,38,417,21.6,2.0
+a3b,ghz,0,0,0,inf,inf
+a3b,rotated,817,37,300,21.8,2.7
+#
+# --- A3c n-scaling (C1 idle, gt=1.5, N=600) ---
+block,n,dim,N_std,N_proj,speedup,t_proj_s,gpu_mem_MB
+a3c,8,256,1186,62,19.1,1.7,0.0
+a3c,12,4096,785,44,17.7,2.5,0.1
+a3c,16,65536,632,25,25.7,13.7,1.1
+a3c,20,1048576,539,22,25.0,176.7,16.8
+#
+# --- A3d correctness vs Aer density_matrix (n=8, GHZ+dephasing, N=15000) ---
+block,unravel,trace_distance_to_aer,verdict
+a3d,standard,0.0093,PASS
+a3d,projector,0.0045,PASS
+a3d,analog,0.0063,PASS

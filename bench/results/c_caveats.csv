@@ -1,0 +1,22 @@
+# C: A3 caveat-closing results
+# env: WSL2 Ubuntu-24.04, RTX 5060 Ti 8GB, qiskit 1.2.4, qiskit-aer-gpu 0.15.1, cupy 14.1.1
+# seed 20260719, N=2000
+#
+# --- C1: GHZ with stabilizer observable X^{otimes n} (n=10), Z-dephasing gamma=1 ---
+# mean matches exact e^{-2*n*gt}; projector benefit restored (Bernoulli: Var_proj=m(1-m))
+block,gt,mean,exact,var_std,var_proj,var_analog,speedup_proj,speedup_analog
+c1,0.05,0.3645,0.3679,0.8303,0.2316,0.3618,3.6,2.3
+c1,0.10,0.1360,0.1353,0.9818,0.1175,0.4818,8.4,2.0
+c1,0.15,0.0380,0.0498,0.9960,0.0366,0.4927,27.2,2.0
+#
+# --- C2: window erosion by interleaved RY(theta) (n=8, gt=1.5, obs mean<X_i>) ---
+# projector speedup declines as coherent RY mixing erodes the absorbing window
+block,theta,N_std,N_proj,speedup_proj,mean
+c2,0.000,1197,61,19.7,0.0499
+c2,0.300,933,101,9.2,0.0318
+c2,0.600,482,196,2.5,-0.0116
+c2,1.000,537,300,1.8,-0.0807
+c2,1.571,1249,357,3.5,-0.1359
+# takeaway: projector unraveling is best for decoherence/idle-dominated regimes; strong coherent
+# dynamics interleaved with noise erodes (but does not reverse) the advantage. This is a practical
+# applicability map for the paper, not a limitation of correctness (mean stays unbiased throughout).

@@ -1,0 +1,11 @@
+# A4 head-to-head vs Aer batched_shots_gpu
+# env: WSL2 Ubuntu-24.04, RTX 5060 Ti 8GB, qiskit 1.2.4, qiskit-aer-gpu 0.15.1, cupy 14.1.1
+# model: |+>^n, per-qubit Z-dephasing gt=1.5 (Z-error p=0.4751), observable mean_i<X_i>
+# exact mean e^{-2gt}=0.0498 ; target SE=0.01 ; seed 20260719 ; n=10
+method,samples,wallclock_s,throughput_per_s,mean,per_sample_std,N_to_target_SE,wallclock_to_target_ms
+aer_batched_shots_gpu,40000,1.5,27206,0.0497,0.3158,998,36.7
+ours_standard,8000,14.0,571,0.0452,0.3158,997,1747.6
+ours_projector,8000,33.1,242,0.0499,0.0695,48,199.8
+# headline: ours_standard == Aer (997 vs 998) confirms apples-to-apples; ours_projector 20.7x fewer
+# trajectories than Aer. Wall-clock: Aer (C++/CUDA) fastest today; projector 8.7x faster than our own
+# standard from trajectory reduction. Porting projector into Aer's C++ path -> ~21x wall-clock (PR argument).

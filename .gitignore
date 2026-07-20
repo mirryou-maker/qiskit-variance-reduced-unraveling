@@ -1,0 +1,45 @@
+# --- internal project/strategy notes (kept local, never published) ---
+CLAUDE.md
+prompts_guide.md
+quickstart.md
+settings.json
+docs/
+paper/submission_checklist.md
+paper/cover_letter.md
+paper/cover_letter.docx
+
+# --- IEEE-copyrighted templates and branding assets (NOT redistributable) ---
+# Download from https://journals.ieeeauthorcenter.ieee.org/ to build paper/main.tex
+paper/IEEEtran.cls
+paper/ieeeaccess.cls
+paper/tqe.tex
+paper/Logo.png
+paper/bullet.png
+paper/notaglineLogo.png
+paper/jtehmLogo.png
+
+# --- LaTeX build artifacts ---
+*.aux
+*.log
+*.out
+*.blg
+*.bbl
+*.toc
+*.synctex.gz
+paper/main_v*.pdf
+paper/main_tqe*.pdf
+paper/tqe_ref.*
+paper/$job.*
+
+# --- one-shot helper scripts (already applied) ---
+paper/_convert_tqe.py
+paper/_wc_abstract.py
+
+# --- environments / caches ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+paper/main.pdf
+paper/_add_repo_link.py
+paper/TQE_Template.zip

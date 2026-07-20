@@ -1,0 +1,27 @@
+# A2 variance-reduced unravelings vs TJM Theorem-1 closed forms
+# env: WSL2 Ubuntu-24.04, RTX 5060 Ti 8GB (driver 596.49), qiskit 1.2.4, qiskit-aer-gpu 0.15.1, cupy 14.1.1
+# scenario: single Z-dephasing (gamma=1), init |+>, observable X, {X,Z}=0 ; seed 20260719
+# closed forms: mean=e^{-2gt}; var_std=1-e^{-4gt}; var_proj=e^{-2gt}(1-e^{-2gt})
+# --- Part 1: single-qubit (numpy, N=20000) ---
+part,gt,mode,mean_emp,mean_cf,var_emp,var_cf
+p1,0.10,standard,0.8192,0.8187,0.3289,0.3297
+p1,0.10,projector,0.8190,0.8187,0.1482,0.1484
+p1,0.10,analog,0.8178,0.8187,0.0688,
+p1,0.25,standard,0.5983,0.6065,0.6420,0.6321
+p1,0.25,projector,0.6043,0.6065,0.2391,0.2387
+p1,0.25,analog,0.6109,0.6065,0.2079,
+p1,0.50,standard,0.3725,0.3679,0.8612,0.8647
+p1,0.50,projector,0.3755,0.3679,0.2345,0.2325
+p1,0.50,analog,0.3711,0.3679,0.3738,
+p1,1.00,standard,0.1494,0.1353,0.9777,0.9817
+p1,1.00,projector,0.1349,0.1353,0.1167,0.1170
+p1,1.00,analog,0.1305,0.1353,0.4859,
+p1,1.50,standard,0.0456,0.0498,0.9979,0.9975
+p1,1.50,projector,0.0511,0.0498,0.0485,0.0473
+p1,1.50,analog,0.0439,0.0498,0.4978,
+# --- Part 2: GPU n=10 (cupy), gt=1.5, target SE=0.01, N_to_target estimated from sample std ---
+# mode, wallclock_32000_traj_s, N_to_target_SE
+part,mode,wallclock_s,N_to_target_SE
+p2,standard,53.2,976
+p2,projector,138.2,46
+# headline: projector needs ~21x fewer trajectories (variance x20.6); net wall-clock ~8x after 2.6x per-traj overhead
