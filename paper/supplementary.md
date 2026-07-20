@@ -51,7 +51,7 @@ python -c "from qiskit_aer import AerSimulator; print(AerSimulator().available_d
 | Path | Role |
 |:--|:--|
 | `src/trajectory/gpu_trajectory.py` | GPU dense-statevector trajectory engine; gate contraction, `apply_projector`, `apply_analog_kick`, `expval_1q`, `prob_plus` |
-| `validation/test_a1_tracedistance.py` | Correctness: ensemble ρ vs. Aer `density_matrix`; 1/√N convergence (Fig. 2) |
+| `validation/test_a1_tracedistance.py` | Correctness: ensemble $\rho$ vs. Aer `density_matrix`; $1/\sqrt{N}$ convergence (Fig. 2) |
 | `validation/test_a2_variance.py` | Closed-form variance reproduction (standard / projector / analog) |
 | `validation/test_a3_sweep.py` | Regime map, n-scaling, unbiasedness sweep (Figs. 3–4) |
 | `validation/test_c_caveats.py` | GHZ stabilizer observable; coherent-erosion map (Fig. 5) |
@@ -77,24 +77,44 @@ python -u paper/figures/make_figures.py            # figures
 
 ---
 
-## S3. Raw data dictionary
+## S3. Figure and table index
+
+| Item | Content | Produced by |
+|:--|:--|:--|
+| Fig. 1 | Concept: where this work intervenes in the Qiskit-Aer stack | `paper/figures/make_figures.py` (schematic) |
+| Fig. 2 | Correctness: trace distance vs. $N$, $1/\sqrt{N}$ convergence | `validation/test_a1_tracedistance.py` |
+| Fig. 3 | Regime map: variance ratio vs. noise strength | `validation/test_a3_sweep.py` |
+| Fig. 4 | Scaling of the trajectory-reduction factor vs. n | `validation/test_a3_sweep.py` |
+| Fig. 5 | Applicability map: coherent erosion of the advantage | `validation/test_c_caveats.py` |
+| Fig. 6 | Head-to-head vs. Qiskit-Aer | `validation/test_a4_vs_aer.py` |
+| Table I | Differentiation from the closest related work | (narrative) |
+| Table II | Regime map, numeric | `validation/test_a3_sweep.py` |
+| Table III | Trajectories-to-target vs. n | `validation/test_a3_sweep.py` |
+| Table IV | Head-to-head at n = 10 | `validation/test_a4_vs_aer.py` |
+
+All figures are regenerated from the archived CSVs by `paper/figures/make_figures.py`; no figure
+contains data that is not present in `bench/results/`.
+
+---
+
+## S4. Raw data dictionary
 
 All raw outputs are archived as CSV under `bench/results/`, each with a comment header recording the
 environment, circuit, noise strength, and seed.
 
 | File | Contents | Figure/Table |
 |:--|:--|:--|
-| `a1_convergence.csv` | trace distance vs. N; `D·√N` | Fig. 2 |
-| `a2_variance.csv` | empirical vs. closed-form variance (3 unravelings, γt sweep); GPU N-to-target | — |
-| `a3_sweep.csv` | regime map; circuit-class map; n-scaling; unbiasedness | Fig. 3, Fig. 4, Tables I–II |
-| `a4_vs_aer.csv` | Aer vs. ours (mean, std, N-to-target, wall-clock) | Fig. 6, Table III |
-| `c_caveats.csv` | GHZ stabilizer speedups; erosion vs. θ | Fig. 5 |
+| `a1_convergence.csv` | trace distance vs. $N$; $D\cdot\sqrt{N}$ | Fig. 2 |
+| `a2_variance.csv` | empirical vs. closed-form variance (3 unravelings, $\gamma t$ sweep); GPU N-to-target | — |
+| `a3_sweep.csv` | regime map; circuit-class map; n-scaling; unbiasedness | Fig. 3, Fig. 4, Tables II–III |
+| `a4_vs_aer.csv` | Aer vs. ours (mean, std, N-to-target, wall-clock) | Fig. 6, Table IV |
+| `c_caveats.csv` | GHZ stabilizer speedups; erosion vs. $\theta$ | Fig. 5 |
 
 ---
 
-## S4. Derivations
+## S5. Derivations
 
-### S4.1 Projector unraveling reproduces the dephasing generator
+### S5.1 Projector unraveling reproduces the dephasing generator
 
 With $\Pi_\pm=(\mathbb{1}\pm Z)/2$ and $L_\pm=\sqrt{2\gamma}\,\Pi_\pm$,
 
@@ -114,7 +134,7 @@ Hence the dissipator is $\gamma(\rho+Z\rho Z)-2\gamma\rho=\gamma(Z\rho Z-\rho)$,
 standard unraveling $L=\sqrt{\gamma}Z$. The two unravelings are therefore statistically
 distinguishable but physically equivalent.
 
-### S4.2 Estimator variances
+### S5.2 Estimator variances
 
 For $O=X$, initial state $|{+}\rangle$, pure dephasing, no coherent evolution, the exact mean is
 $\langle X\rangle_t=e^{-2\gamma t}$.
@@ -135,7 +155,7 @@ $$\mathrm{Var}_{\mathrm{proj}}=e^{-2\gamma t}\left(1-e^{-2\gamma t}\right).$$
 The ratio $\mathrm{Var}_{\mathrm{proj}}/\mathrm{Var}_{\mathrm{std}}
 = e^{-2\gamma t}/(1+e^{-2\gamma t})$ tends to $0$ as $\gamma t\to\infty$.
 
-### S4.3 GHZ stabilizer observable
+### S5.3 GHZ stabilizer observable
 
 For the GHZ state the single-qubit $\langle X_i\rangle$ vanishes identically. The stabilizer
 $X^{\otimes n}$ measures the $|0\rangle^{\otimes n}$–$|1\rangle^{\otimes n}$ coherence, decays as
@@ -146,7 +166,7 @@ with $\bar x=x\oplus(2^n-1)$.
 
 ---
 
-## S5. Supporting evidence for the Qiskit-Aer canonicalization finding
+## S6. Supporting evidence for the Qiskit-Aer canonicalization finding
 
 The dephasing channel $\mathcal{E}(\rho)=(1-p)\rho+pZ\rho Z$ was supplied to Aer in two mathematically
 identical Kraus forms:
@@ -155,7 +175,7 @@ identical Kraus forms:
 - projector: $\{\sqrt{1-2p}\,\mathbb{1},\ \sqrt{2p}\,\Pi_+,\ \sqrt{2p}\,\Pi_-\}$
 
 Both reproduce the correct mean, but both also yield the *same* (standard) estimator variance, i.e.
-N-to-target ≈ 1001 on CPU and ≈ 1011 in a per-trajectory expectation loop. Inspection
+N-to-target $\approx$ 1001 on CPU and $\approx$ 1011 in a per-trajectory expectation loop. Inspection
 (`probe_aer_canonicalization.py`) shows each error is stored as a single `kraus` instruction, and at
 apply time Aer reconstructs the Choi-canonical Kraus set — for dephasing, the orthogonal Pauli
 set — discarding the supplied decomposition.
@@ -169,7 +189,7 @@ accumulator.
 
 ---
 
-## S6. Known limitations of the artifact
+## S7. Known limitations of the artifact
 
 - The engine is a Python/cupy prototype; wall-clock comparisons against Aer's compiled C++/CUDA engine
   are reported as measured and are not the paper's efficiency claim (trajectory count is).
