@@ -46,6 +46,6 @@ def inline(tex_path, bbl_path, out_path):
 
 if __name__ == "__main__":
     # journal version: .bbl produced with IEEEtran.bst
-    inline("main.tex", "main_tqe4.bbl", "main_ieee.tex")
+    inline("main.tex", "main.bbl", "main_ieee.tex")
     # preprint version: .bbl produced with unsrt.bst
-    inline("arxiv.tex", "arxiv3.bbl", "arxiv_selfcontained.tex")
+    inline("arxiv.tex", "arxiv.bbl", "arxiv_selfcontained.tex")
