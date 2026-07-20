@@ -9,64 +9,53 @@ bibliography uses the generic `unsrt` style, and the author-biography section is
 same source can accompany a submission to any venue. Float placement is constrained with `placeins` so
 figures appear next to their discussion rather than drifting to the end.
 
-## 1. Files to upload — TeX SOURCE, never the PDF
+## 1. What to upload where
 
-arXiv rejects compiled PDFs ("appears to have been produced by TeX"); it requires the source so it can
-build HTML/MathML/EPUB, hyperlinks, and accessible formats
-(<https://info.arxiv.org/help/faq/whytex.html>). Upload `arxiv_submission.tar.gz`, which contains
-exactly:
+Both submission systems are satisfied by a **self-contained `.tex` with the bibliography inlined**
+(`make_selfcontained.py`), so neither a `.bib` nor a BibTeX run is required. Build the archives with
+`python make_packages.py`.
 
-```
-arxiv.tex
-arxiv.bbl          <- REQUIRED: arXiv does NOT run BibTeX
-figures/fig1_concept.png
-figures/fig2_convergence.png
-figures/fig3_regime_map.png
-figures/fig4_scaling.png
-figures/fig5_erosion.png
-figures/fig6_vs_aer.png
-```
+| Target | Archive | Contents |
+|:--|:--|:--|
+| **arXiv** | `submission_arxiv.tar.gz` | `arxiv_selfcontained.tex` + `figures/` |
+| **Journal (IEEE)** | `submission_ieee.zip` | `main_ieee.tex`, `ieeeaccess.cls`, branding PNGs, `figures/` |
 
-Do **not** upload `arxiv.pdf`, `references.bib`, build artifacts (`.aux/.log/.out`), `main.tex`, or any
-publisher class/branding files.
+**Never upload the compiled PDF to arXiv** — it is auto-rejected ("appears to have been produced by
+TeX"); arXiv needs the source to build HTML/MathML/EPUB and accessible formats
+(<https://info.arxiv.org/help/faq/whytex.html>).
 
-### Why the earlier attempt failed and what was fixed
+**Do not mix up the two versions.** `arxiv_selfcontained.tex` uses the `article` class and `unsrt`
+references; `main_ieee.tex` uses `ieeeaccess` and IEEE-formatted references. Submitting the arXiv
+file to the journal produces the wrong layout.
 
-- The compiled `arxiv.pdf` was uploaded instead of the source. arXiv auto-rejects that.
-- `\pdfoutput=1` is now the third line of `arxiv.tex` (before `\documentclass`). Because all figures
-  are PNG, this forces arXiv onto the pdfLaTeX path; without it arXiv may try latex->dvi->ps and fail
-  on the PNGs.
-- `arxiv.bbl` is now shipped, so citations resolve without BibTeX.
+### Failures seen and how they were fixed
+
+| Symptom | Cause | Fix |
+|:--|:--|:--|
+| arXiv: "appears to have been produced by TeX" | the PDF was uploaded | upload the source archive |
+| arXiv: latex→dvi→ps attempted, PNG figures fail | no `\pdfoutput` | `\pdfoutput=1` placed before `\documentclass` |
+| Journal: "I couldn't open database file references.bib", 50 empty citations | the publisher runs BibTeX but `references.bib` was not uploaded | bibliography inlined into the `.tex`; no BibTeX needed |
+| Journal: `unsrt.bst` in the log | the arXiv preprint was uploaded instead of the journal source | upload `main_ieee.tex` |
+| Missing `Logo.png` on a case-sensitive server | the class requests `Logo.png`/`notaglineLogo.png`, the official template ships `logo.png`/`notaglinelogo.png` | the zip contains **both letter cases** |
 
 ### Verification performed
 
-The package was compiled in a clean directory containing only the files above, with **pdflatex three
-times and no BibTeX and no `.bib`** — i.e. exactly what arXiv does. Result: **20 pages, 0 errors,
-0 undefined citations or references**. Required packages are all standard TeX Live
-(`geometry, graphicx, amsmath, amssymb, booktabs, algorithm, algpseudocode, caption, url, hyperref,
-placeins`).
+Each archive was extracted into a clean directory and compiled with **pdflatex three times, no
+BibTeX, no `.bib`** — exactly what the submission systems do:
 
-### Rebuilding the package
+- `main_ieee.tex` -> 10 pages, 0 errors, 0 undefined citations/references, 0 missing files
+- `arxiv_selfcontained.tex` -> 20 pages, 0 errors, 0 undefined citations/references
+
+### Rebuilding
 
 ```bash
 cd paper
-python make_arxiv.py                                   # regenerate arxiv.tex from main.tex
-pdflatex arxiv && bibtex arxiv && pdflatex arxiv && pdflatex arxiv   # produces arxiv.bbl
-mkdir -p arxiv_pkg/figures
-cp arxiv.tex arxiv.bbl arxiv_pkg/ && cp figures/fig?_*.png arxiv_pkg/figures/
-cd arxiv_pkg && pdflatex arxiv && pdflatex arxiv && pdflatex arxiv   # verify WITHOUT bibtex
-tar -czf ../arxiv_submission.tar.gz .
+python make_arxiv.py                                                  # arxiv.tex from main.tex
+pdflatex main -jobname=main_tqe4 && bibtex main_tqe4                  # journal .bbl
+pdflatex arxiv -jobname=arxiv3   && bibtex arxiv3                     # preprint .bbl
+python make_selfcontained.py                                          # inline both bibliographies
+python make_packages.py                                               # build both archives
 ```
-
-## 2. Repository visibility — resolved
-
-The artifact repository is **public**:
-
-<https://github.com/mirryou-maker/qiskit-variance-reduced-unraveling>
-
-The manuscript, the preprint, and the supplementary material link it as a plain URL (the earlier
-"private for peer review" qualifier has been removed). The repository excludes publisher template
-files and all internal planning notes.
 
 ## 3. arXiv metadata
 
