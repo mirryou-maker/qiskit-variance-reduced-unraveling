@@ -58,3 +58,6 @@ paper/*.aux
 paper/*.log
 paper/*.out
 paper/*.blg
+
+# Manuscript not for public distribution during review (2026-08-24)
+paper/
