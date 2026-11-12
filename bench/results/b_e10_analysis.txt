@@ -1,0 +1,87 @@
+E10 analysis of /home/cyyou/work/qiskit-co/bench/results/b_e10_u94.csv
+groups 98 (configs 37) -> /home/cyyou/work/qiskit-co/bench/results/b_e10_summary.csv
+identity check (re-timed fixed vs E9b raw, first N_t): min match 1.00000; groups < 0.99: 0
+idle record: gpu_other ['none']; other_py ['none']; runner max 0; gpu_util max 0.0 %; gpu_mem max 1990.0 MiB; load1 max 1.15
+t_f(best) E10 / E9e: median 1.001 [1.000, 1.006]
+pilot: t_static/t_f(best) median 1.009; build_s median 20.87 s, bp_s median 1.00 s; table non-std median 0.588; table = best fixed median 0.332; bias |z| vs E9b best-fixed mean max 2.96, n(|z|>4) 0
+ideal: t_static/t_f(best) median 1.000; build_s median 0.39 s, bp_s median 1.00 s; table non-std median 0.695; table = best fixed median 0.287; bias |z| vs E9b best-fixed mean max 2.49, n(|z|>4) 0
+
+Median over groups [98.75% group bootstrap] {98.75% config-cluster}; per-group CI>1 / CI<1 counts
+
+== subset all98 (98 groups) ==
+  pilot ad   groups 62 t_s/t_f 1.009
+      W_bf 1.374 [1.207, 1.572] {1.110, 1.588} (CI>1 45, CI<1 6); R_bf 1.388 [1.219, 1.585]
+      W_std 2.204 [1.628, 2.733] {1.623, 2.943} (CI>1 58, CI<1 0); R_std 2.226 [1.645, 2.772]
+      W_g 1.798 [1.225, 1.977] {1.093, 2.020} (CI>1 44, CI<1 12); R_g 0.715 [0.518, 0.792]
+  pilot deph groups 36 t_s/t_f 1.009
+      W_bf 1.003 [0.889, 1.079] {0.871, 1.185} (CI>1 10, CI<1 13); R_bf 1.014 [0.900, 1.088]
+      W_std 1.029 [0.910, 1.177] {0.905, 1.281} (CI>1 12, CI<1 10); R_std 1.039 [0.928, 1.192]
+      W_g 2.232 [1.871, 2.542] {1.864, 2.580} (CI>1 36, CI<1 0); R_g 0.859 [0.803, 0.916]
+  ideal ad   groups 62 t_s/t_f 1.001
+      W_bf 1.292 [0.949, 1.444] {0.896, 1.486} (CI>1 35, CI<1 19); R_bf 1.294 [0.949, 1.464]
+      W_std 1.742 [1.394, 2.323] {1.384, 2.327} (CI>1 55, CI<1 3); R_std 1.743 [1.416, 2.325]
+      W_g 1.565 [1.030, 1.785] {0.925, 1.816} (CI>1 39, CI<1 17); R_g 0.615 [0.429, 0.706]
+  ideal deph groups 36 t_s/t_f 1.000
+      W_bf 0.925 [0.798, 1.047] {0.786, 1.104} (CI>1 7, CI<1 18); R_bf 0.925 [0.798, 1.050]
+      W_std 0.952 [0.813, 1.094] {0.786, 1.298} (CI>1 9, CI<1 17); R_std 0.952 [0.826, 1.083]
+      W_g 1.993 [1.696, 2.269] {1.551, 2.264} (CI>1 33, CI<1 0); R_g 0.773 [0.725, 0.839]
+
+== subset TN1e6 (46 groups) ==
+  pilot ad   groups 27 t_s/t_f 1.010
+      W_bf 1.354 [1.107, 1.512] {1.107, 1.512} (CI>1 20, CI<1 1); R_bf 1.369 [1.116, 1.530]
+      W_std 1.566 [1.372, 2.494] {1.374, 2.473} (CI>1 23, CI<1 0); R_std 1.583 [1.384, 2.520]
+      W_g 2.111 [1.024, 2.392] {0.826, 2.359} (CI>1 19, CI<1 7); R_g 0.754 [0.472, 0.835]
+  pilot deph groups 19 t_s/t_f 1.010
+      W_bf 0.934 [0.779, 1.057] {0.871, 1.185} (CI>1 3, CI<1 9); R_bf 0.943 [0.786, 1.068]
+      W_std 1.027 [0.779, 1.177] {0.871, 1.269} (CI>1 5, CI<1 7); R_std 1.038 [0.786, 1.189]
+      W_g 2.580 [2.184, 2.698] {2.519, 2.669} (CI>1 19, CI<1 0); R_g 0.916 [0.872, 0.991]
+  ideal ad   groups 27 t_s/t_f 1.001
+      W_bf 1.161 [0.906, 1.484] {0.906, 1.484} (CI>1 13, CI<1 7); R_bf 1.165 [0.907, 1.486]
+      W_std 1.478 [1.276, 2.194] {1.289, 2.371} (CI>1 21, CI<1 2); R_std 1.478 [1.278, 2.197]
+      W_g 1.760 [0.678, 2.387] {0.555, 2.416} (CI>1 18, CI<1 8); R_g 0.662 [0.313, 0.845]
+  ideal deph groups 19 t_s/t_f 1.000
+      W_bf 0.881 [0.693, 1.060] {0.786, 1.060} (CI>1 1, CI<1 12); R_bf 0.881 [0.693, 1.060]
+      W_std 0.886 [0.786, 1.104] {0.786, 1.207} (CI>1 3, CI<1 12); R_std 0.884 [0.787, 1.104]
+      W_g 2.285 [2.205, 2.434] {2.264, 2.495} (CI>1 19, CI<1 0); R_g 0.829 [0.773, 0.893]
+
+== subset TN1e7 (19 groups) ==
+  pilot ad   groups  8 t_s/t_f 1.012
+      W_bf 1.364 [1.104, 2.166] {1.104, 2.841} (CI>1 6, CI<1 0); R_bf 1.381 [1.113, 1.677]
+      W_std 1.435 [1.208, 2.943] {1.349, 3.493} (CI>1 6, CI<1 0); R_std 1.452 [1.188, 2.975]
+      W_g 2.257 [1.290, 2.709] {0.707, 2.559} (CI>1 7, CI<1 1); R_g 0.807 [0.574, 0.894]
+  pilot deph groups 11 t_s/t_f 1.010
+      W_bf 0.871 [0.725, 1.027] {0.813, 0.934} (CI>1 0, CI<1 8); R_bf 0.880 [0.733, 1.038]
+      W_std 0.871 [0.753, 1.032] {0.813, 0.934} (CI>1 1, CI<1 6); R_std 0.880 [0.733, 1.040]
+      W_g 2.657 [1.883, 2.937] {2.534, 2.669} (CI>1 11, CI<1 0); R_g 0.929 [0.806, 1.044]
+  ideal ad   groups  8 t_s/t_f 1.001
+      W_bf 1.304 [0.934, 2.361] {0.963, 3.077} (CI>1 5, CI<1 0); R_bf 1.306 [0.935, 2.283]
+      W_std 1.408 [1.091, 3.045] {1.161, 3.152} (CI>1 6, CI<1 0); R_std 1.410 [1.036, 3.048]
+      W_g 2.458 [1.091, 2.580] {1.103, 2.492} (CI>1 7, CI<1 1); R_g 0.848 [0.466, 0.874]
+  ideal deph groups 11 t_s/t_f 1.000
+      W_bf 0.786 [0.662, 0.826] {0.735, 0.826} (CI>1 0, CI<1 10); R_bf 0.787 [0.665, 0.854]
+      W_std 0.809 [0.660, 0.894] {0.740, 0.829} (CI>1 0, CI<1 10); R_std 0.809 [0.663, 0.895]
+      W_g 2.269 [2.100, 2.434] {2.242, 2.313} (CI>1 11, CI<1 0); R_g 0.839 [0.800, 0.933]
+
+== breakdown (all 98, POST HOC): median W_bf ==
+        ideal_W_bf        pilot_W_bf       
+family   brickwork  ising  brickwork  ising
+channel                                    
+ad           1.490  0.768      1.623  1.048
+deph         0.925    NaN      1.003    NaN
+        ideal_W_bf                      pilot_W_bf                     
+L               4      8      16     32         4      8      16     32
+channel                                                                
+ad           3.478  1.605  1.030  0.887      3.198  1.828  1.341  1.183
+deph           NaN  1.096  0.968  0.675        NaN  1.167  1.045  0.782
+        ideal_W_bf               pilot_W_bf              
+gt            0.01   0.03   0.10       0.01   0.03   0.10
+channel                                                  
+ad           1.484  1.184  0.811      1.512  1.372  1.056
+deph         0.893  0.952    NaN      0.996  1.030    NaN
+        ideal_W_bf                      pilot_W_bf                     
+obs              x     xc     zc     zz          x     xc     zc     zz
+channel                                                                
+ad           1.332  1.223  1.161  1.187      1.512  1.514  1.372  1.235
+deph         0.960  0.868  0.989  0.886      1.077  0.969  0.957  0.879
+
+DECISION (pre-registered, all 98 groups): USABLE static table: ad pilot (median W 1.374, lower 1.185)

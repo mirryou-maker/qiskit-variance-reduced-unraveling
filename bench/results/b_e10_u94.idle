@@ -1,0 +1,16 @@
+Thu Nov 12 12:26:35 PM KST 2026
+0 %, 5 MiB
+ 12:26:35 up 7 days, 23:34,  2 users,  load average: 0.21, 0.51, 0.41
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+    379 root      20   0  102908  16472  13088 S   9.1   0.1      6,36 plymout+
+ 814951 cyyou     20   0   13820   6428   4300 R   9.1   0.0   0:00.01 top
+      1 root      20   0   27008  17412  10920 S   0.0   0.1   6:28.54 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.19 kthreadd
+      3 root      20   0       0      0      0 S   0.0   0.0   0:00.00 pool_wo+
+root        5579  0.0  0.0  49444 29800 ?        Ss   Nov04   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root        5855  0.0  0.0 128712 32044 ?        Ssl  Nov04   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+cyyou     814935  0.0  0.0  10136  3996 ?        Ss   12:26   0:00 bash -c cd ~/work/qiskit-co && md5sum bench/scripts/b_e10.py src/noise/static_table.py src/noise/traj_kraus.py && cat > e10_run.sh <<"EOF" #!/bin/bash source ~/miniforge3/etc/profile.d/conda.sh; conda activate qsim13 cd ~/work/qiskit-co { date; nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader; uptime; top -b -n1 -o %CPU | sed -n 7,12p; ps aux | grep -E "[p]ython|[R]unner.Worker"; } > bench/results/b_e10_u94.idle python bench/scripts/b_e10.py --out bench/results/b_e10_u94.csv --raw bench/results/b_e10_raw { echo END; date; nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader; uptime; } >> bench/results/b_e10_u94.idle EOF chmod +x e10_run.sh && (nohup ./e10_run.sh > bench/results/b_e10_u94.log 2>&1 < /dev/null &) ; sleep 3; cat bench/results/b_e10_u94.idle
+END
+Fri Nov 13 06:33:10 AM KST 2026
+93 %, 5 MiB
+ 06:33:10 up 8 days, 17:41,  2 users,  load average: 1.02, 1.03, 1.00
