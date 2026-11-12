@@ -1,0 +1,23 @@
+#!/bin/bash
+#PBS -N a5stage1
+#PBS -q v100q
+#PBS -l select=1:ncpus=20:ngpus=2
+#PBS -l walltime=24:00:00
+#PBS -j oe
+#PBS -r n
+# A5 stage 1: product-state wall-clock, std (pauli_error) vs proj (ancilla coin + if_test)
+# Resumable: rows already in the CSV are skipped.
+. /etc/profile.d/modules.sh
+module load ANACONDA/1-2024.10
+source activate qiskit
+cd /scratch/cyyou68/qiskit-co
+echo "host=$(hostname) start=$(date -Is)"; uptime; nvidia-smi
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1; exit}')
+export CUDA_VISIBLE_DEVICES=$FREE; echo "GPU=$FREE"
+OUT=bench/results/a5_aer_walltime.csv; RAW=bench/results/a5_raw
+COMMON="--family product --gt 0.1 0.5 1.5 --budget-s 120 --min-shots 500 --raw-dir $RAW --out $OUT"
+python bench/scripts/bench_a5_aer_walltime.py $COMMON --device GPU --methods std proj \
+       --configs batched plain --n 8 12 16 20 24 26 28
+python bench/scripts/bench_a5_aer_walltime.py $COMMON --device CPU --methods std proj \
+       --configs plain --n 8 12 16 20 24
+echo "end=$(date -Is)"

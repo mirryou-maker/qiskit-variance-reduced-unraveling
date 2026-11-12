@@ -1,0 +1,22 @@
+#!/bin/bash
+#PBS -N asmoke
+#PBS -q v100q
+#PBS -l select=1:ncpus=20:ngpus=2
+#PBS -l walltime=03:00:00
+#PBS -j oe
+#PBS -r n
+# Plan A smoke test on V100: fastsim validation + one small timing row (NOT the held-out runs).
+. /etc/profile.d/modules.sh
+module load ANACONDA/1-2024.10
+source activate qiskit
+cd /scratch/cyyou68/qiskit-co
+echo "host=$(hostname) start=$(date -Is)"; uptime; nvidia-smi
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1; exit}')
+export CUDA_VISIBLE_DEVICES=$FREE; echo "GPU=$FREE"
+python validation/test_fastsim.py
+python bench/scripts/a_timing.py --family ising --n 20 --gt 0.1 --obs x zz --reps 4 --abs-frac 0.1 \
+   --budget-s 20 --out bench/results/a_smoke_timing.csv --raw-dir bench/results/a_smoke_raw
+python bench/scripts/bench_a5_aer_walltime.py --family ising --obs zz --layers 8 --gt 0.1 --n 20 \
+   --budget-s 20 --min-shots 1000 --device GPU --exact-max-n 0 --methods std --configs batched \
+   --raw-dir bench/results/a_smoke_raw --out bench/results/a_smoke_aer.csv
+echo "end=$(date -Is)"

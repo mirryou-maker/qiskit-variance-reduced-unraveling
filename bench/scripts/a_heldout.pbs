@@ -1,0 +1,34 @@
+#!/bin/bash
+#PBS -N aheldout
+#PBS -q v100q
+#PBS -l select=1:ncpus=20:ngpus=2
+#PBS -l walltime=24:00:00
+#PBS -j oe
+#PBS -r n
+# Plan A step 3: HELD-OUT wall-clock runs at n=20/24 (hyper-parameters frozen on the n=8 tuning
+# set before this job: abs_frac=0.1, reps=8; see bench/results/a_tune.csv).
+# Ours (fastsim std / continuation table) and Aer std (batched, batched_maxq) run sequentially on
+# the same free GPU. Ledger CSVs -> a resubmission skips finished rows.
+. /etc/profile.d/modules.sh
+module load ANACONDA/1-2024.10
+source activate qiskit
+cd /scratch/cyyou68/qiskit-co
+echo "host=$(hostname) start=$(date -Is)"; uptime; nvidia-smi
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1; exit}')
+export CUDA_VISIBLE_DEVICES=$FREE; echo "GPU=$FREE"
+python validation/test_fastsim.py | tail -2
+for N in 20 24; do
+  for FAM in ising brickwork; do
+    python bench/scripts/a_timing.py --family $FAM --n $N --gt 0.03 0.1 --obs x zz xc zc \
+      --reps 8 --abs-frac 0.1 --budget-s 60 --out bench/results/a_heldout_ours.csv \
+      --raw-dir bench/results/a_heldout_raw
+    for OBS in x zz xc zc; do
+      python bench/scripts/bench_a5_aer_walltime.py --family $FAM --obs $OBS --layers 8 \
+        --gt 0.03 0.1 --n $N --budget-s 60 --min-shots 1000 --device GPU --exact-max-n 0 \
+        --methods std --configs batched batched_maxq --raw-dir bench/results/a_heldout_raw \
+        --out bench/results/a_heldout_aer.csv
+    done
+  done
+done
+touch bench/results/a_heldout.done
+echo "end=$(date -Is)"

@@ -61,3 +61,7 @@ paper/*.blg
 
 # Manuscript not for public distribution during review (2026-08-24)
 paper/
+
+# Per-trajectory raw arrays (~1.5 GB, .npz/.npy). Too large for git; kept locally and backed up to Google Drive.
+# Every number in the manuscript comes from the summary CSV/TXT files in bench/results/, which are tracked.
+bench/results/*_raw/

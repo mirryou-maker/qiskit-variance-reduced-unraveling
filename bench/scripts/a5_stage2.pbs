@@ -1,0 +1,25 @@
+#!/bin/bash
+#PBS -N a5stage2
+#PBS -q v100q
+#PBS -l select=1:ncpus=20:ngpus=2
+#PBS -l walltime=24:00:00
+#PBS -j oe
+#PBS -r n
+# A5 stage 2: entangling circuits without a closed form (random brickwork, Trotter TFIM),
+# observables mean X and mean ZZ, density_matrix reference for n <= 14.
+# Each method on its fastest supported GPU config (std: batched_shots_gpu, proj: plain).
+. /etc/profile.d/modules.sh
+module load ANACONDA/1-2024.10
+source activate qiskit
+cd /scratch/cyyou68/qiskit-co
+echo "host=$(hostname) start=$(date -Is)"; uptime; nvidia-smi
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1; exit}')
+export CUDA_VISIBLE_DEVICES=$FREE; echo "GPU=$FREE"
+OUT=bench/results/a5_entangled.csv; RAW=bench/results/a5_raw
+for FAM in brickwork ising; do for OBS in x zz; do
+  C="--family $FAM --obs $OBS --layers 8 --gt 0.01 0.03 0.1 0.3 --budget-s 60 --min-shots 1000 --raw-dir $RAW --out $OUT"
+  python bench/scripts/bench_a5_aer_walltime.py $C --device GPU --exact-max-n 14 --methods std --configs batched --n 8 10 12 14 16 20 24
+  python bench/scripts/bench_a5_aer_walltime.py $C --device GPU --exact-max-n 14 --methods proj --configs plain --n 8 10 12 14 16 20 24
+  python bench/scripts/bench_a5_aer_walltime.py $C --device CPU --exact-max-n 12 --methods std proj --configs plain --n 8 10 12
+done; done
+echo "end=$(date -Is)"
