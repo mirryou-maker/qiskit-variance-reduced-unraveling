@@ -1,0 +1,21 @@
+groups 48, deterministic (excluded) 12 -> D:\Claude-Code-R\Qiskit-CO\bench/results\b_e7b_summary.csv
+bias: max|z| (E7b rows, var>1e-12) = 2.92
+  r1        median 1.0045 [0.9988, 1.0141]  n_groups 36  CI>1 5  CI<1 2
+  r2        median 1.0033 [0.9965, 1.0140]  n_groups 36  CI>1 2  CI<1 0
+  G7        median 1.2989 [1.1251, 1.4040]  n_groups 36  CI>1 30  CI<1 0
+  Gp        median 1.2950 [1.1095, 1.3970]  n_groups 36  CI>1 27  CI<1 2
+  Gpp       median 1.2926 [1.0951, 1.4053]  n_groups 36  CI>1 30  CI<1 0
+  base_drop median 1.0108 [1.0000, 1.0208]  n_groups 36
+  median by gt:
+          r1      r2      G7      Gp  base_drop
+gt                                             
+0.01  1.0186  1.0019  1.0460  1.0140     1.0272
+0.03  0.9981  1.0034  1.2108  1.2027     1.0028
+0.10  1.0047  1.0040  1.5455  1.5354     1.0031
+  median by variant:
+             r1      r2      G7      Gp
+variant                                
+h0.7     1.0115  1.0056  1.2332  1.2013
+h1.4     0.9988  1.0007  1.3634  1.3609
+  extended best-fixed counts: {'b:fix:analog0.013': 11, 'b:fix:analog0.025': 8, '7:fix:analog0.050': 6, '7:fix:analog0.785': 5, 'b:fix:analog0.050': 3, '7:fix:analog0.100': 3}
+  DECISION (pre-registered): median r2 = 1.0033 -> CONVERGED in theta (<= 1.02)

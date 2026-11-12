@@ -1,0 +1,40 @@
+E9c rows 774 from 2 files; status counts {'ok': 774}
+hosts/gpus/idle: {('iREMB-E-147', 'Tesla V100-SXM2-32GB'): ['308399, 11682 MiB', '308399, 12314 MiB', '308399, 12584 MiB', '308399, 13054 MiB', '308399, 13190 MiB', '308399, 13254 MiB', '308399, 13336 MiB', '308399, 13428 MiB', '308399, 13856 MiB', '308399, 14036 MiB', '308399, 14714 MiB', '308399, 15052 MiB', '308399, 15156 MiB', '308399, 15426 MiB', '308399, 15428 MiB', '308399, 16240 MiB', '308399, 16246 MiB', '308399, 17274 MiB', '308399, 17332 MiB', '308399, 17452 MiB', '308399, 17748 MiB', '308399, 2086 MiB', '308399, 22428 MiB', '308399, 23152 MiB', '308399, 24162 MiB', '308399, 2444 MiB', '308399, 24872 MiB', '308399, 2540 MiB', '308399, 26442 MiB', '308399, 2646 MiB', '308399, 26762 MiB', '308399, 26838 MiB', '308399, 27726 MiB', '308399, 28402 MiB', '308399, 28446 MiB', '308399, 30038 MiB', '308399, 3086 MiB', '308399, 31464 MiB', '308399, 316 MiB', '308399, 6502 MiB', '308399, 7418 MiB', '308399, 7950 MiB', '308399, 8588 MiB', '308399, 8592 MiB', '308399, 8822 MiB', '308399, 9014 MiB', '308399, 9398 MiB', '308399, 9906 MiB', '308401, 10946 MiB', '308401, 11198 MiB', '308401, 11822 MiB', '308401, 12 MiB', '308401, 12452 MiB', '308401, 13386 MiB', '308401, 13448 MiB', '308401, 13648 MiB', '308401, 13790 MiB', '308401, 14732 MiB', '308401, 14830 MiB', '308401, 14946 MiB', '308401, 16150 MiB', '308401, 16344 MiB', '308401, 16438 MiB', '308401, 17614 MiB', '308401, 2244 MiB', '308401, 23168 MiB', '308401, 2608 MiB', '308401, 26860 MiB', '308401, 27062 MiB', '308401, 4502 MiB', '308401, 6572 MiB', '308401, 7184 MiB', '308401, 7202 MiB', 'none']}
+-> /home/cyyou/work/qiskit-co/bench/results/b_e9c_summary.csv
+
+== n = 12 validation (360 groups) ==
+  cap    1e+05: classified TN  65, true TN  91; false-solved 34 (11.5% of solved), false-TN 8
+  cap    1e+06: classified TN  33, true TN  44; false-solved 17 (5.2% of solved), false-TN 6
+  cap    3e+06: classified TN  29, true TN  40; false-solved 17 (5.1% of solved), false-TN 6
+
+== n 20/24: 720 groups, 192 E9a-TN; E9c rows present for 192; ok at 3e6/1e7/3e7: [192, 192, 192]
+  TN(cap 1e+05) all: 189/720 = 26.2% [21.3%, 31.5%] (config-cluster 95%)
+      ad    124/384 = 32.3% [25.8%, 39.3%]
+      deph  65/336 = 19.3% [12.1%, 26.7%]
+  TN(cap 1e+06) all: 105/720 = 14.6% [10.5%, 19.0%] (config-cluster 95%)
+      ad    64/384 = 16.7% [10.9%, 22.7%]
+      deph  41/336 = 12.2% [6.4%, 18.5%]
+  TN(cap 3e+06) all: 69/720 = 9.6% [6.4%, 13.2%] (config-cluster 95%)
+      ad    40/384 = 10.4% [6.2%, 15.1%]
+      deph  29/336 = 8.6% [3.9%, 14.2%]
+
+== where (fraction TN at cap 1e6 / 3e6) ==
+  by family: {'brickwork': (0.221, 0.159), 'ising': (0.06, 0.024)}
+  by variant: {'h0.7': (0.024, 0.0), 'h1.4': (0.095, 0.048), 's7': (0.24, 0.167), 's8': (0.203, 0.151)}
+  by n: {20: (0.128, 0.089), 24: (0.164, 0.103)}
+  by L: {4: (0.0, 0.0), 8: (0.167, 0.078), 16: (0.239, 0.189), 32: (0.178, 0.117)}
+  by gt: {0.01: (0.275, 0.221), 0.03: (0.108, 0.046), 0.1: (0.054, 0.021)}
+  by obs: {'x': (0.156, 0.099), 'xc': (0.12, 0.078), 'zc': (0.146, 0.097), 'zz': (0.161, 0.109)}
+  channel x family at cap 1e6:
+family   brickwork  ising
+channel                  
+ad           0.229  0.104
+deph         0.214  0.000
+
+== cost ==
+  t_PP(3e+06) / t_traj20k: median 1.28e-03, max 3.96e-03;  t_PP median 5.9 s;  peak terms median 3e+06
+  t_PP(1e+07) / t_traj20k: median 1.95e-03, max 1.18e-02;  t_PP median 17.6 s;  peak terms median 1e+07
+  t_PP(3e+07) / t_traj20k: median 3.66e-03, max 3.49e-02;  t_PP median 49.9 s;  peak terms median 3e+07
+  |z_top| >= 4 among n 20/24 E9a-TN: 0
+
+DECISION (pre-registered): TN(cap 1e6) = 14.6% -> trajectory-needing regime SURVIVES (> 5%): report TN vs cap

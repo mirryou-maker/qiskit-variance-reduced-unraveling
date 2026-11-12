@@ -1,0 +1,53 @@
+groups 1152 (deterministic 72) -> D:\Claude-Code-R\Qiskit-CO\bench/results\b_e9a_summary.csv
+hosts / idle: {'CYY-ubuntu94': ['none'], 'ubuntu-CYY98': ['none']}
+
+== n = 12 validation against exact ==
+  trajectory bias: max|z| 3.16, rms 1.045
+  solved 294/360; of these, true error at M* > eps in 52 (17.7%)  <- criterion reliability
+  |PP_1e6 - exact| / eps: median 0.00087, max 44.8
+  n=12 (context)                     TN   66/ 360 =  18.3%  [14.7%, 22.7%]
+
+== n in {20, 24}: PRIMARY ==
+  all                                TN  192/ 720 =  26.7%  [23.6%, 30.0%]
+  channel ad                         TN  127/ 384 =  33.1%  [28.6%, 37.9%]
+  channel deph                       TN   65/ 336 =  19.3%  [15.5%, 23.9%]
+  n = 20                             TN   98/ 360 =  27.2%  [22.9%, 32.0%]
+  n = 24                             TN   94/ 360 =  26.1%  [21.8%, 30.9%]
+
+== SECONDARY: |traj mean| >= 0.01 ==
+  all                                TN  128/ 547 =  23.4%  [20.0%, 27.1%]
+  channel ad                         TN   92/ 312 =  29.5%  [24.7%, 34.8%]
+  channel deph                       TN   36/ 235 =  15.3%  [11.3%, 20.5%]
+
+== where TN groups are (fraction TN) ==
+  by family: {'brickwork': 0.372, 'ising': 0.146}
+  by variant: {'h0.7': 0.077, 'h1.4': 0.214, 's7': 0.37, 's8': 0.375}
+  by L: {4: 0.05, 8: 0.356, 16: 0.333, 32: 0.328}
+  by gt: {0.01: 0.383, 0.03: 0.292, 0.1: 0.125}
+  by obs: {'x': 0.271, 'xc': 0.208, 'zc': 0.306, 'zz': 0.292}
+  by L x gt:
+gt  0.01  0.03  0.10
+L                   
+4   0.08  0.07  0.00
+8   0.53  0.38  0.15
+16  0.43  0.40  0.17
+32  0.48  0.32  0.18
+  by family x L (secondary subset):
+L           4     8     16    32
+family                          
+brickwork  0.1  0.59  0.54  0.00
+ising      0.0  0.11  0.18  0.32
+
+== M* (solved groups) ==
+  median M* by n: {12: 1000.0, 20: 1000.0, 24: 1000.0}
+n        12       20       24
+L                            
+4   10000.0  10000.0  10000.0
+8    1000.0  10000.0  10000.0
+16   1000.0   1000.0   1000.0
+32   1000.0   1000.0   1000.0
+
+== |PP_1e6 - traj| z (n 20/24):  rms 1.288, max 9.10, |z|>=4: 9
+  time: median t_PP(1e6) / t_traj20k(extrap.): 0.0002
+
+DECISION (pre-registered, n 20/24 all groups): TN 192/720 = 26.7% -> a trajectory-needing regime EXISTS (> 5%): report where, propose E9b to the user

@@ -1,0 +1,48 @@
+groups 240, deterministic (excluded) 12 -> D:\Claude-Code-R\Qiskit-CO\bench/results/b_e7_summary.csv
+bias: max|z| over var>1e-12 rows = 3.14
+
+===== channel ad_phase: PRIMARY gt <= 0.1 =====
+  G:
+    n=10 groups 120 median 9.579 [8.629, 10.191]  CI>1 120  CI<1 0
+  median G_vs_std per n: {10: 14.349}
+  best-fixed candidate counts: {'fix:jump': 41, 'fix:hom0.785': 26, 'fix:hom1.571': 26, 'fix:hom2.356': 15, 'fix:hom0.000': 12}
+  by family/variant (median G):
+n                      10
+family    variant        
+brickwork s7        9.849
+          s8       10.330
+          s9       10.867
+ising     h0.7      7.694
+          h1.4      8.363
+  by observable (median G):
+n        10
+obs        
+x     8.503
+xc    8.015
+zc   10.211
+zz   10.524
+  DECISION (pre-registered):
+    median G n10 9.579 (CI lo 8.629) -> adaptive gain EXTENDS to ad_phase
+
+===== channel deph_sweep: PRIMARY gt <= 0.1 =====
+  G:
+    n=10 groups 108 median 2.123 [2.027, 2.214]  CI>1 101  CI<1 0
+  median G_vs_std per n: {10: 3.02}
+  best-fixed candidate counts: {'fix:analog0.050': 37, 'fix:std': 36, 'fix:analog0.100': 16, 'fix:analog0.785': 7, 'fix:analog0.200': 7, 'fix:analog0.300': 5}
+  by family/variant (median G):
+n                     10
+family    variant       
+brickwork s7       2.214
+          s8       2.265
+          s9       2.321
+ising     h0.7     1.233
+          h1.4     1.363
+  by observable (median G):
+n       10
+obs       
+x    2.029
+xc   2.225
+zc   2.175
+zz   2.117
+  DECISION (pre-registered):
+    median G n10 2.123 (CI lo 2.027) -> adaptive gain EXTENDS to deph_sweep

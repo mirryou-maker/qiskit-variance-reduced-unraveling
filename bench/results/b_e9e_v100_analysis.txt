@@ -1,0 +1,44 @@
+groups 98 -> /home/cyyou/work/qiskit-co/bench/results/b_e9e_summary_v100.csv;  hosts ['iREMB-E-147'];  idle: ['none']
+identity check: min match over groups 0.0709; groups < 0.99 WITHOUT fallback (variance still from E9b, INVALID): 1 [(('ad', 'brickwork', 's7', 20, 8, 0.03, 'x'), np.float64(0.97635))]
+fallback variances used: M10 30 runs, M100 17 runs (from ['/home/cyyou/work/qiskit-co/bench/results/b_e9e_fb_u94.csv', '/home/cyyou/work/qiskit-co/bench/results/b_e9e_fb_v100.csv'])
+t_f (new / E9b) median 0.574 (E9b mixes RTX 3070 Ti and RTX 2060 hosts)
+
+== M = 10 ==
+  ad    groups  62  t_g/t_f median 1.60 (E9b 2.20)   R median 0.961   W median 0.598 [0.523, 0.743] (98.75%)  (E9b W median 0.458)
+        W CI>1: 12, W CI<1: 44, W point > 1: 14
+  deph  groups  36  t_g/t_f median 1.65 (E9b 2.27)   R median 0.870   W median 0.564 [0.479, 0.645] (98.75%)  (E9b W median 0.393)
+        W CI>1: 1, W CI<1: 32, W point > 1: 1
+
+== M = 100 ==
+  ad    groups  62  t_g/t_f median 2.86 (E9b 5.63)   R median 2.567   W median 0.844 [0.607, 1.137] (98.75%)  (E9b W median 0.443)
+        W CI>1: 24, W CI<1: 34, W point > 1: 27
+  deph  groups  36  t_g/t_f median 2.96 (E9b 6.14)   R median 1.219   W median 0.362 [0.322, 0.551] (98.75%)  (E9b W median 0.195)
+        W CI>1: 0, W CI<1: 35, W point > 1: 0
+
+== breakdown: median W (optimized) ==
+  by channel x family:
+              W10             W100       
+family  brickwork  ising brickwork  ising
+channel                                  
+ad          0.592  0.598     0.759  1.096
+deph        0.564    NaN     0.362    NaN
+  by channel x L:
+           W10                        W100                     
+L           4      8      16     32     4      8      16     32
+channel                                                        
+ad       0.734  0.553  0.589  0.632  1.376  0.868  0.715  0.917
+deph       NaN  0.670  0.570  0.429    NaN  0.560  0.436  0.258
+  by channel x gt:
+           W10                 W100              
+gt        0.01   0.03   0.10   0.01   0.03   0.10
+channel                                          
+ad       0.557  0.591  0.638  0.613  0.843  1.252
+deph     0.514  0.630    NaN  0.332  0.544    NaN
+  by channel x obs:
+           W10                        W100                     
+obs          x     xc     zc     zz      x     xc     zc     zz
+channel                                                        
+ad       0.471  1.038  1.177  0.529  0.843  1.384  1.371  0.547
+deph     0.512  0.736  0.573  0.479  0.337  0.538  0.520  0.339
+
+DECISION (pre-registered): NO wall-clock advantage in any channel / M even with the optimized implementation -> negative result stands

@@ -1,0 +1,32 @@
+E9d rows 98 from 2 files; status {'ok': 98}
+hosts/gpus: {('iREMB-E-147', 'Tesla V100-SXM2-32GB'): 98}
+-> /home/cyyou/work/qiskit-co/bench/results/b_e9d_summary.csv
+
+== n = 12 (360): cap 1e7 classified TN 20, true TN 31; false-solved 16 (4.7% of solved), false-TN 5
+   n12 PP_1e8 vs exact (PP_1e8 should be untruncated, 4^12 < 1e8): max |diff| 1.51e-14 over 29
+
+== n 20/24: 720 groups; TN(3e6) 69; PP_1e8 present 69; missing 0
+  TN cap 1e5               : 189/720 = 26.2% [21.3%, 31.4%]  ad 32.3%  deph 19.3%
+  TN cap 1e6               : 105/720 = 14.6% [10.4%, 18.9%]  ad 16.7%  deph 12.2%
+  TN cap 3e6               :  69/720 = 9.6% [6.3%, 13.1%]  ad 10.4%  deph 8.6%
+  TN cap 1e7 (pessimistic) :  39/720 = 5.4% [3.1%, 8.0%]  ad 5.2%  deph 5.7%
+  TN cap 1e7 (optimistic)  :  39/720 = 5.4% [3.1%, 8.1%]  ad 5.2%  deph 5.7%
+
+== where at cap 1e7 (pessimistic) ==
+  by family: {'brickwork': 0.091, 'ising': 0.012}
+  by variant: {'h0.7': 0.0, 'h1.4': 0.024, 's7': 0.094, 's8': 0.089}
+  by n: {20: 0.053, 24: 0.056}
+  by L: {4: 0.0, 8: 0.006, 16: 0.1, 32: 0.111}
+  by gt: {0.01: 0.142, 0.03: 0.017, 0.1: 0.004}
+  by obs: {'x': 0.052, 'xc': 0.052, 'zc': 0.049, 'zz': 0.062}
+family   brickwork  ising
+channel                  
+ad           0.083  0.021
+deph         0.099  0.000
+
+== cost: t_PP(1e8) median 2195 s, max 8065 s; t_PP/t_traj20k median 2.70e-02, max 1.29e+00; distinct terms before truncation median 1.8e+08, max 2.15e+08
+   |PP_1e8 - PP_3e7| median 8.84e-05; |PP_1e7 - PP_1e8| / eps median 1.22; |z_1e8| >= 4: 0
+
+POST HOC (not pre-registered as a decision input): cap 1e7 with partner 3M: 5.7% [3.2%, 8.4%]
+
+DECISION (pre-registered): TN(cap 1e7) = 5.4% (pessimistic) / 5.4% (optimistic) -> trajectory-needing regime SURVIVES to cap 1e7 (> 5%)

@@ -1,0 +1,50 @@
+groups 98 -> D:\Claude-Code-R\Qiskit-CO\bench/results\b_e9b_summary.csv;  idle: ['none']
+best fixed counts: {('ad', 'jump'): 32, ('ad', 'hom1.571'): 17, ('ad', 'hom0.000'): 7, ('ad', 'hom0.785'): 3, ('ad', 'hom2.356'): 3, ('deph', 'std'): 22, ('deph', 'analog0.050'): 4, ('deph', 'analog0.200'): 4, ('deph', 'analog0.300'): 3, ('deph', 'analog0.785'): 2, ('deph', 'analog0.100'): 1}
+
+== M = 10 ==
+  bias: max|z| 2.69, |z|>=4: 0
+  ad    groups  62  R median 0.961 [0.879, 1.123] (95%)   W median 0.458 [0.383, 0.563] (98.75%)   t_g/t_f median 2.20
+        W CI>1: 6, W CI<1: 48;  R CI>1: 21, R CI<1: 26;  nonstd median 0.652
+  deph  groups  36  R median 0.870 [0.837, 1.020] (95%)   W median 0.393 [0.359, 0.456] (98.75%)   t_g/t_f median 2.27
+        W CI>1: 0, W CI<1: 36;  R CI>1: 7, R CI<1: 20;  nonstd median 0.136
+
+== M = 100 ==
+  bias: max|z| 2.58, |z|>=4: 0
+  ad    groups  62  R median 2.567 [1.936, 2.913] (95%)   W median 0.443 [0.318, 0.574] (98.75%)   t_g/t_f median 5.63
+        W CI>1: 2, W CI<1: 55;  R CI>1: 58, R CI<1: 1;  nonstd median 0.787
+  deph  groups  36  R median 1.219 [1.061, 1.372] (95%)   W median 0.195 [0.158, 0.254] (98.75%)   t_g/t_f median 6.14
+        W CI>1: 0, W CI<1: 36;  R CI>1: 22, R CI<1: 9;  nonstd median 0.213
+
+== breakdown: median W ==
+  by channel x family:
+              W10             W100       
+family  brickwork  ising brickwork  ising
+channel                                  
+ad          0.424  0.504     0.377  0.558
+deph        0.393    NaN     0.195    NaN
+  by channel x variant:
+          W10                        W100                     
+variant  h0.7   h1.4     s7     s8   h0.7   h1.4     s7     s8
+channel                                                       
+ad       0.59  0.461  0.402  0.501  0.545  0.572  0.308  0.495
+deph      NaN    NaN  0.436  0.364    NaN    NaN  0.222  0.177
+  by channel x L:
+           W10                       W100                     
+L           4      8      16     32    4      8      16     32
+channel                                                       
+ad       0.486  0.424  0.445  0.513  0.67  0.461  0.377  0.491
+deph       NaN  0.457  0.433  0.322   NaN  0.262  0.215  0.121
+  by channel x gt:
+           W10               W100              
+gt        0.01   0.03 0.10   0.01   0.03   0.10
+channel                                        
+ad       0.404  0.427  0.5  0.322  0.405  0.622
+deph     0.365  0.447  NaN  0.172  0.254    NaN
+  by channel x obs:
+           W10                        W100                     
+obs          x     xc     zc     zz      x     xc     zc     zz
+channel                                                        
+ad       0.340  0.811  0.953  0.398  0.405  0.651  0.682  0.271
+deph     0.404  0.526  0.433  0.332  0.205  0.239  0.260  0.159
+
+DECISION (pre-registered): NO wall-clock advantage in any channel / M -> PRA characterization

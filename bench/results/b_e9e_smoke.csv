@@ -1,0 +1,15 @@
+channel,family,variant,n,L,gt,obs,kind,scheme,M,shots,wall_s,bp_s,nonstd,match,maxdiff,seed,chunk,host,gpu_other,load1,impl,timestamp
+ad,brickwork,s7,20,8,0.03,x,fixed,jump,,296,16.6478,,,1.0,3.62e-09,1696858468,37,CYY-ubuntu94,none,0.75,v2+opt2,2026-11-11T19:24:43
+ad,brickwork,s7,20,8,0.03,zz,fixed,jump,,296,16.6478,,,1.0,6.44e-09,1696858468,37,CYY-ubuntu94,none,0.75,v2+opt2,2026-11-11T19:24:43
+ad,brickwork,s7,20,8,0.03,x,fixed,hom0.000,,296,16.6556,,,1.0,5.72e-09,1694595276,37,CYY-ubuntu94,none,0.82,v2+opt2,2026-11-11T19:25:00
+ad,brickwork,s7,20,8,0.03,zz,fixed,hom0.000,,296,16.6556,,,1.0,3.66e-09,1694595276,37,CYY-ubuntu94,none,0.82,v2+opt2,2026-11-11T19:25:00
+ad,brickwork,s7,20,8,0.03,x,fixed,hom0.785,,296,16.6702,,,1.0,3.69e-09,1489437922,37,CYY-ubuntu94,none,0.86,v2+opt2,2026-11-11T19:25:16
+ad,brickwork,s7,20,8,0.03,zz,fixed,hom0.785,,296,16.6702,,,1.0,4.42e-09,1489437922,37,CYY-ubuntu94,none,0.86,v2+opt2,2026-11-11T19:25:16
+ad,brickwork,s7,20,8,0.03,x,fixed,hom1.571,,296,16.6732,,,1.0,3.71e-09,1004847276,37,CYY-ubuntu94,none,0.96,v2+opt2,2026-11-11T19:25:33
+ad,brickwork,s7,20,8,0.03,zz,fixed,hom1.571,,296,16.6732,,,1.0,4.68e-09,1004847276,37,CYY-ubuntu94,none,0.96,v2+opt2,2026-11-11T19:25:33
+ad,brickwork,s7,20,8,0.03,x,fixed,hom2.356,,296,16.6855,,,1.0,3.58e-09,1607275915,37,CYY-ubuntu94,none,1.03,v2+opt2,2026-11-11T19:25:50
+ad,brickwork,s7,20,8,0.03,zz,fixed,hom2.356,,296,16.6855,,,1.0,3.72e-09,1607275915,37,CYY-ubuntu94,none,1.03,v2+opt2,2026-11-11T19:25:50
+ad,brickwork,s7,20,8,0.03,x,greedy,greedy,10,296,25.639,0.5,0.63068,0.99324,0.0184,509196659,37,CYY-ubuntu94,none,1.02,v2+opt2,2026-11-11T19:26:16
+ad,brickwork,s7,20,8,0.03,x,greedy,greedy,100,296,44.8828,0.548,0.75593,1.0,3.21e-09,1838668012,37,CYY-ubuntu94,none,1.02,v2+opt2,2026-11-11T19:27:01
+ad,brickwork,s7,20,8,0.03,zz,greedy,greedy,10,296,25.6407,0.503,0.65217,1.0,3.7e-09,3850111443,37,CYY-ubuntu94,none,1.08,v2+opt2,2026-11-11T19:27:27
+ad,brickwork,s7,20,8,0.03,zz,greedy,greedy,100,296,47.6003,0.567,0.83499,1.0,3.65e-09,175834132,37,CYY-ubuntu94,none,1.05,v2+opt2,2026-11-11T19:28:16
