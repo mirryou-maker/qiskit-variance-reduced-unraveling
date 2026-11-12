@@ -619,7 +619,9 @@ def apply_kraus(psi, i, n, Ks, rng):
 
 def run(ops, n, obs_names, shots, scheme=("fixed", 0), seed=0, chunk=4096, obs_for_policy=None,
         greedy_cands=None, myopic=False, after=None, fast=False, opt2=False):
-    """scheme: ("fixed", c) candidate c at every event | ("greedy", None) per-trajectory argmin V_c.
+    """scheme: ("fixed", c) candidate c at every event | ("greedy", None) per-trajectory argmin V_c |
+    ("table", tab) static per-location table: candidate tab[e] at channel event e (forward order), the same for every
+    trajectory (E10). A table with every entry = c draws the same random numbers as ("fixed", c), so it reproduces it.
 
     greedy_cands: restrict greedy to these candidate indices (must include 0 = std; default all).
     myopic: use the BARE observable O at every event instead of the back-propagated O~_t
@@ -638,6 +640,11 @@ def run(ops, n, obs_names, shots, scheme=("fixed", 0), seed=0, chunk=4096, obs_f
     terms = {o: T.obs_terms(o, n) for o in obs_names}
     greedy = scheme[0] == "greedy"
     n_ev = sum(1 for op in ops if op[0] == "ch")
+    if scheme[0] == "table":
+        tab = [int(c) for c in np.asarray(scheme[1]).reshape(-1)]
+        assert len(tab) == n_ev, (len(tab), n_ev)
+    else:
+        tab = None
     if greedy and after is None:
         Opol = T.obs_matrix(obs_for_policy or obs_names[0], n)
         if myopic:
@@ -699,7 +706,8 @@ def run(ops, n, obs_names, shots, scheme=("fixed", 0), seed=0, chunk=4096, obs_f
                         choice[ev, j] += float(xp.sum(c == j))
                 Ks = cx[c]
             else:
-                Ks = xp.broadcast_to(cx[scheme[1]][None], (B,) + cx.shape[1:])
+                c_ev = scheme[1] if tab is None else tab[ev]
+                Ks = xp.broadcast_to(cx[c_ev][None], (B,) + cx.shape[1:])
             psi = apply_kraus_fast(psi, i, n, Ks, rng, N=Nev) if opt2 else kraus_f(psi, i, n, Ks, rng)
             ev += 1
         for o in obs_names:
