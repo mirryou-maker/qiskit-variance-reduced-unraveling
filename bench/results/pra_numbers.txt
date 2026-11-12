@@ -1,0 +1,70 @@
+
+== extra checks of statements in the plan document (computed after the runs)
+E3 myopic vs min(std, proj): median 1.006; per n {6: 1.005, 8: 1.004, 10: 1.008}
+E8 rows with R_M CI lower bound > G_exact (same group): 42 of 3420; by (channel, M) {('ad_phase', 100.0): 1, ('ad_phase', 1000.0): 7, ('ad_phase', 10000.0): 10, ('deph_sweep', 100.0): 3, ('deph_sweep', 1000.0): 11, ('deph_sweep', 10000.0): 10}
+E2/E7 AD matched groups 120: median bf var E7/E2 0.987; median greedy var E2/E7 2.717
+== A5 (a5_summary_stage2.csv): var_ratio = Var_std / Var_proj, time_ratio = T_std / T_proj (time to target SE)
+A5 conditions: 112  families ['brickwork', 'ising']  obs ['x', 'zz']  n [np.int64(8), np.int64(10), np.int64(12), np.int64(14), np.int64(16), np.int64(20), np.int64(24)]  gt [np.float64(0.01), np.float64(0.03), np.float64(0.1), np.float64(0.3)]  layers [np.int64(8)]
+A5 proj variance larger (var_ratio < 1): 90
+A5 proj variance larger, CI excludes 1 (var_ratio_hi < 1): 88
+A5 proj variance smaller (var_ratio > 1): 22; CI excludes 1: 21
+A5 conditions with var_ratio > 1 by (family, obs): {('ising', 'x'): 22}
+A5 time_ratio < 1 (std faster to target SE in Aer): 112 / 112; CI hi < 1: 112; max time_ratio 0.700
+A5 var_ratio range: 0.105 .. 2.718
+A5 std best config counts: {('CPU', 'plain'): 32, ('GPU', 'batched'): 80}
+A5 proj best config counts: {('CPU', 'plain'): 47, ('GPU', 'plain'): 65}
+
+== P3 (p3_adapt.csv): ratio = Var_std / Var_scheme
+P3 groups 480, degenerate (Var_std < 1e-10) 164, non-degenerate 316; n [np.int64(5), np.int64(6)], gt [np.float64(0.01), np.float64(0.03), np.float64(0.1), np.float64(0.3)]
+P3 proj: groups 316 better(CI>1) 146 worse(CI<1) 163 median ratio 0.910
+P3 greedy: groups 316 better(CI>1) 307 worse(CI<1) 1 median ratio 2.049
+P3 pi: groups 316 better(CI>1) 311 worse(CI<1) 0 median ratio 2.037
+P3 pi / best-of(std, proj): median 1.553 over 316 groups; frac < 0.95 0.013
+P3 greedy / best-of(std, proj): median 1.488 over 316 groups; frac < 0.95 0.019
+P3 PI / greedy variance gain ratio: median 1.005
+
+== E1 (b_ncurve_summary.csv), dephasing, candidates {std, proj}
+E1 groups total 640, non-deterministic 640; max|z| 3.96
+E1 primary n=6: groups 120 median G 1.398  greedy worse (G_hi<1) 13  better (G_lo>1) 99
+E1 primary n=8: groups 120 median G 1.476  greedy worse (G_hi<1) 0  better (G_lo>1) 102
+E1 primary n=10: groups 120 median G 1.342  greedy worse (G_hi<1) 0  better (G_lo>1) 100
+E1 primary n=12: groups 120 median G 1.326  greedy worse (G_hi<1) 1  better (G_lo>1) 96
+E1 secondary gt=0.3 median G per n: {6: 1.573, 8: 1.457, 10: 1.431, 12: 1.318}
+E1 PI n=6 median G_pi 1.424 over 120 groups
+E1 primary proj vs std (R_proj = Var_std/Var_proj): R_proj_hi < 1 in 378 / 480, R_proj_lo > 1 in 94
+
+== E2 (b_e2_summary.csv)
+E2 groups 960, deterministic 48; max|z| 3.62
+E2 ad n=6: groups 120 median G 3.533  median G_vs_std 6.510  greedy worse 0
+E2 ad n=8: groups 120 median G 3.582  median G_vs_std 6.159  greedy worse 0
+E2 ad n=10: groups 120 median G 3.568  median G_vs_std 5.465  greedy worse 0
+E2 depol n=6: groups 108 median G 1.359  median G_vs_std 1.697  greedy worse 0
+E2 depol n=8: groups 108 median G 1.401  median G_vs_std 1.720  greedy worse 0
+E2 depol n=10: groups 108 median G 1.352  median G_vs_std 1.608  greedy worse 0
+
+== E3 (b_e3_summary.csv)
+E3 groups 480, deterministic 48; max|z| 3.77
+E3 primary groups (n 6, 8, 10): 324
+E3 proj worse than std (R_proj_hi < 1): 245; better (R_proj_lo > 1): 73; point R_proj < 1: 247, > 1: 77
+E3 best fixed counts (primary): {'fix:analog0.300': 194, 'fix:std': 100, 'fix:analog0.785': 23, 'fix:proj': 7}
+E3 n=6: median G 1.428 M 1.485 T 1.203 A 2.012
+E3 n=8: median G 1.504 M 1.496 T 1.132 A 1.928
+E3 n=10: median G 1.373 M 1.304 T 1.127 A 1.937
+
+== E9b per host (b_e9b_summary.csv): t_g/t_f medians (POST HOC; hosts ran different groups)
+E9b CYY-ubuntu94 ad: groups 22 t_f median 0.1449 s  tratio10 median 2.04  tratio100 median 5.39
+E9b CYY-ubuntu94 deph: groups 18 t_f median 0.1256 s  tratio10 median 2.09  tratio100 median 6.27
+E9b ubuntu-CYY98 ad: groups 40 t_f median 0.0688 s  tratio10 median 2.23  tratio100 median 5.74
+E9b ubuntu-CYY98 deph: groups 18 t_f median 0.0685 s  tratio10 median 2.27  tratio100 median 6.14
+
+== E9e config-cluster bootstrap of median W (POST HOC robustness check; pre-registered CI is group-level)
+E9e b_e9e_summary.csv M=10 ad: groups 62 configs 26 median W 0.670 cluster 98.75% [0.569, 0.802]  median t_g/t_f 1.45
+E9e b_e9e_summary.csv M=10 deph: groups 36 configs 11 median W 0.584 cluster 98.75% [0.511, 0.672]  median t_g/t_f 1.47
+E9e b_e9e_summary.csv M=100 ad: groups 62 configs 26 median W 1.010 cluster 98.75% [0.742, 1.349]  median t_g/t_f 2.46
+E9e b_e9e_summary.csv M=100 deph: groups 36 configs 11 median W 0.426 cluster 98.75% [0.357, 0.588]  median t_g/t_f 2.60
+E9e b_e9e_summary_v100.csv M=10 ad: groups 62 configs 26 median W 0.598 cluster 98.75% [0.524, 0.733]  median t_g/t_f 1.60
+E9e b_e9e_summary_v100.csv M=10 deph: groups 36 configs 11 median W 0.564 cluster 98.75% [0.455, 0.670]  median t_g/t_f 1.65
+E9e b_e9e_summary_v100.csv M=100 ad: groups 62 configs 26 median W 0.844 cluster 98.75% [0.637, 1.174]  median t_g/t_f 2.86
+E9e b_e9e_summary_v100.csv M=100 deph: groups 36 configs 11 median W 0.362 cluster 98.75% [0.292, 0.568]  median t_g/t_f 2.96
+-> /home/cyyou/work/qiskit-co/bench/results/pra_e9e_cluster_ci.csv
+E9e u94 t_f median 0.1080 s; t_f / t_f(E9b) median 1.569

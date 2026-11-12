@@ -1,0 +1,451 @@
+
+######## host RTX2060: groups 98 (by channel {'ad': 62, 'deph': 36})
+max |V_raw / V_csv - 1| over candidates: 1.92e-07;  bf(raw) != bf(csv): 0
+reproduction M1 vs b_e9e_summary.csv W10: max rel diff 7.16e-13
+reproduction M1 vs b_e9e_summary.csv W100: max rel diff 6.53e-13
+fraction of resamples where the var-pilot picks the full-sample bf (median over groups): {('ad', 'diag_pick_bf_Np100'): 0.91, ('ad', 'diag_pick_bf_Np1000'): 1.0, ('ad', 'diag_pick_bf_Np300'): 0.996, ('deph', 'diag_pick_bf_Np100'): 0.436, ('deph', 'diag_pick_bf_Np1000'): 0.956, ('deph', 'diag_pick_bf_Np300'): 0.645}
+bf by var == default: {'ad': 0.516, 'deph': 0.611}
+
+== RTX2060 all98: main models (Nprod 20000, honest bp; pilot selection by var*t)
+  all98    M1_oracle_paper Nprod=20000 bp=paper                 ad   M= 10  med W  0.670  grp98.75 [0.560, 0.829]  clus98.75 [0.569, 0.802]  W>1 18/62
+  all98    M1_oracle_paper Nprod=20000 bp=paper                 ad   M=100  med W  1.010  grp98.75 [0.742, 1.345]  clus98.75 [0.720, 1.347]  W>1 33/62
+  all98    M1_oracle_paper Nprod=20000 bp=paper                 deph M= 10  med W  0.584  grp98.75 [0.518, 0.669]  clus98.75 [0.516, 0.672]  W>1  2/36
+  all98    M1_oracle_paper Nprod=20000 bp=paper                 deph M=100  med W  0.426  grp98.75 [0.363, 0.575]  clus98.75 [0.357, 0.598]  W>1  0/36
+  all98    M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M= 10  med W  0.670  grp98.75 [0.560, 0.829]  clus98.75 [0.569, 0.802]  W>1 18/62
+  all98    M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M=100  med W  1.010  grp98.75 [0.742, 1.345]  clus98.75 [0.720, 1.347]  W>1 33/62
+  all98    M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M= 10  med W  0.584  grp98.75 [0.518, 0.669]  clus98.75 [0.516, 0.672]  W>1  2/36
+  all98    M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M=100  med W  0.426  grp98.75 [0.363, 0.575]  clus98.75 [0.357, 0.598]  W>1  0/36
+  all98    M1b_oracle_var Nprod=20000 bp=honest                 ad   M= 10  med W  0.670  grp98.75 [0.560, 0.829]  clus98.75 [0.569, 0.802]  W>1 18/62
+  all98    M1b_oracle_var Nprod=20000 bp=honest                 ad   M=100  med W  1.010  grp98.75 [0.742, 1.344]  clus98.75 [0.720, 1.346]  W>1 33/62
+  all98    M1b_oracle_var Nprod=20000 bp=honest                 deph M= 10  med W  0.584  grp98.75 [0.518, 0.669]  clus98.75 [0.516, 0.672]  W>1  2/36
+  all98    M1b_oracle_var Nprod=20000 bp=honest                 deph M=100  med W  0.426  grp98.75 [0.363, 0.575]  clus98.75 [0.357, 0.598]  W>1  0/36
+  all98    M1c_oracle_cost Nprod=20000 bp=honest                ad   M= 10  med W  0.670  grp98.75 [0.560, 0.829]  clus98.75 [0.569, 0.802]  W>1 18/62
+  all98    M1c_oracle_cost Nprod=20000 bp=honest                ad   M=100  med W  1.010  grp98.75 [0.742, 1.344]  clus98.75 [0.720, 1.346]  W>1 33/62
+  all98    M1c_oracle_cost Nprod=20000 bp=honest                deph M= 10  med W  0.584  grp98.75 [0.518, 0.669]  clus98.75 [0.516, 0.672]  W>1  2/36
+  all98    M1c_oracle_cost Nprod=20000 bp=honest                deph M=100  med W  0.426  grp98.75 [0.363, 0.575]  clus98.75 [0.357, 0.598]  W>1  0/36
+  all98    M2_default Nprod=20000 bp=honest                     ad   M= 10  med W  1.002  grp98.75 [0.785, 1.423]  clus98.75 [0.766, 1.490]  W>1 32/62
+  all98    M2_default Nprod=20000 bp=honest                     ad   M=100  med W  1.384  grp98.75 [1.000, 2.189]  clus98.75 [0.948, 2.541]  W>1 41/62  PASS
+  all98    M2_default Nprod=20000 bp=honest                     deph M= 10  med W  0.634  grp98.75 [0.549, 0.675]  clus98.75 [0.517, 0.676]  W>1  4/36
+  all98    M2_default Nprod=20000 bp=honest                     deph M=100  med W  0.492  grp98.75 [0.379, 0.598]  clus98.75 [0.375, 0.609]  W>1  1/36
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.709  grp98.75 [0.603, 0.873]  clus98.75 [0.622, 0.865]  W>1 18/62
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  1.049  grp98.75 [0.781, 1.458]  clus98.75 [0.774, 1.449]  W>1 33/62
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.638  grp98.75 [0.559, 0.747]  clus98.75 [0.550, 0.749]  W>1  3/36
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.456  grp98.75 [0.403, 0.641]  clus98.75 [0.378, 0.652]  W>1  2/36
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.721  grp98.75 [0.597, 0.879]  clus98.75 [0.609, 0.861]  W>1 18/62
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  1.074  grp98.75 [0.799, 1.435]  clus98.75 [0.784, 1.437]  W>1 34/62
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.651  grp98.75 [0.586, 0.748]  clus98.75 [0.584, 0.751]  W>1  3/36
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.473  grp98.75 [0.404, 0.652]  clus98.75 [0.397, 0.673]  W>1  2/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.810  grp98.75 [0.671, 0.994]  clus98.75 [0.682, 0.964]  W>1 21/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  1.211  grp98.75 [0.899, 1.616]  clus98.75 [0.889, 1.617]  W>1 37/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.765  grp98.75 [0.695, 0.870]  clus98.75 [0.680, 0.874]  W>1  8/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.562  grp98.75 [0.480, 0.768]  clus98.75 [0.463, 0.798]  W>1  6/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.938  grp98.75 [0.784, 1.160]  clus98.75 [0.796, 1.123]  W>1 28/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  1.414  grp98.75 [1.038, 1.881]  clus98.75 [1.008, 1.884]  W>1 42/62  PASS (cluster pass)
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.934  grp98.75 [0.829, 1.071]  clus98.75 [0.826, 1.076]  W>1 15/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.682  grp98.75 [0.581, 0.921]  clus98.75 [0.570, 0.957]  W>1  9/36
+
+== RTX2060 TN1e7: main models (Nprod 20000, honest bp; pilot selection by var*t)
+  TN1e7    M1_oracle_paper Nprod=20000 bp=paper                 ad   M= 10  med W  0.722  grp98.75 [0.428, 0.961]  clus98.75 [0.288, 0.914]  W>1  1/ 8
+  TN1e7    M1_oracle_paper Nprod=20000 bp=paper                 ad   M=100  med W  0.689  grp98.75 [0.438, 1.253]  clus98.75 [0.538, 1.559]  W>1  2/ 8
+  TN1e7    M1_oracle_paper Nprod=20000 bp=paper                 deph M= 10  med W  0.509  grp98.75 [0.235, 0.520]  clus98.75 [0.455, 0.617]  W>1  0/11
+  TN1e7    M1_oracle_paper Nprod=20000 bp=paper                 deph M=100  med W  0.323  grp98.75 [0.261, 0.368]  clus98.75 [0.303, 0.368]  W>1  0/11
+  TN1e7    M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M= 10  med W  0.722  grp98.75 [0.428, 0.961]  clus98.75 [0.288, 0.914]  W>1  1/ 8
+  TN1e7    M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M=100  med W  0.689  grp98.75 [0.438, 1.253]  clus98.75 [0.538, 1.559]  W>1  2/ 8
+  TN1e7    M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M= 10  med W  0.509  grp98.75 [0.235, 0.520]  clus98.75 [0.455, 0.617]  W>1  0/11
+  TN1e7    M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M=100  med W  0.323  grp98.75 [0.261, 0.368]  clus98.75 [0.303, 0.368]  W>1  0/11
+  TN1e7    M1b_oracle_var Nprod=20000 bp=honest                 ad   M= 10  med W  0.722  grp98.75 [0.428, 0.960]  clus98.75 [0.288, 0.914]  W>1  1/ 8
+  TN1e7    M1b_oracle_var Nprod=20000 bp=honest                 ad   M=100  med W  0.689  grp98.75 [0.438, 1.253]  clus98.75 [0.538, 1.558]  W>1  2/ 8
+  TN1e7    M1b_oracle_var Nprod=20000 bp=honest                 deph M= 10  med W  0.509  grp98.75 [0.235, 0.520]  clus98.75 [0.455, 0.618]  W>1  0/11
+  TN1e7    M1b_oracle_var Nprod=20000 bp=honest                 deph M=100  med W  0.323  grp98.75 [0.261, 0.368]  clus98.75 [0.303, 0.368]  W>1  0/11
+  TN1e7    M1c_oracle_cost Nprod=20000 bp=honest                ad   M= 10  med W  0.722  grp98.75 [0.428, 0.960]  clus98.75 [0.288, 0.914]  W>1  1/ 8
+  TN1e7    M1c_oracle_cost Nprod=20000 bp=honest                ad   M=100  med W  0.689  grp98.75 [0.438, 1.253]  clus98.75 [0.538, 1.558]  W>1  2/ 8
+  TN1e7    M1c_oracle_cost Nprod=20000 bp=honest                deph M= 10  med W  0.509  grp98.75 [0.235, 0.520]  clus98.75 [0.455, 0.618]  W>1  0/11
+  TN1e7    M1c_oracle_cost Nprod=20000 bp=honest                deph M=100  med W  0.323  grp98.75 [0.261, 0.368]  clus98.75 [0.303, 0.368]  W>1  0/11
+  TN1e7    M2_default Nprod=20000 bp=honest                     ad   M= 10  med W  0.722  grp98.75 [0.428, 1.758]  clus98.75 [0.288, 2.893]  W>1  2/ 8
+  TN1e7    M2_default Nprod=20000 bp=honest                     ad   M=100  med W  0.689  grp98.75 [0.438, 2.794]  clus98.75 [0.538, 4.930]  W>1  2/ 8
+  TN1e7    M2_default Nprod=20000 bp=honest                     deph M= 10  med W  0.509  grp98.75 [0.260, 0.604]  clus98.75 [0.455, 0.618]  W>1  0/11
+  TN1e7    M2_default Nprod=20000 bp=honest                     deph M=100  med W  0.357  grp98.75 [0.280, 0.402]  clus98.75 [0.306, 0.368]  W>1  0/11
+  TN1e7    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.786  grp98.75 [0.458, 0.999]  clus98.75 [0.294, 0.942]  W>1  1/ 8
+  TN1e7    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  0.737  grp98.75 [0.470, 1.321]  clus98.75 [0.549, 1.605]  W>1  2/ 8
+  TN1e7    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.545  grp98.75 [0.258, 0.569]  clus98.75 [0.512, 0.673]  W>1  0/11
+  TN1e7    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.364  grp98.75 [0.288, 0.403]  clus98.75 [0.342, 0.402]  W>1  0/11
+  TN1e7    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.775  grp98.75 [0.457, 1.019]  clus98.75 [0.305, 0.969]  W>1  1/ 8
+  TN1e7    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  0.733  grp98.75 [0.466, 1.362]  clus98.75 [0.570, 1.651]  W>1  3/ 8
+  TN1e7    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.556  grp98.75 [0.269, 0.587]  clus98.75 [0.507, 0.678]  W>1  0/11
+  TN1e7    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.371  grp98.75 [0.299, 0.404]  clus98.75 [0.344, 0.404]  W>1  0/11
+  TN1e7    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.864  grp98.75 [0.514, 1.152]  clus98.75 [0.346, 1.095]  W>1  3/ 8
+  TN1e7    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  0.825  grp98.75 [0.526, 1.549]  clus98.75 [0.645, 1.866]  W>1  3/ 8
+  TN1e7    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.661  grp98.75 [0.310, 0.700]  clus98.75 [0.591, 0.802]  W>1  0/11
+  TN1e7    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.422  grp98.75 [0.345, 0.481]  clus98.75 [0.395, 0.478]  W>1  0/11
+  TN1e7    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  1.010  grp98.75 [0.600, 1.345]  clus98.75 [0.404, 1.280]  W>1  4/ 8
+  TN1e7    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  0.964  grp98.75 [0.613, 1.754]  clus98.75 [0.753, 2.181]  W>1  4/ 8
+  TN1e7    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.815  grp98.75 [0.375, 0.833]  clus98.75 [0.729, 0.988]  W>1  0/11
+  TN1e7    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.517  grp98.75 [0.418, 0.589]  clus98.75 [0.485, 0.589]  W>1  0/11
+
+== RTX2060 nonTN1e7: main models (Nprod 20000, honest bp; pilot selection by var*t)
+  nonTN1e7 M1_oracle_paper Nprod=20000 bp=paper                 ad   M= 10  med W  0.670  grp98.75 [0.546, 0.839]  clus98.75 [0.549, 0.802]  W>1 17/54
+  nonTN1e7 M1_oracle_paper Nprod=20000 bp=paper                 ad   M=100  med W  1.032  grp98.75 [0.773, 1.387]  clus98.75 [0.783, 1.383]  W>1 31/54
+  nonTN1e7 M1_oracle_paper Nprod=20000 bp=paper                 deph M= 10  med W  0.645  grp98.75 [0.549, 0.801]  clus98.75 [0.547, 0.723]  W>1  2/25
+  nonTN1e7 M1_oracle_paper Nprod=20000 bp=paper                 deph M=100  med W  0.563  grp98.75 [0.417, 0.658]  clus98.75 [0.406, 0.686]  W>1  0/25
+  nonTN1e7 M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M= 10  med W  0.670  grp98.75 [0.546, 0.839]  clus98.75 [0.549, 0.802]  W>1 17/54
+  nonTN1e7 M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M=100  med W  1.032  grp98.75 [0.773, 1.387]  clus98.75 [0.783, 1.383]  W>1 31/54
+  nonTN1e7 M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M= 10  med W  0.645  grp98.75 [0.549, 0.801]  clus98.75 [0.547, 0.723]  W>1  2/25
+  nonTN1e7 M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M=100  med W  0.563  grp98.75 [0.417, 0.658]  clus98.75 [0.406, 0.686]  W>1  0/25
+  nonTN1e7 M1b_oracle_var Nprod=20000 bp=honest                 ad   M= 10  med W  0.670  grp98.75 [0.546, 0.839]  clus98.75 [0.549, 0.802]  W>1 17/54
+  nonTN1e7 M1b_oracle_var Nprod=20000 bp=honest                 ad   M=100  med W  1.032  grp98.75 [0.773, 1.387]  clus98.75 [0.783, 1.383]  W>1 31/54
+  nonTN1e7 M1b_oracle_var Nprod=20000 bp=honest                 deph M= 10  med W  0.645  grp98.75 [0.549, 0.801]  clus98.75 [0.547, 0.723]  W>1  2/25
+  nonTN1e7 M1b_oracle_var Nprod=20000 bp=honest                 deph M=100  med W  0.563  grp98.75 [0.417, 0.658]  clus98.75 [0.406, 0.686]  W>1  0/25
+  nonTN1e7 M1c_oracle_cost Nprod=20000 bp=honest                ad   M= 10  med W  0.670  grp98.75 [0.546, 0.839]  clus98.75 [0.549, 0.802]  W>1 17/54
+  nonTN1e7 M1c_oracle_cost Nprod=20000 bp=honest                ad   M=100  med W  1.032  grp98.75 [0.773, 1.387]  clus98.75 [0.783, 1.383]  W>1 31/54
+  nonTN1e7 M1c_oracle_cost Nprod=20000 bp=honest                deph M= 10  med W  0.645  grp98.75 [0.549, 0.801]  clus98.75 [0.547, 0.723]  W>1  2/25
+  nonTN1e7 M1c_oracle_cost Nprod=20000 bp=honest                deph M=100  med W  0.563  grp98.75 [0.417, 0.658]  clus98.75 [0.406, 0.686]  W>1  0/25
+  nonTN1e7 M2_default Nprod=20000 bp=honest                     ad   M= 10  med W  1.088  grp98.75 [0.785, 1.754]  clus98.75 [0.768, 1.754]  W>1 30/54
+  nonTN1e7 M2_default Nprod=20000 bp=honest                     ad   M=100  med W  1.502  grp98.75 [1.055, 2.510]  clus98.75 [1.021, 2.541]  W>1 39/54  PASS (cluster pass)
+  nonTN1e7 M2_default Nprod=20000 bp=honest                     deph M= 10  med W  0.666  grp98.75 [0.574, 0.862]  clus98.75 [0.570, 0.748]  W>1  4/25
+  nonTN1e7 M2_default Nprod=20000 bp=honest                     deph M=100  med W  0.578  grp98.75 [0.431, 0.662]  clus98.75 [0.424, 0.729]  W>1  1/25
+  nonTN1e7 M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.709  grp98.75 [0.577, 0.878]  clus98.75 [0.581, 0.849]  W>1 17/54
+  nonTN1e7 M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  1.165  grp98.75 [0.807, 1.494]  clus98.75 [0.807, 1.470]  W>1 31/54
+  nonTN1e7 M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.700  grp98.75 [0.607, 0.885]  clus98.75 [0.589, 0.811]  W>1  3/25
+  nonTN1e7 M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.616  grp98.75 [0.444, 0.739]  clus98.75 [0.442, 0.773]  W>1  2/25
+  nonTN1e7 M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.721  grp98.75 [0.580, 0.891]  clus98.75 [0.582, 0.861]  W>1 17/54
+  nonTN1e7 M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  1.167  grp98.75 [0.835, 1.481]  clus98.75 [0.835, 1.480]  W>1 31/54
+  nonTN1e7 M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.729  grp98.75 [0.624, 0.917]  clus98.75 [0.610, 0.813]  W>1  3/25
+  nonTN1e7 M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.639  grp98.75 [0.469, 0.744]  clus98.75 [0.462, 0.796]  W>1  2/25
+  nonTN1e7 M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.810  grp98.75 [0.659, 1.006]  clus98.75 [0.659, 0.964]  W>1 18/54
+  nonTN1e7 M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  1.237  grp98.75 [0.941, 1.666]  clus98.75 [0.941, 1.660]  W>1 34/54
+  nonTN1e7 M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.863  grp98.75 [0.734, 1.054]  clus98.75 [0.724, 0.948]  W>1  8/25
+  nonTN1e7 M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.733  grp98.75 [0.560, 0.880]  clus98.75 [0.545, 0.923]  W>1  6/25
+  nonTN1e7 M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.938  grp98.75 [0.765, 1.174]  clus98.75 [0.768, 1.122]  W>1 24/54
+  nonTN1e7 M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  1.444  grp98.75 [1.082, 1.941]  clus98.75 [1.096, 1.936]  W>1 38/54  PASS (cluster pass)
+  nonTN1e7 M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  1.032  grp98.75 [0.879, 1.281]  clus98.75 [0.875, 1.156]  W>1 15/25
+  nonTN1e7 M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.900  grp98.75 [0.667, 1.052]  clus98.75 [0.650, 1.098]  W>1  9/25
+
+== RTX2060 all98: pilot selection by var only (Nprod 20000, honest bp)
+  all98    M3_pilot Np=100 sel=var Nprod=20000 bp=honest        ad   M= 10  med W  0.709  grp98.75 [0.603, 0.873]  clus98.75 [0.622, 0.865]  W>1 18/62
+  all98    M3_pilot Np=100 sel=var Nprod=20000 bp=honest        ad   M=100  med W  1.049  grp98.75 [0.781, 1.458]  clus98.75 [0.774, 1.449]  W>1 33/62
+  all98    M3_pilot Np=100 sel=var Nprod=20000 bp=honest        deph M= 10  med W  0.638  grp98.75 [0.559, 0.747]  clus98.75 [0.550, 0.749]  W>1  3/36
+  all98    M3_pilot Np=100 sel=var Nprod=20000 bp=honest        deph M=100  med W  0.456  grp98.75 [0.403, 0.641]  clus98.75 [0.378, 0.652]  W>1  2/36
+  all98    M3_pilot Np=300 sel=var Nprod=20000 bp=honest        ad   M= 10  med W  0.721  grp98.75 [0.597, 0.879]  clus98.75 [0.609, 0.861]  W>1 18/62
+  all98    M3_pilot Np=300 sel=var Nprod=20000 bp=honest        ad   M=100  med W  1.074  grp98.75 [0.799, 1.435]  clus98.75 [0.784, 1.437]  W>1 34/62
+  all98    M3_pilot Np=300 sel=var Nprod=20000 bp=honest        deph M= 10  med W  0.651  grp98.75 [0.586, 0.748]  clus98.75 [0.584, 0.751]  W>1  3/36
+  all98    M3_pilot Np=300 sel=var Nprod=20000 bp=honest        deph M=100  med W  0.473  grp98.75 [0.404, 0.652]  clus98.75 [0.397, 0.673]  W>1  2/36
+  all98    M3_pilot Np=1000 sel=var Nprod=20000 bp=honest       ad   M= 10  med W  0.810  grp98.75 [0.671, 0.994]  clus98.75 [0.682, 0.964]  W>1 21/62
+  all98    M3_pilot Np=1000 sel=var Nprod=20000 bp=honest       ad   M=100  med W  1.211  grp98.75 [0.899, 1.616]  clus98.75 [0.889, 1.617]  W>1 37/62
+  all98    M3_pilot Np=1000 sel=var Nprod=20000 bp=honest       deph M= 10  med W  0.765  grp98.75 [0.695, 0.870]  clus98.75 [0.680, 0.874]  W>1  8/36
+  all98    M3_pilot Np=1000 sel=var Nprod=20000 bp=honest       deph M=100  med W  0.562  grp98.75 [0.480, 0.768]  clus98.75 [0.463, 0.797]  W>1  6/36
+  all98    M3_pilot Np=2000 sel=var Nprod=20000 bp=honest       ad   M= 10  med W  0.938  grp98.75 [0.784, 1.160]  clus98.75 [0.796, 1.123]  W>1 28/62
+  all98    M3_pilot Np=2000 sel=var Nprod=20000 bp=honest       ad   M=100  med W  1.414  grp98.75 [1.038, 1.881]  clus98.75 [1.008, 1.884]  W>1 42/62  PASS (cluster pass)
+  all98    M3_pilot Np=2000 sel=var Nprod=20000 bp=honest       deph M= 10  med W  0.934  grp98.75 [0.829, 1.071]  clus98.75 [0.826, 1.076]  W>1 15/36
+  all98    M3_pilot Np=2000 sel=var Nprod=20000 bp=honest       deph M=100  med W  0.682  grp98.75 [0.581, 0.921]  clus98.75 [0.570, 0.957]  W>1  9/36
+
+== RTX2060 all98: Nprod 100000 (honest bp)
+  all98    M1b_oracle_var Nprod=100000 bp=honest                ad   M= 10  med W  0.670  grp98.75 [0.560, 0.829]  clus98.75 [0.569, 0.802]  W>1 18/62
+  all98    M1b_oracle_var Nprod=100000 bp=honest                ad   M=100  med W  1.011  grp98.75 [0.742, 1.345]  clus98.75 [0.720, 1.347]  W>1 33/62
+  all98    M1b_oracle_var Nprod=100000 bp=honest                deph M= 10  med W  0.584  grp98.75 [0.518, 0.669]  clus98.75 [0.516, 0.673]  W>1  2/36
+  all98    M1b_oracle_var Nprod=100000 bp=honest                deph M=100  med W  0.426  grp98.75 [0.363, 0.576]  clus98.75 [0.357, 0.598]  W>1  0/36
+  all98    M2_default Nprod=100000 bp=honest                    ad   M= 10  med W  1.002  grp98.75 [0.785, 1.423]  clus98.75 [0.766, 1.490]  W>1 32/62
+  all98    M2_default Nprod=100000 bp=honest                    ad   M=100  med W  1.385  grp98.75 [1.000, 2.190]  clus98.75 [0.948, 2.541]  W>1 41/62  PASS
+  all98    M2_default Nprod=100000 bp=honest                    deph M= 10  med W  0.634  grp98.75 [0.549, 0.675]  clus98.75 [0.517, 0.676]  W>1  4/36
+  all98    M2_default Nprod=100000 bp=honest                    deph M=100  med W  0.492  grp98.75 [0.379, 0.598]  clus98.75 [0.375, 0.609]  W>1  1/36
+  all98    M3_pilot Np=100 sel=cost Nprod=100000 bp=honest      ad   M= 10  med W  0.698  grp98.75 [0.594, 0.860]  clus98.75 [0.613, 0.852]  W>1 18/62
+  all98    M3_pilot Np=100 sel=cost Nprod=100000 bp=honest      ad   M=100  med W  1.033  grp98.75 [0.769, 1.437]  clus98.75 [0.763, 1.428]  W>1 33/62
+  all98    M3_pilot Np=100 sel=cost Nprod=100000 bp=honest      deph M= 10  med W  0.624  grp98.75 [0.547, 0.731]  clus98.75 [0.538, 0.733]  W>1  3/36
+  all98    M3_pilot Np=100 sel=cost Nprod=100000 bp=honest      deph M=100  med W  0.446  grp98.75 [0.394, 0.627]  clus98.75 [0.369, 0.638]  W>1  1/36
+  all98    M3_pilot Np=300 sel=cost Nprod=100000 bp=honest      ad   M= 10  med W  0.689  grp98.75 [0.570, 0.840]  clus98.75 [0.582, 0.823]  W>1 18/62
+  all98    M3_pilot Np=300 sel=cost Nprod=100000 bp=honest      ad   M=100  med W  1.026  grp98.75 [0.763, 1.371]  clus98.75 [0.749, 1.375]  W>1 33/62
+  all98    M3_pilot Np=300 sel=cost Nprod=100000 bp=honest      deph M= 10  med W  0.610  grp98.75 [0.548, 0.700]  clus98.75 [0.546, 0.703]  W>1  3/36
+  all98    M3_pilot Np=300 sel=cost Nprod=100000 bp=honest      deph M=100  med W  0.443  grp98.75 [0.378, 0.611]  clus98.75 [0.372, 0.630]  W>1  0/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=100000 bp=honest     ad   M= 10  med W  0.703  grp98.75 [0.582, 0.862]  clus98.75 [0.592, 0.836]  W>1 18/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=100000 bp=honest     ad   M=100  med W  1.050  grp98.75 [0.780, 1.402]  clus98.75 [0.774, 1.402]  W>1 33/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=100000 bp=honest     deph M= 10  med W  0.627  grp98.75 [0.571, 0.710]  clus98.75 [0.556, 0.712]  W>1  3/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=100000 bp=honest     deph M=100  med W  0.461  grp98.75 [0.393, 0.631]  clus98.75 [0.378, 0.652]  W>1  1/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=100000 bp=honest     ad   M= 10  med W  0.724  grp98.75 [0.605, 0.895]  clus98.75 [0.614, 0.866]  W>1 18/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=100000 bp=honest     ad   M=100  med W  1.091  grp98.75 [0.801, 1.452]  clus98.75 [0.778, 1.455]  W>1 34/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=100000 bp=honest     deph M= 10  med W  0.654  grp98.75 [0.581, 0.750]  clus98.75 [0.578, 0.753]  W>1  3/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=100000 bp=honest     deph M=100  med W  0.477  grp98.75 [0.406, 0.645]  clus98.75 [0.399, 0.670]  W>1  2/36
+
+== RTX2060 all98: paper bp convention (Nprod 20000) for attribution
+  all98    M1b_oracle_var Nprod=20000 bp=paper                  ad   M= 10  med W  0.670  grp98.75 [0.560, 0.829]  clus98.75 [0.569, 0.802]  W>1 18/62
+  all98    M1b_oracle_var Nprod=20000 bp=paper                  ad   M=100  med W  1.010  grp98.75 [0.742, 1.345]  clus98.75 [0.720, 1.347]  W>1 33/62
+  all98    M1b_oracle_var Nprod=20000 bp=paper                  deph M= 10  med W  0.584  grp98.75 [0.518, 0.669]  clus98.75 [0.516, 0.672]  W>1  2/36
+  all98    M1b_oracle_var Nprod=20000 bp=paper                  deph M=100  med W  0.426  grp98.75 [0.363, 0.575]  clus98.75 [0.357, 0.598]  W>1  0/36
+  all98    M2_default Nprod=20000 bp=paper                      ad   M= 10  med W  1.002  grp98.75 [0.785, 1.423]  clus98.75 [0.766, 1.489]  W>1 32/62
+  all98    M2_default Nprod=20000 bp=paper                      ad   M=100  med W  1.385  grp98.75 [1.000, 2.190]  clus98.75 [0.948, 2.541]  W>1 41/62  PASS
+  all98    M2_default Nprod=20000 bp=paper                      deph M= 10  med W  0.634  grp98.75 [0.549, 0.675]  clus98.75 [0.517, 0.676]  W>1  4/36
+  all98    M2_default Nprod=20000 bp=paper                      deph M=100  med W  0.492  grp98.75 [0.379, 0.598]  clus98.75 [0.375, 0.609]  W>1  1/36
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=paper        ad   M= 10  med W  0.709  grp98.75 [0.603, 0.873]  clus98.75 [0.622, 0.865]  W>1 18/62
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=paper        ad   M=100  med W  1.049  grp98.75 [0.781, 1.459]  clus98.75 [0.775, 1.450]  W>1 33/62
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=paper        deph M= 10  med W  0.638  grp98.75 [0.559, 0.747]  clus98.75 [0.550, 0.749]  W>1  3/36
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=paper        deph M=100  med W  0.456  grp98.75 [0.403, 0.641]  clus98.75 [0.378, 0.652]  W>1  2/36
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=paper        ad   M= 10  med W  0.721  grp98.75 [0.597, 0.880]  clus98.75 [0.609, 0.861]  W>1 18/62
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=paper        ad   M=100  med W  1.075  grp98.75 [0.799, 1.436]  clus98.75 [0.784, 1.438]  W>1 34/62
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=paper        deph M= 10  med W  0.651  grp98.75 [0.585, 0.748]  clus98.75 [0.584, 0.751]  W>1  3/36
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=paper        deph M=100  med W  0.473  grp98.75 [0.404, 0.652]  clus98.75 [0.397, 0.673]  W>1  2/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=paper       ad   M= 10  med W  0.810  grp98.75 [0.671, 0.994]  clus98.75 [0.682, 0.964]  W>1 21/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=paper       ad   M=100  med W  1.211  grp98.75 [0.900, 1.617]  clus98.75 [0.889, 1.618]  W>1 37/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=paper       deph M= 10  med W  0.765  grp98.75 [0.695, 0.870]  clus98.75 [0.680, 0.874]  W>1  8/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=paper       deph M=100  med W  0.562  grp98.75 [0.480, 0.768]  clus98.75 [0.463, 0.798]  W>1  6/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=paper       ad   M= 10  med W  0.938  grp98.75 [0.784, 1.160]  clus98.75 [0.796, 1.123]  W>1 28/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=paper       ad   M=100  med W  1.414  grp98.75 [1.038, 1.882]  clus98.75 [1.008, 1.885]  W>1 42/62  PASS (cluster pass)
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=paper       deph M= 10  med W  0.934  grp98.75 [0.829, 1.071]  clus98.75 [0.826, 1.076]  W>1 15/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=paper       deph M=100  med W  0.682  grp98.75 [0.581, 0.921]  clus98.75 [0.570, 0.957]  W>1  9/36
+  all98    MR_referee Np=100 sel=- Nprod=20000 bp=paper         ad   M= 10  med W  0.687  grp98.75 [0.574, 0.850]  clus98.75 [0.583, 0.822]  W>1 18/62
+  all98    MR_referee Np=100 sel=- Nprod=20000 bp=paper         ad   M=100  med W  1.036  grp98.75 [0.760, 1.378]  clus98.75 [0.738, 1.380]  W>1 33/62
+  all98    MR_referee Np=100 sel=- Nprod=20000 bp=paper         deph M= 10  med W  0.604  grp98.75 [0.536, 0.693]  clus98.75 [0.534, 0.696]  W>1  3/36
+  all98    MR_referee Np=100 sel=- Nprod=20000 bp=paper         deph M=100  med W  0.441  grp98.75 [0.376, 0.596]  clus98.75 [0.369, 0.619]  W>1  0/36
+  all98    MR_referee Np=300 sel=- Nprod=20000 bp=paper         ad   M= 10  med W  0.720  grp98.75 [0.602, 0.891]  clus98.75 [0.611, 0.862]  W>1 18/62
+  all98    MR_referee Np=300 sel=- Nprod=20000 bp=paper         ad   M=100  med W  1.086  grp98.75 [0.797, 1.446]  clus98.75 [0.774, 1.448]  W>1 34/62
+  all98    MR_referee Np=300 sel=- Nprod=20000 bp=paper         deph M= 10  med W  0.645  grp98.75 [0.573, 0.740]  clus98.75 [0.570, 0.743]  W>1  3/36
+  all98    MR_referee Np=300 sel=- Nprod=20000 bp=paper         deph M=100  med W  0.471  grp98.75 [0.401, 0.636]  clus98.75 [0.394, 0.661]  W>1  1/36
+  all98    MR_referee Np=1000 sel=- Nprod=20000 bp=paper        ad   M= 10  med W  0.837  grp98.75 [0.700, 1.036]  clus98.75 [0.711, 1.002]  W>1 24/62
+  all98    MR_referee Np=1000 sel=- Nprod=20000 bp=paper        ad   M=100  med W  1.263  grp98.75 [0.927, 1.681]  clus98.75 [0.900, 1.683]  W>1 38/62
+  all98    MR_referee Np=1000 sel=- Nprod=20000 bp=paper        deph M= 10  med W  0.788  grp98.75 [0.700, 0.904]  clus98.75 [0.697, 0.908]  W>1  9/36
+  all98    MR_referee Np=1000 sel=- Nprod=20000 bp=paper        deph M=100  med W  0.575  grp98.75 [0.490, 0.777]  clus98.75 [0.481, 0.808]  W>1  6/36
+  all98    MR_referee Np=2000 sel=- Nprod=20000 bp=paper        ad   M= 10  med W  1.005  grp98.75 [0.840, 1.243]  clus98.75 [0.853, 1.203]  W>1 31/62
+  all98    MR_referee Np=2000 sel=- Nprod=20000 bp=paper        ad   M=100  med W  1.515  grp98.75 [1.113, 2.017]  clus98.75 [1.080, 2.020]  W>1 45/62  PASS (cluster pass)
+  all98    MR_referee Np=2000 sel=- Nprod=20000 bp=paper        deph M= 10  med W  0.993  grp98.75 [0.881, 1.138]  clus98.75 [0.877, 1.143]  W>1 18/36
+  all98    MR_referee Np=2000 sel=- Nprod=20000 bp=paper        deph M=100  med W  0.725  grp98.75 [0.617, 0.978]  clus98.75 [0.606, 1.017]  W>1 10/36
+
+== RTX2060 all98: referee model reproduction (Nprod 100000)
+  all98    MR_referee Np=100 sel=- Nprod=100000 bp=paper        ad   M= 10  med W  0.673  grp98.75 [0.563, 0.833]  clus98.75 [0.571, 0.806]  W>1 18/62
+  all98    MR_referee Np=100 sel=- Nprod=100000 bp=paper        ad   M=100  med W  1.015  grp98.75 [0.745, 1.351]  clus98.75 [0.724, 1.353]  W>1 33/62
+  all98    MR_referee Np=100 sel=- Nprod=100000 bp=paper        deph M= 10  med W  0.588  grp98.75 [0.522, 0.674]  clus98.75 [0.520, 0.677]  W>1  2/36
+  all98    MR_referee Np=100 sel=- Nprod=100000 bp=paper        deph M=100  med W  0.429  grp98.75 [0.365, 0.579]  clus98.75 [0.359, 0.603]  W>1  0/36
+  all98    MR_referee Np=300 sel=- Nprod=100000 bp=paper        ad   M= 10  med W  0.680  grp98.75 [0.568, 0.841]  clus98.75 [0.577, 0.814]  W>1 18/62
+  all98    MR_referee Np=300 sel=- Nprod=100000 bp=paper        ad   M=100  med W  1.025  grp98.75 [0.753, 1.365]  clus98.75 [0.731, 1.367]  W>1 33/62
+  all98    MR_referee Np=300 sel=- Nprod=100000 bp=paper        deph M= 10  med W  0.596  grp98.75 [0.529, 0.683]  clus98.75 [0.527, 0.687]  W>1  3/36
+  all98    MR_referee Np=300 sel=- Nprod=100000 bp=paper        deph M=100  med W  0.435  grp98.75 [0.370, 0.588]  clus98.75 [0.364, 0.611]  W>1  0/36
+  all98    MR_referee Np=1000 sel=- Nprod=100000 bp=paper       ad   M= 10  med W  0.703  grp98.75 [0.588, 0.870]  clus98.75 [0.597, 0.842]  W>1 18/62
+  all98    MR_referee Np=1000 sel=- Nprod=100000 bp=paper       ad   M=100  med W  1.061  grp98.75 [0.779, 1.412]  clus98.75 [0.756, 1.414]  W>1 33/62
+  all98    MR_referee Np=1000 sel=- Nprod=100000 bp=paper       deph M= 10  med W  0.625  grp98.75 [0.555, 0.716]  clus98.75 [0.552, 0.720]  W>1  3/36
+  all98    MR_referee Np=1000 sel=- Nprod=100000 bp=paper       deph M=100  med W  0.456  grp98.75 [0.388, 0.616]  clus98.75 [0.382, 0.640]  W>1  1/36
+  all98    MR_referee Np=2000 sel=- Nprod=100000 bp=paper       ad   M= 10  med W  0.737  grp98.75 [0.616, 0.912]  clus98.75 [0.625, 0.882]  W>1 19/62
+  all98    MR_referee Np=2000 sel=- Nprod=100000 bp=paper       ad   M=100  med W  1.111  grp98.75 [0.816, 1.479]  clus98.75 [0.792, 1.481]  W>1 35/62
+  all98    MR_referee Np=2000 sel=- Nprod=100000 bp=paper       deph M= 10  med W  0.666  grp98.75 [0.591, 0.763]  clus98.75 [0.588, 0.767]  W>1  3/36
+  all98    MR_referee Np=2000 sel=- Nprod=100000 bp=paper       deph M=100  med W  0.486  grp98.75 [0.414, 0.656]  clus98.75 [0.406, 0.682]  W>1  2/36
+WARNING missing fallback ('ad', 'brickwork', 's7', 20, 8, 0.03, 'x', 100)
+
+######## host V100: groups 98 (by channel {'ad': 62, 'deph': 36})
+max |V_raw / V_csv - 1| over candidates: 1.92e-07;  bf(raw) != bf(csv): 0
+reproduction M1 vs b_e9e_summary_v100.csv W10: max rel diff 7.16e-13
+reproduction M1 vs b_e9e_summary_v100.csv W100: max rel diff 6.53e-13
+fraction of resamples where the var-pilot picks the full-sample bf (median over groups): {('ad', 'diag_pick_bf_Np100'): 0.91, ('ad', 'diag_pick_bf_Np1000'): 1.0, ('ad', 'diag_pick_bf_Np300'): 0.996, ('deph', 'diag_pick_bf_Np100'): 0.436, ('deph', 'diag_pick_bf_Np1000'): 0.956, ('deph', 'diag_pick_bf_Np300'): 0.645}
+bf by var == default: {'ad': 0.516, 'deph': 0.611}
+
+== V100 all98: main models (Nprod 20000, honest bp; pilot selection by var*t)
+  all98    M1_oracle_paper Nprod=20000 bp=paper                 ad   M= 10  med W  0.598  grp98.75 [0.523, 0.754]  clus98.75 [0.524, 0.733]  W>1 14/62
+  all98    M1_oracle_paper Nprod=20000 bp=paper                 ad   M=100  med W  0.844  grp98.75 [0.631, 1.142]  clus98.75 [0.613, 1.168]  W>1 27/62
+  all98    M1_oracle_paper Nprod=20000 bp=paper                 deph M= 10  med W  0.564  grp98.75 [0.472, 0.653]  clus98.75 [0.456, 0.670]  W>1  1/36
+  all98    M1_oracle_paper Nprod=20000 bp=paper                 deph M=100  med W  0.362  grp98.75 [0.322, 0.544]  clus98.75 [0.296, 0.560]  W>1  0/36
+  all98    M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M= 10  med W  0.598  grp98.75 [0.523, 0.754]  clus98.75 [0.524, 0.733]  W>1 14/62
+  all98    M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M=100  med W  0.844  grp98.75 [0.631, 1.142]  clus98.75 [0.613, 1.168]  W>1 27/62
+  all98    M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M= 10  med W  0.564  grp98.75 [0.472, 0.653]  clus98.75 [0.456, 0.670]  W>1  1/36
+  all98    M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M=100  med W  0.362  grp98.75 [0.322, 0.544]  clus98.75 [0.296, 0.560]  W>1  0/36
+  all98    M1b_oracle_var Nprod=20000 bp=honest                 ad   M= 10  med W  0.598  grp98.75 [0.523, 0.753]  clus98.75 [0.524, 0.733]  W>1 14/62
+  all98    M1b_oracle_var Nprod=20000 bp=honest                 ad   M=100  med W  0.842  grp98.75 [0.631, 1.138]  clus98.75 [0.612, 1.166]  W>1 27/62
+  all98    M1b_oracle_var Nprod=20000 bp=honest                 deph M= 10  med W  0.564  grp98.75 [0.472, 0.653]  clus98.75 [0.456, 0.670]  W>1  1/36
+  all98    M1b_oracle_var Nprod=20000 bp=honest                 deph M=100  med W  0.362  grp98.75 [0.322, 0.543]  clus98.75 [0.296, 0.560]  W>1  0/36
+  all98    M1c_oracle_cost Nprod=20000 bp=honest                ad   M= 10  med W  0.598  grp98.75 [0.523, 0.753]  clus98.75 [0.524, 0.733]  W>1 14/62
+  all98    M1c_oracle_cost Nprod=20000 bp=honest                ad   M=100  med W  0.842  grp98.75 [0.631, 1.138]  clus98.75 [0.612, 1.166]  W>1 27/62
+  all98    M1c_oracle_cost Nprod=20000 bp=honest                deph M= 10  med W  0.555  grp98.75 [0.467, 0.627]  clus98.75 [0.456, 0.651]  W>1  1/36
+  all98    M1c_oracle_cost Nprod=20000 bp=honest                deph M=100  med W  0.362  grp98.75 [0.313, 0.514]  clus98.75 [0.296, 0.530]  W>1  0/36
+  all98    M2_default Nprod=20000 bp=honest                     ad   M= 10  med W  0.894  grp98.75 [0.730, 1.299]  clus98.75 [0.700, 1.414]  W>1 28/62
+  all98    M2_default Nprod=20000 bp=honest                     ad   M=100  med W  1.243  grp98.75 [0.834, 2.006]  clus98.75 [0.813, 2.181]  W>1 37/62
+  all98    M2_default Nprod=20000 bp=honest                     deph M= 10  med W  0.607  grp98.75 [0.541, 0.687]  clus98.75 [0.502, 0.690]  W>1  4/36
+  all98    M2_default Nprod=20000 bp=honest                     deph M=100  med W  0.450  grp98.75 [0.334, 0.581]  clus98.75 [0.324, 0.613]  W>1  0/36
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.634  grp98.75 [0.556, 0.798]  clus98.75 [0.558, 0.793]  W>1 17/62
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  0.884  grp98.75 [0.675, 1.254]  clus98.75 [0.671, 1.238]  W>1 29/62
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.607  grp98.75 [0.504, 0.699]  clus98.75 [0.491, 0.719]  W>1  2/36
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.395  grp98.75 [0.344, 0.568]  clus98.75 [0.326, 0.581]  W>1  1/36
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.644  grp98.75 [0.560, 0.810]  clus98.75 [0.563, 0.802]  W>1 15/62
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  0.906  grp98.75 [0.684, 1.213]  clus98.75 [0.648, 1.262]  W>1 28/62
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.613  grp98.75 [0.523, 0.703]  clus98.75 [0.513, 0.734]  W>1  3/36
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.409  grp98.75 [0.350, 0.581]  clus98.75 [0.338, 0.606]  W>1  1/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.724  grp98.75 [0.620, 0.906]  clus98.75 [0.621, 0.890]  W>1 19/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  1.010  grp98.75 [0.769, 1.367]  clus98.75 [0.723, 1.406]  W>1 32/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.705  grp98.75 [0.623, 0.807]  clus98.75 [0.594, 0.838]  W>1  5/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.486  grp98.75 [0.406, 0.665]  clus98.75 [0.393, 0.698]  W>1  2/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.839  grp98.75 [0.716, 1.028]  clus98.75 [0.717, 1.020]  W>1 25/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  1.180  grp98.75 [0.879, 1.596]  clus98.75 [0.840, 1.644]  W>1 37/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.843  grp98.75 [0.745, 0.968]  clus98.75 [0.716, 0.999]  W>1 10/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.584  grp98.75 [0.487, 0.799]  clus98.75 [0.476, 0.829]  W>1  6/36
+
+== V100 TN1e7: main models (Nprod 20000, honest bp; pilot selection by var*t)
+  TN1e7    M1_oracle_paper Nprod=20000 bp=paper                 ad   M= 10  med W  0.643  grp98.75 [0.398, 0.847]  clus98.75 [0.272, 0.794]  W>1  0/ 8
+  TN1e7    M1_oracle_paper Nprod=20000 bp=paper                 ad   M=100  med W  0.594  grp98.75 [0.380, 1.043]  clus98.75 [0.470, 1.336]  W>1  2/ 8
+  TN1e7    M1_oracle_paper Nprod=20000 bp=paper                 deph M= 10  med W  0.456  grp98.75 [0.195, 0.495]  clus98.75 [0.429, 0.570]  W>1  0/11
+  TN1e7    M1_oracle_paper Nprod=20000 bp=paper                 deph M=100  med W  0.273  grp98.75 [0.206, 0.320]  clus98.75 [0.257, 0.320]  W>1  0/11
+  TN1e7    M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M= 10  med W  0.643  grp98.75 [0.398, 0.847]  clus98.75 [0.272, 0.794]  W>1  0/ 8
+  TN1e7    M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M=100  med W  0.594  grp98.75 [0.380, 1.043]  clus98.75 [0.470, 1.336]  W>1  2/ 8
+  TN1e7    M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M= 10  med W  0.456  grp98.75 [0.195, 0.495]  clus98.75 [0.429, 0.570]  W>1  0/11
+  TN1e7    M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M=100  med W  0.273  grp98.75 [0.206, 0.320]  clus98.75 [0.257, 0.320]  W>1  0/11
+  TN1e7    M1b_oracle_var Nprod=20000 bp=honest                 ad   M= 10  med W  0.643  grp98.75 [0.398, 0.847]  clus98.75 [0.273, 0.794]  W>1  0/ 8
+  TN1e7    M1b_oracle_var Nprod=20000 bp=honest                 ad   M=100  med W  0.593  grp98.75 [0.380, 1.041]  clus98.75 [0.469, 1.331]  W>1  2/ 8
+  TN1e7    M1b_oracle_var Nprod=20000 bp=honest                 deph M= 10  med W  0.456  grp98.75 [0.195, 0.495]  clus98.75 [0.429, 0.570]  W>1  0/11
+  TN1e7    M1b_oracle_var Nprod=20000 bp=honest                 deph M=100  med W  0.273  grp98.75 [0.206, 0.320]  clus98.75 [0.257, 0.320]  W>1  0/11
+  TN1e7    M1c_oracle_cost Nprod=20000 bp=honest                ad   M= 10  med W  0.643  grp98.75 [0.398, 0.847]  clus98.75 [0.273, 0.794]  W>1  0/ 8
+  TN1e7    M1c_oracle_cost Nprod=20000 bp=honest                ad   M=100  med W  0.593  grp98.75 [0.380, 1.041]  clus98.75 [0.469, 1.331]  W>1  2/ 8
+  TN1e7    M1c_oracle_cost Nprod=20000 bp=honest                deph M= 10  med W  0.456  grp98.75 [0.195, 0.479]  clus98.75 [0.429, 0.570]  W>1  0/11
+  TN1e7    M1c_oracle_cost Nprod=20000 bp=honest                deph M=100  med W  0.273  grp98.75 [0.206, 0.307]  clus98.75 [0.257, 0.320]  W>1  0/11
+  TN1e7    M2_default Nprod=20000 bp=honest                     ad   M= 10  med W  0.643  grp98.75 [0.398, 1.585]  clus98.75 [0.273, 2.612]  W>1  1/ 8
+  TN1e7    M2_default Nprod=20000 bp=honest                     ad   M=100  med W  0.593  grp98.75 [0.380, 2.477]  clus98.75 [0.469, 4.380]  W>1  2/ 8
+  TN1e7    M2_default Nprod=20000 bp=honest                     deph M= 10  med W  0.479  grp98.75 [0.231, 0.571]  clus98.75 [0.431, 0.570]  W>1  0/11
+  TN1e7    M2_default Nprod=20000 bp=honest                     deph M=100  med W  0.307  grp98.75 [0.238, 0.344]  clus98.75 [0.258, 0.320]  W>1  0/11
+  TN1e7    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.701  grp98.75 [0.426, 0.884]  clus98.75 [0.278, 0.818]  W>1  0/ 8
+  TN1e7    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  0.646  grp98.75 [0.400, 1.126]  clus98.75 [0.478, 1.372]  W>1  2/ 8
+  TN1e7    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.491  grp98.75 [0.216, 0.513]  clus98.75 [0.478, 0.627]  W>1  0/11
+  TN1e7    M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.297  grp98.75 [0.227, 0.344]  clus98.75 [0.285, 0.352]  W>1  0/11
+  TN1e7    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.694  grp98.75 [0.425, 0.896]  clus98.75 [0.288, 0.842]  W>1  0/ 8
+  TN1e7    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  0.631  grp98.75 [0.404, 1.150]  clus98.75 [0.495, 1.412]  W>1  2/ 8
+  TN1e7    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.513  grp98.75 [0.223, 0.530]  clus98.75 [0.486, 0.630]  W>1  0/11
+  TN1e7    M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.310  grp98.75 [0.235, 0.347]  clus98.75 [0.292, 0.354]  W>1  0/11
+  TN1e7    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.762  grp98.75 [0.471, 1.009]  clus98.75 [0.323, 0.953]  W>1  1/ 8
+  TN1e7    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  0.701  grp98.75 [0.450, 1.264]  clus98.75 [0.556, 1.597]  W>1  2/ 8
+  TN1e7    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.594  grp98.75 [0.258, 0.630]  clus98.75 [0.551, 0.723]  W>1  0/11
+  TN1e7    M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.360  grp98.75 [0.272, 0.406]  clus98.75 [0.335, 0.406]  W>1  0/11
+  TN1e7    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.883  grp98.75 [0.544, 1.174]  clus98.75 [0.374, 1.115]  W>1  4/ 8
+  TN1e7    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  0.813  grp98.75 [0.520, 1.460]  clus98.75 [0.643, 1.869]  W>1  3/ 8
+  TN1e7    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.708  grp98.75 [0.313, 0.748]  clus98.75 [0.672, 0.878]  W>1  0/11
+  TN1e7    M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.425  grp98.75 [0.330, 0.489]  clus98.75 [0.401, 0.493]  W>1  0/11
+
+== V100 nonTN1e7: main models (Nprod 20000, honest bp; pilot selection by var*t)
+  nonTN1e7 M1_oracle_paper Nprod=20000 bp=paper                 ad   M= 10  med W  0.598  grp98.75 [0.500, 0.827]  clus98.75 [0.512, 0.754]  W>1 14/54
+  nonTN1e7 M1_oracle_paper Nprod=20000 bp=paper                 ad   M=100  med W  0.868  grp98.75 [0.684, 1.217]  clus98.75 [0.707, 1.217]  W>1 25/54
+  nonTN1e7 M1_oracle_paper Nprod=20000 bp=paper                 deph M= 10  med W  0.616  grp98.75 [0.523, 0.732]  clus98.75 [0.523, 0.684]  W>1  1/25
+  nonTN1e7 M1_oracle_paper Nprod=20000 bp=paper                 deph M=100  med W  0.504  grp98.75 [0.340, 0.619]  clus98.75 [0.340, 0.619]  W>1  0/25
+  nonTN1e7 M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M= 10  med W  0.598  grp98.75 [0.500, 0.827]  clus98.75 [0.512, 0.754]  W>1 14/54
+  nonTN1e7 M1_oracle_paper_rawvar Nprod=20000 bp=paper          ad   M=100  med W  0.868  grp98.75 [0.684, 1.217]  clus98.75 [0.707, 1.217]  W>1 25/54
+  nonTN1e7 M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M= 10  med W  0.616  grp98.75 [0.523, 0.732]  clus98.75 [0.523, 0.684]  W>1  1/25
+  nonTN1e7 M1_oracle_paper_rawvar Nprod=20000 bp=paper          deph M=100  med W  0.504  grp98.75 [0.340, 0.619]  clus98.75 [0.340, 0.619]  W>1  0/25
+  nonTN1e7 M1b_oracle_var Nprod=20000 bp=honest                 ad   M= 10  med W  0.598  grp98.75 [0.500, 0.827]  clus98.75 [0.512, 0.753]  W>1 14/54
+  nonTN1e7 M1b_oracle_var Nprod=20000 bp=honest                 ad   M=100  med W  0.866  grp98.75 [0.683, 1.212]  clus98.75 [0.706, 1.212]  W>1 25/54
+  nonTN1e7 M1b_oracle_var Nprod=20000 bp=honest                 deph M= 10  med W  0.616  grp98.75 [0.523, 0.732]  clus98.75 [0.523, 0.683]  W>1  1/25
+  nonTN1e7 M1b_oracle_var Nprod=20000 bp=honest                 deph M=100  med W  0.504  grp98.75 [0.340, 0.618]  clus98.75 [0.340, 0.618]  W>1  0/25
+  nonTN1e7 M1c_oracle_cost Nprod=20000 bp=honest                ad   M= 10  med W  0.598  grp98.75 [0.500, 0.827]  clus98.75 [0.512, 0.753]  W>1 14/54
+  nonTN1e7 M1c_oracle_cost Nprod=20000 bp=honest                ad   M=100  med W  0.866  grp98.75 [0.683, 1.206]  clus98.75 [0.706, 1.206]  W>1 25/54
+  nonTN1e7 M1c_oracle_cost Nprod=20000 bp=honest                deph M= 10  med W  0.603  grp98.75 [0.512, 0.732]  clus98.75 [0.509, 0.659]  W>1  1/25
+  nonTN1e7 M1c_oracle_cost Nprod=20000 bp=honest                deph M=100  med W  0.498  grp98.75 [0.340, 0.618]  clus98.75 [0.340, 0.618]  W>1  0/25
+  nonTN1e7 M2_default Nprod=20000 bp=honest                     ad   M= 10  med W  0.994  grp98.75 [0.750, 1.557]  clus98.75 [0.749, 1.557]  W>1 27/54
+  nonTN1e7 M2_default Nprod=20000 bp=honest                     ad   M=100  med W  1.408  grp98.75 [0.905, 2.201]  clus98.75 [0.855, 2.191]  W>1 35/54
+  nonTN1e7 M2_default Nprod=20000 bp=honest                     deph M= 10  med W  0.666  grp98.75 [0.576, 0.889]  clus98.75 [0.568, 0.727]  W>1  4/25
+  nonTN1e7 M2_default Nprod=20000 bp=honest                     deph M=100  med W  0.551  grp98.75 [0.413, 0.677]  clus98.75 [0.380, 0.677]  W>1  0/25
+  nonTN1e7 M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.634  grp98.75 [0.546, 0.889]  clus98.75 [0.551, 0.787]  W>1 17/54
+  nonTN1e7 M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  0.991  grp98.75 [0.712, 1.296]  clus98.75 [0.727, 1.274]  W>1 27/54
+  nonTN1e7 M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.673  grp98.75 [0.568, 0.777]  clus98.75 [0.565, 0.729]  W>1  2/25
+  nonTN1e7 M3_pilot Np=100 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.557  grp98.75 [0.368, 0.693]  clus98.75 [0.368, 0.693]  W>1  1/25
+  nonTN1e7 M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M= 10  med W  0.644  grp98.75 [0.543, 0.893]  clus98.75 [0.554, 0.802]  W>1 15/54
+  nonTN1e7 M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       ad   M=100  med W  0.940  grp98.75 [0.733, 1.289]  clus98.75 [0.744, 1.289]  W>1 26/54
+  nonTN1e7 M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M= 10  med W  0.683  grp98.75 [0.582, 0.822]  clus98.75 [0.580, 0.753]  W>1  3/25
+  nonTN1e7 M3_pilot Np=300 sel=cost Nprod=20000 bp=honest       deph M=100  med W  0.564  grp98.75 [0.381, 0.686]  clus98.75 [0.381, 0.686]  W>1  1/25
+  nonTN1e7 M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.724  grp98.75 [0.603, 0.973]  clus98.75 [0.612, 0.906]  W>1 18/54
+  nonTN1e7 M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  1.041  grp98.75 [0.824, 1.466]  clus98.75 [0.830, 1.466]  W>1 30/54
+  nonTN1e7 M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.777  grp98.75 [0.675, 0.944]  clus98.75 [0.675, 0.872]  W>1  5/25
+  nonTN1e7 M3_pilot Np=1000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.645  grp98.75 [0.453, 0.795]  clus98.75 [0.437, 0.795]  W>1  2/25
+  nonTN1e7 M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M= 10  med W  0.839  grp98.75 [0.700, 1.116]  clus98.75 [0.708, 1.020]  W>1 21/54
+  nonTN1e7 M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      ad   M=100  med W  1.213  grp98.75 [0.945, 1.677]  clus98.75 [0.957, 1.667]  W>1 34/54
+  nonTN1e7 M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M= 10  med W  0.939  grp98.75 [0.805, 1.118]  clus98.75 [0.799, 1.042]  W>1 10/25
+  nonTN1e7 M3_pilot Np=2000 sel=cost Nprod=20000 bp=honest      deph M=100  med W  0.769  grp98.75 [0.542, 0.954]  clus98.75 [0.525, 0.954]  W>1  6/25
+
+== V100 all98: pilot selection by var only (Nprod 20000, honest bp)
+  all98    M3_pilot Np=100 sel=var Nprod=20000 bp=honest        ad   M= 10  med W  0.629  grp98.75 [0.552, 0.799]  clus98.75 [0.555, 0.780]  W>1 16/62
+  all98    M3_pilot Np=100 sel=var Nprod=20000 bp=honest        ad   M=100  med W  0.884  grp98.75 [0.664, 1.249]  clus98.75 [0.654, 1.238]  W>1 29/62
+  all98    M3_pilot Np=100 sel=var Nprod=20000 bp=honest        deph M= 10  med W  0.587  grp98.75 [0.501, 0.685]  clus98.75 [0.495, 0.703]  W>1  2/36
+  all98    M3_pilot Np=100 sel=var Nprod=20000 bp=honest        deph M=100  med W  0.394  grp98.75 [0.337, 0.567]  clus98.75 [0.329, 0.586]  W>1  1/36
+  all98    M3_pilot Np=300 sel=var Nprod=20000 bp=honest        ad   M= 10  med W  0.640  grp98.75 [0.555, 0.821]  clus98.75 [0.556, 0.798]  W>1 15/62
+  all98    M3_pilot Np=300 sel=var Nprod=20000 bp=honest        ad   M=100  med W  0.906  grp98.75 [0.682, 1.213]  clus98.75 [0.648, 1.268]  W>1 29/62
+  all98    M3_pilot Np=300 sel=var Nprod=20000 bp=honest        deph M= 10  med W  0.608  grp98.75 [0.526, 0.708]  clus98.75 [0.513, 0.730]  W>1  3/36
+  all98    M3_pilot Np=300 sel=var Nprod=20000 bp=honest        deph M=100  med W  0.415  grp98.75 [0.348, 0.593]  clus98.75 [0.337, 0.619]  W>1  1/36
+  all98    M3_pilot Np=1000 sel=var Nprod=20000 bp=honest       ad   M= 10  med W  0.724  grp98.75 [0.620, 0.922]  clus98.75 [0.621, 0.887]  W>1 19/62
+  all98    M3_pilot Np=1000 sel=var Nprod=20000 bp=honest       ad   M=100  med W  1.010  grp98.75 [0.769, 1.367]  clus98.75 [0.723, 1.406]  W>1 32/62
+  all98    M3_pilot Np=1000 sel=var Nprod=20000 bp=honest       deph M= 10  med W  0.712  grp98.75 [0.626, 0.833]  clus98.75 [0.592, 0.858]  W>1  5/36
+  all98    M3_pilot Np=1000 sel=var Nprod=20000 bp=honest       deph M=100  med W  0.490  grp98.75 [0.406, 0.697]  clus98.75 [0.392, 0.724]  W>1  2/36
+  all98    M3_pilot Np=2000 sel=var Nprod=20000 bp=honest       ad   M= 10  med W  0.839  grp98.75 [0.716, 1.028]  clus98.75 [0.717, 1.020]  W>1 25/62
+  all98    M3_pilot Np=2000 sel=var Nprod=20000 bp=honest       ad   M=100  med W  1.180  grp98.75 [0.879, 1.596]  clus98.75 [0.840, 1.644]  W>1 37/62
+  all98    M3_pilot Np=2000 sel=var Nprod=20000 bp=honest       deph M= 10  med W  0.849  grp98.75 [0.746, 1.010]  clus98.75 [0.716, 1.036]  W>1 11/36
+  all98    M3_pilot Np=2000 sel=var Nprod=20000 bp=honest       deph M=100  med W  0.584  grp98.75 [0.491, 0.842]  clus98.75 [0.476, 0.863]  W>1  6/36
+
+== V100 all98: Nprod 100000 (honest bp)
+  all98    M1b_oracle_var Nprod=100000 bp=honest                ad   M= 10  med W  0.599  grp98.75 [0.524, 0.755]  clus98.75 [0.525, 0.734]  W>1 14/62
+  all98    M1b_oracle_var Nprod=100000 bp=honest                ad   M=100  med W  0.844  grp98.75 [0.632, 1.143]  clus98.75 [0.613, 1.169]  W>1 27/62
+  all98    M1b_oracle_var Nprod=100000 bp=honest                deph M= 10  med W  0.565  grp98.75 [0.473, 0.654]  clus98.75 [0.456, 0.671]  W>1  1/36
+  all98    M1b_oracle_var Nprod=100000 bp=honest                deph M=100  med W  0.362  grp98.75 [0.322, 0.544]  clus98.75 [0.296, 0.560]  W>1  0/36
+  all98    M2_default Nprod=100000 bp=honest                    ad   M= 10  med W  0.896  grp98.75 [0.731, 1.302]  clus98.75 [0.701, 1.416]  W>1 28/62
+  all98    M2_default Nprod=100000 bp=honest                    ad   M=100  med W  1.246  grp98.75 [0.835, 2.015]  clus98.75 [0.815, 2.183]  W>1 37/62
+  all98    M2_default Nprod=100000 bp=honest                    deph M= 10  med W  0.608  grp98.75 [0.541, 0.688]  clus98.75 [0.502, 0.691]  W>1  4/36
+  all98    M2_default Nprod=100000 bp=honest                    deph M=100  med W  0.450  grp98.75 [0.334, 0.581]  clus98.75 [0.324, 0.613]  W>1  0/36
+  all98    M3_pilot Np=100 sel=cost Nprod=100000 bp=honest      ad   M= 10  med W  0.626  grp98.75 [0.549, 0.789]  clus98.75 [0.550, 0.782]  W>1 16/62
+  all98    M3_pilot Np=100 sel=cost Nprod=100000 bp=honest      ad   M=100  med W  0.872  grp98.75 [0.667, 1.240]  clus98.75 [0.663, 1.224]  W>1 28/62
+  all98    M3_pilot Np=100 sel=cost Nprod=100000 bp=honest      deph M= 10  med W  0.594  grp98.75 [0.493, 0.686]  clus98.75 [0.481, 0.706]  W>1  2/36
+  all98    M3_pilot Np=100 sel=cost Nprod=100000 bp=honest      deph M=100  med W  0.386  grp98.75 [0.338, 0.557]  clus98.75 [0.319, 0.569]  W>1  1/36
+  all98    M3_pilot Np=300 sel=cost Nprod=100000 bp=honest      ad   M= 10  med W  0.618  grp98.75 [0.537, 0.776]  clus98.75 [0.540, 0.771]  W>1 15/62
+  all98    M3_pilot Np=300 sel=cost Nprod=100000 bp=honest      ad   M=100  med W  0.867  grp98.75 [0.656, 1.162]  clus98.75 [0.622, 1.208]  W>1 28/62
+  all98    M3_pilot Np=300 sel=cost Nprod=100000 bp=honest      deph M= 10  med W  0.581  grp98.75 [0.491, 0.663]  clus98.75 [0.483, 0.693]  W>1  2/36
+  all98    M3_pilot Np=300 sel=cost Nprod=100000 bp=honest      deph M=100  med W  0.383  grp98.75 [0.329, 0.548]  clus98.75 [0.317, 0.570]  W>1  0/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=100000 bp=honest     ad   M= 10  med W  0.629  grp98.75 [0.543, 0.799]  clus98.75 [0.544, 0.773]  W>1 15/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=100000 bp=honest     ad   M=100  med W  0.877  grp98.75 [0.670, 1.189]  clus98.75 [0.632, 1.218]  W>1 28/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=100000 bp=honest     deph M= 10  med W  0.594  grp98.75 [0.511, 0.669]  clus98.75 [0.493, 0.700]  W>1  3/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=100000 bp=honest     deph M=100  med W  0.398  grp98.75 [0.338, 0.553]  clus98.75 [0.322, 0.575]  W>1  1/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=100000 bp=honest     ad   M= 10  med W  0.648  grp98.75 [0.563, 0.808]  clus98.75 [0.564, 0.793]  W>1 15/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=100000 bp=honest     ad   M=100  med W  0.912  grp98.75 [0.681, 1.235]  clus98.75 [0.659, 1.265]  W>1 28/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=100000 bp=honest     deph M= 10  med W  0.618  grp98.75 [0.524, 0.696]  clus98.75 [0.507, 0.721]  W>1  3/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=100000 bp=honest     deph M=100  med W  0.406  grp98.75 [0.348, 0.570]  clus98.75 [0.332, 0.591]  W>1  1/36
+
+== V100 all98: paper bp convention (Nprod 20000) for attribution
+  all98    M1b_oracle_var Nprod=20000 bp=paper                  ad   M= 10  med W  0.598  grp98.75 [0.523, 0.754]  clus98.75 [0.524, 0.733]  W>1 14/62
+  all98    M1b_oracle_var Nprod=20000 bp=paper                  ad   M=100  med W  0.844  grp98.75 [0.631, 1.142]  clus98.75 [0.613, 1.168]  W>1 27/62
+  all98    M1b_oracle_var Nprod=20000 bp=paper                  deph M= 10  med W  0.564  grp98.75 [0.472, 0.653]  clus98.75 [0.456, 0.670]  W>1  1/36
+  all98    M1b_oracle_var Nprod=20000 bp=paper                  deph M=100  med W  0.362  grp98.75 [0.322, 0.544]  clus98.75 [0.296, 0.560]  W>1  0/36
+  all98    M2_default Nprod=20000 bp=paper                      ad   M= 10  med W  0.895  grp98.75 [0.730, 1.301]  clus98.75 [0.700, 1.413]  W>1 28/62
+  all98    M2_default Nprod=20000 bp=paper                      ad   M=100  med W  1.245  grp98.75 [0.835, 2.014]  clus98.75 [0.814, 2.180]  W>1 37/62
+  all98    M2_default Nprod=20000 bp=paper                      deph M= 10  med W  0.607  grp98.75 [0.541, 0.687]  clus98.75 [0.501, 0.691]  W>1  4/36
+  all98    M2_default Nprod=20000 bp=paper                      deph M=100  med W  0.450  grp98.75 [0.334, 0.581]  clus98.75 [0.324, 0.613]  W>1  0/36
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=paper        ad   M= 10  med W  0.634  grp98.75 [0.556, 0.799]  clus98.75 [0.558, 0.793]  W>1 17/62
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=paper        ad   M=100  med W  0.885  grp98.75 [0.676, 1.258]  clus98.75 [0.672, 1.242]  W>1 29/62
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=paper        deph M= 10  med W  0.607  grp98.75 [0.504, 0.699]  clus98.75 [0.491, 0.719]  W>1  2/36
+  all98    M3_pilot Np=100 sel=cost Nprod=20000 bp=paper        deph M=100  med W  0.395  grp98.75 [0.344, 0.568]  clus98.75 [0.326, 0.581]  W>1  1/36
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=paper        ad   M= 10  med W  0.644  grp98.75 [0.560, 0.810]  clus98.75 [0.563, 0.802]  W>1 15/62
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=paper        ad   M=100  med W  0.908  grp98.75 [0.685, 1.217]  clus98.75 [0.649, 1.265]  W>1 28/62
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=paper        deph M= 10  med W  0.613  grp98.75 [0.523, 0.703]  clus98.75 [0.513, 0.734]  W>1  3/36
+  all98    M3_pilot Np=300 sel=cost Nprod=20000 bp=paper        deph M=100  med W  0.409  grp98.75 [0.350, 0.581]  clus98.75 [0.338, 0.606]  W>1  1/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=paper       ad   M= 10  med W  0.724  grp98.75 [0.619, 0.906]  clus98.75 [0.620, 0.890]  W>1 19/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=paper       ad   M=100  med W  1.012  grp98.75 [0.770, 1.371]  clus98.75 [0.723, 1.409]  W>1 33/62
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=paper       deph M= 10  med W  0.705  grp98.75 [0.623, 0.807]  clus98.75 [0.593, 0.838]  W>1  5/36
+  all98    M3_pilot Np=1000 sel=cost Nprod=20000 bp=paper       deph M=100  med W  0.486  grp98.75 [0.406, 0.665]  clus98.75 [0.393, 0.698]  W>1  2/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=paper       ad   M= 10  med W  0.839  grp98.75 [0.716, 1.028]  clus98.75 [0.717, 1.020]  W>1 25/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=paper       ad   M=100  med W  1.182  grp98.75 [0.880, 1.601]  clus98.75 [0.841, 1.648]  W>1 37/62
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=paper       deph M= 10  med W  0.843  grp98.75 [0.745, 0.968]  clus98.75 [0.716, 0.999]  W>1 10/36
+  all98    M3_pilot Np=2000 sel=cost Nprod=20000 bp=paper       deph M=100  med W  0.584  grp98.75 [0.487, 0.800]  clus98.75 [0.476, 0.829]  W>1  6/36
+  all98    MR_referee Np=100 sel=- Nprod=20000 bp=paper         ad   M= 10  med W  0.613  grp98.75 [0.536, 0.771]  clus98.75 [0.536, 0.752]  W>1 14/62
+  all98    MR_referee Np=100 sel=- Nprod=20000 bp=paper         ad   M=100  med W  0.864  grp98.75 [0.647, 1.170]  clus98.75 [0.627, 1.198]  W>1 28/62
+  all98    MR_referee Np=100 sel=- Nprod=20000 bp=paper         deph M= 10  med W  0.582  grp98.75 [0.488, 0.675]  clus98.75 [0.471, 0.695]  W>1  1/36
+  all98    MR_referee Np=100 sel=- Nprod=20000 bp=paper         deph M=100  med W  0.375  grp98.75 [0.333, 0.562]  clus98.75 [0.306, 0.577]  W>1  0/36
+  all98    MR_referee Np=300 sel=- Nprod=20000 bp=paper         ad   M= 10  med W  0.643  grp98.75 [0.560, 0.805]  clus98.75 [0.561, 0.788]  W>1 15/62
+  all98    MR_referee Np=300 sel=- Nprod=20000 bp=paper         ad   M=100  med W  0.907  grp98.75 [0.678, 1.228]  clus98.75 [0.656, 1.258]  W>1 28/62
+  all98    MR_referee Np=300 sel=- Nprod=20000 bp=paper         deph M= 10  med W  0.616  grp98.75 [0.520, 0.719]  clus98.75 [0.500, 0.741]  W>1  3/36
+  all98    MR_referee Np=300 sel=- Nprod=20000 bp=paper         deph M=100  med W  0.400  grp98.75 [0.353, 0.598]  clus98.75 [0.327, 0.611]  W>1  1/36
+  all98    MR_referee Np=1000 sel=- Nprod=20000 bp=paper        ad   M= 10  med W  0.748  grp98.75 [0.646, 0.924]  clus98.75 [0.647, 0.917]  W>1 19/62
+  all98    MR_referee Np=1000 sel=- Nprod=20000 bp=paper        ad   M=100  med W  1.055  grp98.75 [0.786, 1.429]  clus98.75 [0.757, 1.466]  W>1 34/62
+  all98    MR_referee Np=1000 sel=- Nprod=20000 bp=paper        deph M= 10  med W  0.739  grp98.75 [0.631, 0.871]  clus98.75 [0.604, 0.897]  W>1  5/36
+  all98    MR_referee Np=1000 sel=- Nprod=20000 bp=paper        deph M=100  med W  0.490  grp98.75 [0.423, 0.723]  clus98.75 [0.401, 0.735]  W>1  2/36
+  all98    MR_referee Np=2000 sel=- Nprod=20000 bp=paper        ad   M= 10  med W  0.899  grp98.75 [0.768, 1.102]  clus98.75 [0.770, 1.095]  W>1 26/62
+  all98    MR_referee Np=2000 sel=- Nprod=20000 bp=paper        ad   M=100  med W  1.266  grp98.75 [0.944, 1.716]  clus98.75 [0.902, 1.764]  W>1 39/62
+  all98    MR_referee Np=2000 sel=- Nprod=20000 bp=paper        deph M= 10  med W  0.906  grp98.75 [0.793, 1.076]  clus98.75 [0.761, 1.105]  W>1 13/36
+  all98    MR_referee Np=2000 sel=- Nprod=20000 bp=paper        deph M=100  med W  0.620  grp98.75 [0.523, 0.898]  clus98.75 [0.506, 0.919]  W>1  7/36
+
+== V100 all98: referee model reproduction (Nprod 100000)
+  all98    MR_referee Np=100 sel=- Nprod=100000 bp=paper        ad   M= 10  med W  0.601  grp98.75 [0.526, 0.757]  clus98.75 [0.526, 0.737]  W>1 14/62
+  all98    MR_referee Np=100 sel=- Nprod=100000 bp=paper        ad   M=100  med W  0.848  grp98.75 [0.634, 1.148]  clus98.75 [0.615, 1.174]  W>1 27/62
+  all98    MR_referee Np=100 sel=- Nprod=100000 bp=paper        deph M= 10  med W  0.568  grp98.75 [0.475, 0.657]  clus98.75 [0.459, 0.675]  W>1  1/36
+  all98    MR_referee Np=100 sel=- Nprod=100000 bp=paper        deph M=100  med W  0.365  grp98.75 [0.324, 0.547]  clus98.75 [0.298, 0.563]  W>1  0/36
+  all98    MR_referee Np=300 sel=- Nprod=100000 bp=paper        ad   M= 10  med W  0.607  grp98.75 [0.531, 0.764]  clus98.75 [0.531, 0.744]  W>1 14/62
+  all98    MR_referee Np=300 sel=- Nprod=100000 bp=paper        ad   M=100  med W  0.856  grp98.75 [0.640, 1.159]  clus98.75 [0.621, 1.186]  W>1 28/62
+  all98    MR_referee Np=300 sel=- Nprod=100000 bp=paper        deph M= 10  med W  0.575  grp98.75 [0.482, 0.666]  clus98.75 [0.465, 0.685]  W>1  1/36
+  all98    MR_referee Np=300 sel=- Nprod=100000 bp=paper        deph M=100  med W  0.370  grp98.75 [0.328, 0.554]  clus98.75 [0.302, 0.570]  W>1  0/36
+  all98    MR_referee Np=1000 sel=- Nprod=100000 bp=paper       ad   M= 10  med W  0.628  grp98.75 [0.548, 0.788]  clus98.75 [0.549, 0.770]  W>1 15/62
+  all98    MR_referee Np=1000 sel=- Nprod=100000 bp=paper       ad   M=100  med W  0.886  grp98.75 [0.662, 1.199]  clus98.75 [0.642, 1.228]  W>1 28/62
+  all98    MR_referee Np=1000 sel=- Nprod=100000 bp=paper       deph M= 10  med W  0.599  grp98.75 [0.504, 0.697]  clus98.75 [0.485, 0.719]  W>1  3/36
+  all98    MR_referee Np=1000 sel=- Nprod=100000 bp=paper       deph M=100  med W  0.387  grp98.75 [0.343, 0.580]  clus98.75 [0.317, 0.594]  W>1  1/36
+  all98    MR_referee Np=2000 sel=- Nprod=100000 bp=paper       ad   M= 10  med W  0.658  grp98.75 [0.572, 0.822]  clus98.75 [0.573, 0.807]  W>1 15/62
+  all98    MR_referee Np=2000 sel=- Nprod=100000 bp=paper       ad   M=100  med W  0.928  grp98.75 [0.693, 1.257]  clus98.75 [0.671, 1.288]  W>1 28/62
+  all98    MR_referee Np=2000 sel=- Nprod=100000 bp=paper       deph M= 10  med W  0.632  grp98.75 [0.536, 0.741]  clus98.75 [0.515, 0.763]  W>1  3/36
+  all98    MR_referee Np=2000 sel=- Nprod=100000 bp=paper       deph M=100  med W  0.413  grp98.75 [0.363, 0.616]  clus98.75 [0.338, 0.627]  W>1  1/36

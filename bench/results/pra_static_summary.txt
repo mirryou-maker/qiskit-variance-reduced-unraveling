@@ -1,0 +1,35 @@
+non-degenerate groups: 396 (of 576)
+
+ n=5: 192 non-degenerate groups
+  s1         all gt   groups=192  median Var_best(std,proj)/Var = 1.066 [1.023, 1.166]  frac>1 = 0.67
+  s1         gt<=0.1  groups=144  median Var_best(std,proj)/Var = 1.070 [1.023, 1.164]  frac>1 = 0.68
+  pi3        all gt   groups=192  median Var_best(std,proj)/Var = 1.243 [1.137, 1.320]  frac>1 = 0.80
+  pi3        gt<=0.1  groups=144  median Var_best(std,proj)/Var = 1.206 [1.136, 1.302]  frac>1 = 0.85
+  ideal      all gt   groups=192  median Var_best(std,proj)/Var = 1.034 [1.011, 1.141]  frac>1 = 0.62
+  ideal      gt<=0.1  groups=144  median Var_best(std,proj)/Var = 1.041 [1.015, 1.150]  frac>1 = 0.65
+  p3_greedy  all gt   groups=192  median Var_best(std,proj)/Var = 1.480 [1.357, 1.652]  frac>1 = 0.91
+  p3_greedy  gt<=0.1  groups=144  median Var_best(std,proj)/Var = 1.425 [1.311, 1.648]  frac>1 = 0.91
+  p3_pi      all gt   groups=192  median Var_best(std,proj)/Var = 1.572 [1.460, 1.699]  frac>1 = 0.91
+  p3_pi      gt<=0.1  groups=144  median Var_best(std,proj)/Var = 1.486 [1.339, 1.658]  frac>1 = 0.92
+
+ n=6: 124 non-degenerate groups
+  s1         all gt   groups=124  median Var_best(std,proj)/Var = 1.062 [1.017, 1.185]  frac>1 = 0.69
+  s1         gt<=0.1  groups= 93  median Var_best(std,proj)/Var = 1.065 [1.023, 1.160]  frac>1 = 0.70
+  pi3        all gt   groups=124  median Var_best(std,proj)/Var = 1.211 [1.113, 1.350]  frac>1 = 0.82
+  pi3        gt<=0.1  groups= 93  median Var_best(std,proj)/Var = 1.198 [1.113, 1.319]  frac>1 = 0.89
+  ideal      all gt   groups=124  median Var_best(std,proj)/Var = 1.053 [1.011, 1.149]  frac>1 = 0.62
+  ideal      gt<=0.1  groups= 93  median Var_best(std,proj)/Var = 1.054 [1.016, 1.149]  frac>1 = 0.66
+  p3_greedy  all gt   groups=124  median Var_best(std,proj)/Var = 1.522 [1.328, 1.650]  frac>1 = 0.90
+  p3_greedy  gt<=0.1  groups= 93  median Var_best(std,proj)/Var = 1.427 [1.273, 1.587]  frac>1 = 0.88
+  p3_pi      all gt   groups=124  median Var_best(std,proj)/Var = 1.525 [1.333, 1.656]  frac>1 = 0.94
+  p3_pi      gt<=0.1  groups= 93  median Var_best(std,proj)/Var = 1.445 [1.244, 1.599]  frac>1 = 0.92
+
+ n=8: 80 non-degenerate groups
+  s1         all gt   groups= 80  median Var_best(std,proj)/Var = 1.102 [1.021, 1.241]  frac>1 = 0.66
+  s1         gt<=0.1  groups= 60  median Var_best(std,proj)/Var = 1.108 [1.020, 1.241]  frac>1 = 0.67
+  pi3        all gt   groups= 80  median Var_best(std,proj)/Var = 1.292 [1.203, 1.390]  frac>1 = 0.88
+  pi3        gt<=0.1  groups= 60  median Var_best(std,proj)/Var = 1.286 [1.211, 1.390]  frac>1 = 0.92
+  ideal      all gt   groups= 80  median Var_best(std,proj)/Var = 1.079 [1.005, 1.210]  frac>1 = 0.62
+  ideal      gt<=0.1  groups= 60  median Var_best(std,proj)/Var = 1.093 [1.008, 1.215]  frac>1 = 0.65
+  greedy     all gt   groups= 80  median Var_best(std,proj)/Var = 1.493 [1.440, 1.564]  frac>1 = 0.97
+  greedy     gt<=0.1  groups= 60  median Var_best(std,proj)/Var = 1.502 [1.425, 1.556]  frac>1 = 0.98

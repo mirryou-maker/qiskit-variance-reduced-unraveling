@@ -1,0 +1,71 @@
+== C1: |PP_1e7 - PP_1e8| / eps (b_e9d_summary.csv)
+C1 all groups run at 1e8: groups 69  median 1.22  IQR [0.62, 5.54]  min 0.00  max|z_1e8 vs traj| 2.67  n(|z|>=4) 0
+C1 still TN at cap 1e7: groups 39  median 4.64  IQR [1.74, 7.40]  min 1.05  max|z_1e8 vs traj| 2.38  n(|z|>=4) 0
+C1 solved at cap 1e7: groups 30  median 0.53  IQR [0.29, 0.78]  min 0.00  max|z_1e8 vs traj| 2.67  n(|z|>=4) 0
+
+== C3: E1 with the E2 exclusion rule (Var_bf < 1e-12)
+C3 groups 640; excluded 64; of these Var_std < 1e-12: 64, Var_greedy < 1e-12: 64; by (family, variant, obs): {('ising', 'h0.7', 'zc'): 32, ('ising', 'h1.4', 'zc'): 32}
+C3 P3-style rule Var_std < 1e-10 selects the same groups: True
+C3 max|z| over kept groups: 3.96
+C3 primary n=6: groups 108 configs 30 median G 1.429 cluster95 [1.359, 1.525]  greedy worse (G_hi<1) 1  better (G_lo>1) 99
+C3 primary n=8: groups 108 configs 30 median G 1.507 cluster95 [1.469, 1.575]  greedy worse (G_hi<1) 0  better (G_lo>1) 102
+C3 primary n=10: groups 108 configs 30 median G 1.379 cluster95 [1.322, 1.434]  greedy worse (G_hi<1) 0  better (G_lo>1) 100
+C3 primary n=12: groups 108 configs 30 median G 1.362 cluster95 [1.318, 1.443]  greedy worse (G_hi<1) 1  better (G_lo>1) 96
+C3 PI n=6: groups 108 median G_pi 1.469 cluster95 [1.386, 1.559]
+C3 proj significantly worse than std (R_proj_hi<1): 330 / 432; better (R_proj_lo>1): 94
+C3 secondary gt=0.3 median G per n: {6: 1.688, 8: 1.645, 10: 1.561, 12: 1.482}
+
+== M1: Var_greedy / Var_PI per group, E1 n=6 primary, 108 groups (bootstrap B=2000, 95%)
+M1 median ratio 1.016; PI significantly better (lo>1): 24; greedy significantly better (hi<1): 2
+M1 (note: 95% per-group CIs, no multiplicity correction; expected false positives per side ~ 2.7)
+
+== C4: TN status of the 98 E9b groups (b_e9d_summary.csv) and median W on subsets (POST HOC)
+C4 E9b groups TN at 100000: 96 / 98  by channel {'ad': 60, 'deph': 36}
+C4 E9b groups TN at 1000000: 46 / 98  by channel {'ad': 27, 'deph': 19}
+C4 E9b groups TN at 10000000: 19 / 98  by channel {'ad': 8, 'deph': 11}
+C4 E9b         all98 M= 10 ad  : groups 62 configs 26 median W 0.458 cluster98.75 [0.388, 0.546]  median R 0.961  median t_g/t_f 2.20
+C4 E9b         all98 M= 10 deph: groups 36 configs 11 median W 0.393 cluster98.75 [0.348, 0.456]  median R 0.870  median t_g/t_f 2.27
+C4 E9b         all98 M=100 ad  : groups 62 configs 26 median W 0.443 cluster98.75 [0.322, 0.582]  median R 2.567  median t_g/t_f 5.63
+C4 E9b         all98 M=100 deph: groups 36 configs 11 median W 0.195 cluster98.75 [0.132, 0.256]  median R 1.219  median t_g/t_f 6.14
+C4 E9b         TN1e6 M= 10 ad  : groups 27 configs 16 median W 0.427 cluster98.75 [0.376, 0.563]  median R 0.951  median t_g/t_f 2.22
+C4 E9b         TN1e6 M= 10 deph: groups 19 configs  6 median W 0.362 cluster98.75 [0.329, 0.417]  median R 0.853  median t_g/t_f 2.28
+C4 E9b         TN1e6 M=100 ad  : groups 27 configs 16 median W 0.322 cluster98.75 [0.275, 0.579]  median R 1.957  median t_g/t_f 6.04
+C4 E9b         TN1e6 M=100 deph: groups 19 configs  6 median W 0.165 cluster98.75 [0.121, 0.182]  median R 1.048  median t_g/t_f 6.42
+C4 E9b         TN1e7 M= 10 ad  : groups  8 configs  6 median W 0.477 cluster98.75 [0.207, 0.593]  median R 1.052  median t_g/t_f 2.25
+C4 E9b         TN1e7 M= 10 deph: groups 11 configs  4 median W 0.329 cluster98.75 [0.322, 0.414]  median R 0.788  median t_g/t_f 2.27
+C4 E9b         TN1e7 M=100 ad  : groups  8 configs  6 median W 0.292 cluster98.75 [0.236, 0.698]  median R 1.899  median t_g/t_f 6.49
+C4 E9b         TN1e7 M=100 deph: groups 11 configs  4 median W 0.121 cluster98.75 [0.116, 0.165]  median R 0.843  median t_g/t_f 6.42
+C4 E9e RTX2060 all98 M= 10 ad  : groups 62 configs 26 median W 0.670 cluster98.75 [0.569, 0.802]  median R 0.961  median t_g/t_f 1.45
+C4 E9e RTX2060 all98 M= 10 deph: groups 36 configs 11 median W 0.584 cluster98.75 [0.511, 0.672]  median R 0.870  median t_g/t_f 1.47
+C4 E9e RTX2060 all98 M=100 ad  : groups 62 configs 26 median W 1.010 cluster98.75 [0.742, 1.349]  median R 2.567  median t_g/t_f 2.46
+C4 E9e RTX2060 all98 M=100 deph: groups 36 configs 11 median W 0.426 cluster98.75 [0.357, 0.588]  median R 1.219  median t_g/t_f 2.60
+C4 E9e RTX2060 TN1e6 M= 10 ad  : groups 27 configs 16 median W 0.660 cluster98.75 [0.569, 0.839]  median R 0.951  median t_g/t_f 1.46
+C4 E9e RTX2060 TN1e6 M= 10 deph: groups 19 configs  6 median W 0.529 cluster98.75 [0.455, 0.617]  median R 0.853  median t_g/t_f 1.54
+C4 E9e RTX2060 TN1e6 M=100 ad  : groups 27 configs 16 median W 0.720 cluster98.75 [0.598, 1.339]  median R 1.957  median t_g/t_f 2.61
+C4 E9e RTX2060 TN1e6 M=100 deph: groups 19 configs  6 median W 0.368 cluster98.75 [0.323, 0.421]  median R 1.048  median t_g/t_f 2.78
+C4 E9e RTX2060 TN1e7 M= 10 ad  : groups  8 configs  6 median W 0.722 cluster98.75 [0.288, 0.914]  median R 1.057  median t_g/t_f 1.51
+C4 E9e RTX2060 TN1e7 M= 10 deph: groups 11 configs  4 median W 0.509 cluster98.75 [0.455, 0.617]  median R 0.788  median t_g/t_f 1.48
+C4 E9e RTX2060 TN1e7 M=100 ad  : groups  8 configs  6 median W 0.689 cluster98.75 [0.538, 1.559]  median R 1.899  median t_g/t_f 2.84
+C4 E9e RTX2060 TN1e7 M=100 deph: groups 11 configs  4 median W 0.323 cluster98.75 [0.303, 0.368]  median R 0.843  median t_g/t_f 2.64
+C4 E9e AD M100 groups with per-group W CI > 1: 27; of these TN at 1e6: 10, at 1e7: 2
+C4 E9e V100    all98 M= 10 ad  : groups 62 configs 26 median W 0.598 cluster98.75 [0.524, 0.733]  median R 0.961  median t_g/t_f 1.60
+C4 E9e V100    all98 M= 10 deph: groups 36 configs 11 median W 0.564 cluster98.75 [0.455, 0.670]  median R 0.870  median t_g/t_f 1.65
+C4 E9e V100    all98 M=100 ad  : groups 62 configs 26 median W 0.844 cluster98.75 [0.637, 1.174]  median R 2.567  median t_g/t_f 2.86
+C4 E9e V100    all98 M=100 deph: groups 36 configs 11 median W 0.362 cluster98.75 [0.292, 0.568]  median R 1.219  median t_g/t_f 2.96
+C4 E9e V100    TN1e6 M= 10 ad  : groups 27 configs 16 median W 0.605 cluster98.75 [0.513, 0.774]  median R 0.951  median t_g/t_f 1.60
+C4 E9e V100    TN1e6 M= 10 deph: groups 19 configs  6 median W 0.479 cluster98.75 [0.431, 0.568]  median R 0.853  median t_g/t_f 1.66
+C4 E9e V100    TN1e6 M=100 ad  : groups 27 configs 16 median W 0.613 cluster98.75 [0.519, 1.133]  median R 1.957  median t_g/t_f 2.97
+C4 E9e V100    TN1e6 M=100 deph: groups 19 configs  6 median W 0.324 cluster98.75 [0.273, 0.340]  median R 1.048  median t_g/t_f 3.29
+C4 E9e V100    TN1e7 M= 10 ad  : groups  8 configs  6 median W 0.643 cluster98.75 [0.272, 0.794]  median R 1.057  median t_g/t_f 1.67
+C4 E9e V100    TN1e7 M= 10 deph: groups 11 configs  4 median W 0.456 cluster98.75 [0.429, 0.570]  median R 0.788  median t_g/t_f 1.73
+C4 E9e V100    TN1e7 M=100 ad  : groups  8 configs  6 median W 0.594 cluster98.75 [0.470, 1.336]  median R 1.899  median t_g/t_f 3.33
+C4 E9e V100    TN1e7 M=100 deph: groups 11 configs  4 median W 0.273 cluster98.75 [0.257, 0.320]  median R 0.843  median t_g/t_f 3.29
+
+== M5: E9e identity check (first N_t trajectories of each timing run vs E9b raw)
+M5 b_e9e_u94.csv: shots per timing run [np.int64(296)]; fixed rows 562 with match < 1: 0
+M5 b_e9e_u94.csv: greedy rows 196, match < 0.99: 48
+M5 b_e9e_v100.csv: shots per timing run [np.int64(296)]; fixed rows 562 with match < 1: 0
+M5 b_e9e_v100.csv: greedy rows 196, match < 0.99: 48
+M5 mismatch sets: common 47; RTX2060 only [('ad', 'brickwork', 's7', '20', '8', '0.1', 'x', '100.0')]; V100 only [('ad', 'brickwork', 's7', '20', '8', '0.03', 'x', '100.0')]
+M5 fallback runs 48: Var(new code, N=2000) / Var(E9b, N=2000): median 1.000, IQR [0.996, 1.002], range [0.928, 1.017]
+M5 (both runs use the E9b seed, so they share trajectories up to the first flipped near-tie choice)

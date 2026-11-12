@@ -1,0 +1,2 @@
+M1 sign test: groups 108; Var_greedy > Var_PI in 76; ties 0; one-sided p = 1.38e-05
+M1 median Var_greedy/Var_PI 1.016, cluster95 [1.007, 1.023] (30 configurations)
