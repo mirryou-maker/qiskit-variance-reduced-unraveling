@@ -1,0 +1,76 @@
+# calibration measured/model on smoke = 0.880; projected full main run 26.2 h; budget 25.0 h; kept 37/40 configs (95 groups), projected 24.6 h
+# ad_ising_h1.0_n20_L16_gt0.03             obs 4 proj   0.77 h IN
+# deph_brickwork_s9_n20_L8_gt0.01          obs 2 proj   0.29 h IN
+# ad_brickwork_s10_n20_L16_gt0.01          obs 4 proj   0.57 h IN
+# deph_brickwork_s9_n20_L8_gt0.03          obs 1 proj   0.26 h IN
+# ad_ising_h1.0_n20_L16_gt0.01             obs 1 proj   0.52 h IN
+# deph_brickwork_s10_n20_L4_gt0.01         obs 1 proj   0.14 h IN
+# deph_brickwork_s10_n20_L16_gt0.01        obs 4 proj   0.68 h IN
+# deph_brickwork_s9_n20_L4_gt0.01          obs 1 proj   0.14 h IN
+# ad_brickwork_s9_n20_L16_gt0.01           obs 4 proj   0.57 h IN
+# deph_brickwork_s10_n20_L32_gt0.01        obs 4 proj   1.31 h IN
+# ad_brickwork_s9_n20_L4_gt0.01            obs 1 proj   0.11 h IN
+# deph_brickwork_s10_n20_L8_gt0.01         obs 2 proj   0.29 h IN
+# ad_ising_h1.2_n20_L32_gt0.03             obs 4 proj   1.51 h IN
+# ad_ising_h1.0_n20_L32_gt0.01             obs 2 proj   1.18 h IN
+# ad_brickwork_s10_n20_L8_gt0.01           obs 4 proj   0.30 h IN
+# ad_ising_h1.0_n20_L32_gt0.03             obs 3 proj   1.34 h IN
+# ad_ising_h1.2_n20_L16_gt0.03             obs 4 proj   0.77 h IN
+# deph_brickwork_s9_n20_L16_gt0.01         obs 4 proj   0.68 h IN
+# ad_ising_h1.0_n20_L32_gt0.1              obs 4 proj   1.51 h IN
+# ad_brickwork_s10_n20_L4_gt0.01           obs 1 proj   0.11 h IN
+# ad_brickwork_s9_n20_L8_gt0.01            obs 2 proj   0.24 h IN
+# ad_ising_h1.2_n20_L16_gt0.1              obs 4 proj   0.77 h IN
+# ad_brickwork_s10_n20_L32_gt0.01          obs 3 proj   0.99 h IN
+# ad_brickwork_s10_n20_L16_gt0.03          obs 2 proj   0.45 h IN
+# ad_ising_h1.2_n20_L16_gt0.01             obs 1 proj   0.52 h IN
+# ad_ising_h1.2_n20_L32_gt0.1              obs 4 proj   1.51 h IN
+# deph_brickwork_s10_n20_L16_gt0.03        obs 3 proj   0.62 h IN
+# ad_brickwork_s10_n20_L8_gt0.03           obs 2 proj   0.24 h IN
+# ad_ising_h1.2_n20_L8_gt0.1               obs 1 proj   0.27 h IN
+# ad_brickwork_s10_n20_L32_gt0.03          obs 1 proj   0.75 h IN
+# ad_ising_h1.0_n20_L16_gt0.1              obs 2 proj   0.60 h IN
+# deph_brickwork_s10_n20_L32_gt0.03        obs 2 proj   1.07 h IN
+# ad_brickwork_s9_n20_L16_gt0.03           obs 2 proj   0.45 h IN
+# ad_brickwork_s9_n20_L32_gt0.01           obs 3 proj   0.99 h IN
+# deph_brickwork_s9_n20_L16_gt0.03         obs 2 proj   0.55 h IN
+# ad_brickwork_s9_n20_L8_gt0.03            obs 2 proj   0.24 h IN
+# deph_brickwork_s9_n20_L32_gt0.01         obs 4 proj   1.31 h IN
+# ad_ising_h1.2_n20_L32_gt0.01             obs 1 proj   1.02 h OUT
+ad_ising_h1.0_n20_L16_gt0.03
+deph_brickwork_s9_n20_L8_gt0.01
+ad_brickwork_s10_n20_L16_gt0.01
+deph_brickwork_s9_n20_L8_gt0.03
+ad_ising_h1.0_n20_L16_gt0.01
+deph_brickwork_s10_n20_L4_gt0.01
+deph_brickwork_s10_n20_L16_gt0.01
+deph_brickwork_s9_n20_L4_gt0.01
+ad_brickwork_s9_n20_L16_gt0.01
+deph_brickwork_s10_n20_L32_gt0.01
+ad_brickwork_s9_n20_L4_gt0.01
+deph_brickwork_s10_n20_L8_gt0.01
+ad_ising_h1.2_n20_L32_gt0.03
+ad_ising_h1.0_n20_L32_gt0.01
+ad_brickwork_s10_n20_L8_gt0.01
+ad_ising_h1.0_n20_L32_gt0.03
+ad_ising_h1.2_n20_L16_gt0.03
+deph_brickwork_s9_n20_L16_gt0.01
+ad_ising_h1.0_n20_L32_gt0.1
+ad_brickwork_s10_n20_L4_gt0.01
+ad_brickwork_s9_n20_L8_gt0.01
+ad_ising_h1.2_n20_L16_gt0.1
+ad_brickwork_s10_n20_L32_gt0.01
+ad_brickwork_s10_n20_L16_gt0.03
+ad_ising_h1.2_n20_L16_gt0.01
+ad_ising_h1.2_n20_L32_gt0.1
+deph_brickwork_s10_n20_L16_gt0.03
+ad_brickwork_s10_n20_L8_gt0.03
+ad_ising_h1.2_n20_L8_gt0.1
+ad_brickwork_s10_n20_L32_gt0.03
+ad_ising_h1.0_n20_L16_gt0.1
+deph_brickwork_s10_n20_L32_gt0.03
+ad_brickwork_s9_n20_L16_gt0.03
+ad_brickwork_s9_n20_L32_gt0.01
+deph_brickwork_s9_n20_L16_gt0.03
+ad_brickwork_s9_n20_L8_gt0.03
+deph_brickwork_s9_n20_L32_gt0.01

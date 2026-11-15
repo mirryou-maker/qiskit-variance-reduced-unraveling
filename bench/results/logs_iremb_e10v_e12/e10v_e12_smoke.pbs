@@ -1,0 +1,22 @@
+#!/bin/bash
+#PBS -N e12smoke
+#PBS -q v100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=100gb
+#PBS -l walltime=12:00:00
+#PBS -j oe
+#PBS -r n
+cd /scratch/cyyou68/qiskit-co
+. /etc/profile.d/modules.sh
+module load ANACONDA/1-2024.10 >/dev/null 2>&1
+source activate qiskit 2>/dev/null || conda activate qiskit
+hostname; date
+nvidia-smi --query-gpu=index,name,memory.used,utilization.gpu --format=csv,noheader
+nvidia-smi --query-compute-apps=pid,gpu_uuid,used_memory --format=csv,noheader
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F", " "\$2 < 100 {print \$1; exit}")
+echo "free GPU: $FREE"; export CUDA_VISIBLE_DEVICES=$FREE
+python -m pytest -q validation/test_e12_runner.py validation/test_static_table.py validation/test_traj_kraus.py validation/test_sparse_policy.py > e12_tests_v100.log 2>&1; tail -3 e12_tests_v100.log
+for C in ad_brickwork_s7_20_8_0.01 deph_brickwork_s7_20_8_0.03; do
+  python bench/scripts/b_e10.py --idle pbs --only $C --Nt 74 --N 296 --seed_tag smoke --out bench/results/b_e10_v100_smoke.csv --raw bench/results/b_e10v_smoke_raw >> b_e10_v100_smoke.log 2>&1
+  python bench/scripts/b_e12.py --idle pbs --only $C --Nt 74 --N 296 --seed_tag smoke --out bench/results/b_e12_smoke.csv --raw bench/results/b_e12_smoke_raw >> b_e12_smoke.log 2>&1
+done
+echo done $(date)

@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -N e10v_ana
+#PBS -q v100q
+#PBS -l select=1:ncpus=4:mem=30gb
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -r n
+cd /scratch/cyyou68/qiskit-co
+. /etc/profile.d/modules.sh
+module load ANACONDA/1-2024.10 >/dev/null 2>&1
+source activate qiskit 2>/dev/null || conda activate qiskit
+python bench/scripts/compare_e10_hosts.py > bench/results/b_e10_hosts.txt 2>&1
+echo done $(date)

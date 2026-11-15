@@ -12,6 +12,10 @@ Per config (channel, family, variant, L, gt), all on one host, in this order:
 Before EVERY timed run: wait until no other python job from ~/work and no CI Runner.Worker runs and no other GPU process,
 then record the idle state (gpu_util, gpu_mem, gpu_other, other_py, runner, top_cpu, load1) in the row.
 Ledger CSV (resumable): rows already present are skipped.
+--idle pbs (iREMB, E10-V100 / E12): the node has 2 GPUs and PBS does not isolate them, so another user's process may run on
+the OTHER GPU. Then gpu_util / gpu_mem are read for this job's GPU (CUDA_VISIBLE_DEVICES), gpu_other lists every compute
+process on the node as gpu<idx>:<pid>/<user>/<MiB>, other_py lists this user's other python processes (any cwd), and the
+runner waits only while a foreign process is on THIS GPU or another own python process runs. The default (u94) is unchanged.
 """
 import argparse
 import csv
@@ -51,6 +55,8 @@ def sh(cmd):
 
 
 def idle_state():
+    if IDLE_MODE == "pbs":
+        return idle_state_pbs()
     me = os.getpid()
     anc, p_ = set(), me                                       # self and ancestors (the launching shell) are not "other"
     while p_ > 1:
@@ -80,13 +86,76 @@ def idle_state():
                 gpu_other=E.gpu_other(), other_py=";".join(py) or "none", runner=runner, top_cpu=top, load1=E.load1())
 
 
+IDLE_MODE = "u94"          # "u94" (E10 on ubuntu94, unchanged) or "pbs" (iREMB node shared by 2 GPUs)
+
+
+def _ancestors():
+    anc, p_ = set(), os.getpid()
+    while p_ > 1:
+        anc.add(str(p_))
+        try:
+            p_ = int(open(f"/proc/{p_}/stat").read().rsplit(")", 1)[1].split()[1])
+        except (OSError, ValueError, IndexError):
+            break
+    return anc
+
+
+def parse_gpu_apps(apps_csv, gpus_csv, users, me):
+    """nvidia-smi --query-compute-apps=pid,gpu_uuid,used_memory (csv,noheader,nounits) and
+    --query-gpu=index,uuid -> list of (gpu_index, pid, user, MiB) for every process except pid ``me``."""
+    idx = {}
+    for l in gpus_csv.splitlines():
+        q = [x.strip() for x in l.split(",")]
+        if len(q) >= 2:
+            idx[q[1]] = q[0]
+    out = []
+    for l in apps_csv.splitlines():
+        q = [x.strip() for x in l.split(",")]
+        if len(q) < 3 or not q[0].isdigit() or q[0] == me:
+            continue
+        out.append((idx.get(q[1], "?"), q[0], users.get(q[0], "?"), q[2]))
+    return out
+
+
+def idle_state_pbs():
+    dev = os.environ.get("CUDA_VISIBLE_DEVICES", "0").split(",")[0]
+    me, anc = str(os.getpid()), _ancestors()
+    q = sh(f"nvidia-smi -i {dev} --query-gpu=utilization.gpu,memory.used --format=csv,noheader,nounits").strip().split(",")
+    users = {}
+    for line in sh("ps -eo pid=,user=").splitlines():
+        p = line.split()
+        if len(p) == 2:
+            users[p[0]] = p[1]
+    apps = parse_gpu_apps(sh("nvidia-smi --query-compute-apps=pid,gpu_uuid,used_memory --format=csv,noheader,nounits"),
+                          sh("nvidia-smi --query-gpu=index,uuid --format=csv,noheader"), users, me)
+    myuser = users.get(me, os.environ.get("USER", ""))
+    py = []
+    for line in sh("ps -eo pid=,user=,comm=").splitlines():
+        p = line.split()
+        if len(p) == 3 and p[0] not in anc and p[1] == myuser and p[2].startswith("python"):
+            py.append(p[0])
+    top = sh("top -b -n1 -o %CPU | sed -n 8,10p").splitlines()
+    top = ";".join("/".join(t.split()[i] for i in (0, 1, 8, 11)) for t in top if len(t.split()) >= 12)
+    return dict(gpu_util=q[0].strip() if q else "", gpu_mem=q[1].strip() if len(q) > 1 else "",
+                gpu_other=";".join(f"gpu{g}:{p}/{u}/{m}" for g, p, u, m in apps) or "none",
+                other_py=";".join(py) or "none", runner=0, top_cpu=top, load1=E.load1())
+
+
+def is_idle(s):
+    if IDLE_MODE == "pbs":
+        dev = os.environ.get("CUDA_VISIBLE_DEVICES", "0").split(",")[0]
+        mine = [x for x in s["gpu_other"].split(";") if x.startswith(f"gpu{dev}:")]
+        return s["other_py"] == "none" and not mine
+    return s["other_py"] == "none" and s["runner"] == 0 and s["gpu_other"] == "none"
+
+
 def wait_idle(log_every=600):
     t0 = time.time()
     last = -1e9
     while True:
         time.sleep(2)                    # let nvidia-smi's utilization window drop our own previous run
         s = idle_state()
-        if s["other_py"] == "none" and s["runner"] == 0 and s["gpu_other"] == "none":
+        if is_idle(s):
             return s
         if time.time() - last > log_every:
             print(f"{dt.datetime.now().isoformat(timespec='seconds')} waiting for idle "
@@ -109,7 +178,10 @@ def main():
     ap.add_argument("--seed_tag", default="e10", help="smoke runs use another tag so their seeds differ")
     ap.add_argument("--out", default=os.path.join(ROOT, "bench/results/b_e10_u94.csv"))
     ap.add_argument("--raw", default=os.path.join(ROOT, "bench/results/b_e10_raw"))
+    ap.add_argument("--idle", choices=["u94", "pbs"], default="u94", help="idle check (pbs: iREMB 2-GPU node)")
     a = ap.parse_args()
+    global IDLE_MODE
+    IDLE_MODE = a.idle
     S.IMPL = "v2"
     cfg = E.configs(a.groups)
     todo = E.partition(cfg, 0, 1, 2000, [10, 100])

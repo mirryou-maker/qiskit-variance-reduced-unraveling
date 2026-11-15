@@ -1,0 +1,33 @@
+POST HOC decomposition of E11 Q2 (A20k, all TN observables of each configuration); W_multi = P_F * G_tab
+
+== ad: 25 configurations; |O_k| distribution {1: 6, 2: 7, 3: 3, 4: 9}
+  all       W_multi  configs 25  median 1.339 [1.183, 1.767]  >1 23/25
+  all       P_F      configs 25  median 1.093 [1.000, 1.671]  >1 15/25
+  all       G_tab    configs 25  median 1.037 [0.806, 1.406]  >1 13/25
+  |O_k|=1   W_multi  configs  6  median 2.511 [0.869, 2.888]  >1 5/6
+  |O_k|=1   P_F      configs  6  median 1.000 [1.000, 1.000]  >1 0/6
+  |O_k|=1   G_tab    configs  6  median 2.511 [0.869, 2.888]  >1 5/6
+  |O_k|>=2  W_multi  configs 19  median 1.322 [1.153, 1.464]  >1 18/19
+  |O_k|>=2  P_F      configs 19  median 1.526 [1.027, 1.719]  >1 15/19
+  |O_k|>=2  G_tab    configs 19  median 0.864 [0.766, 1.184]  >1 8/19
+  |O_k|=4   W_multi  configs  9  median 1.322 [1.059, 1.784]  >1 8/9
+  |O_k|=4   P_F      configs  9  median 1.714 [1.526, 2.341]  >1 9/9
+  |O_k|=4   G_tab    configs  9  median 0.771 [0.673, 0.864]  >1 1/9
+  |O_k|>=2: configs where the per-observable oracles differ (n_distinct_bf > 1): 15/19; median log P_F / log W_multi over configs with W_multi > 1: 1.478
+  per observable (groups 65): multi_W1_bf median 1.138 [0.961, 1.278] (B 2000, new draw); single_W_bf median 1.315
+
+== deph: 12 configurations; |O_k| distribution {1: 3, 2: 4, 3: 1, 4: 4}
+  all       W_multi  configs 12  median 1.076 [0.931, 1.280]  >1 8/12
+  all       P_F      configs 12  median 1.119 [1.000, 1.193]  >1 8/12
+  all       G_tab    configs 12  median 0.973 [0.819, 1.217]  >1 4/12
+  |O_k|=1   W_multi  configs  3  median 1.433 [1.064, 1.685]  >1 3/3
+  |O_k|=1   P_F      configs  3  median 1.000 [1.000, 1.000]  >1 0/3
+  |O_k|=1   G_tab    configs  3  median 1.433 [1.064, 1.685]  >1 3/3
+  |O_k|>=2  W_multi  configs  9  median 1.001 [0.875, 1.126]  >1 5/9
+  |O_k|>=2  P_F      configs  9  median 1.150 [1.018, 1.233]  >1 8/9
+  |O_k|>=2  G_tab    configs  9  median 0.883 [0.761, 0.991]  >1 1/9
+  |O_k|=4   W_multi  configs  4  median 0.998 [0.707, 1.142]  >1 2/4
+  |O_k|=4   P_F      configs  4  median 1.171 [1.130, 1.392]  >1 4/4
+  |O_k|=4   G_tab    configs  4  median 0.791 [0.593, 0.991]  >1 0/4
+  |O_k|>=2: configs where the per-observable oracles differ (n_distinct_bf > 1): 8/9; median log P_F / log W_multi over configs with W_multi > 1: 1.196
+  per observable (groups 30): multi_W1_bf median 0.983 [0.948, 1.052] (B 2000, new draw); single_W_bf median 1.047

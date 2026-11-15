@@ -1,0 +1,61 @@
+POST HOC family / instance split of the static-table gain (98.75% percentile bootstrap; [groups or configs] {config cluster})
+
+== by family ==
+  E10     pilot_W_bf   ad   family =all       groups  62 (configs 26) median 1.374 [1.207, 1.570] {cluster 1.110, 1.605}  >1 52/62
+  E10     pilot_W_bf   ad   family =brickwork groups  38 (configs 16) median 1.623 [1.439, 2.144] {cluster 1.444, 2.282}  >1 37/38
+  E10     pilot_W_bf   ad   family =ising     groups  24 (configs 10) median 1.048 [0.932, 1.163] {cluster 0.965, 1.163}  >1 15/24
+  E10     pilot_W_bf   deph family =all       groups  36 (configs 11) median 1.003 [0.883, 1.081] {cluster 0.871, 1.185}  >1 18/36
+  E10     pilot_W_bf   deph family =brickwork groups  36 (configs 11) median 1.003 [0.904, 1.079] {cluster 0.871, 1.167}  >1 18/36
+  E10     ideal_W_bf   ad   family =all       groups  62 (configs 26) median 1.292 [0.956, 1.444] {cluster 0.904, 1.486}  >1 39/62
+  E10     ideal_W_bf   ad   family =brickwork groups  38 (configs 16) median 1.490 [1.331, 1.962] {cluster 1.332, 2.015}  >1 35/38
+  E10     ideal_W_bf   ad   family =ising     groups  24 (configs 10) median 0.768 [0.655, 0.904] {cluster 0.684, 0.896}  >1 4/24
+  E10     ideal_W_bf   deph family =all       groups  36 (configs 11) median 0.925 [0.798, 1.047] {cluster 0.786, 1.118}  >1 14/36
+  E10     ideal_W_bf   deph family =brickwork groups  36 (configs 11) median 0.925 [0.798, 1.047] {cluster 0.786, 1.118}  >1 14/36
+  E11Q1   single_W_bf  ad   family =all       groups  65 (configs 25) median 1.315 [1.153, 1.478] {cluster 1.136, 1.483}  >1 57/65
+  E11Q1   single_W_bf  ad   family =brickwork groups  31 (configs 13) median 1.604 [1.416, 1.943] {cluster 1.478, 1.943}  >1 31/31
+  E11Q1   single_W_bf  ad   family =ising     groups  34 (configs 12) median 1.087 [1.027, 1.258] {cluster 1.052, 1.193}  >1 26/34
+  E11Q1   single_W_bf  deph family =all       groups  30 (configs 12) median 1.047 [0.861, 1.135] {cluster 0.841, 1.216}  >1 17/30
+  E11Q1   single_W_bf  deph family =brickwork groups  30 (configs 12) median 1.047 [0.862, 1.135] {cluster 0.846, 1.216}  >1 17/30
+  E11Q2   W_multi      ad   family =all       configs  25 (configs 25) median 1.339 [1.183, 1.767]  >1 23/25
+  E11Q2   W_multi      ad   family =brickwork configs  13 (configs 13) median 1.406 [1.183, 2.430]  >1 13/13
+  E11Q2   W_multi      ad   family =ising     configs  12 (configs 12) median 1.312 [1.048, 2.043]  >1 10/12
+  E11Q2   W_multi      deph family =all       configs  12 (configs 12) median 1.076 [0.970, 1.280]  >1 8/12
+  E11Q2   W_multi      deph family =brickwork configs  12 (configs 12) median 1.076 [0.938, 1.277]  >1 8/12
+
+== by variant ==
+  E10     pilot_W_bf   ad   variant=all       groups  62 (configs 26) median 1.374 [1.207, 1.572] {cluster 1.110, 1.622}  >1 52/62
+  E10     pilot_W_bf   ad   variant=h0.7      groups   7 (configs  3) median 1.005 [0.668, 1.110] {cluster 0.921, 1.060}  >1 4/7
+  E10     pilot_W_bf   ad   variant=h1.4      groups  17 (configs  7) median 1.104 [0.932, 1.315] {cluster 0.990, 1.315}  >1 11/17
+  E10     pilot_W_bf   ad   variant=s7        groups  18 (configs  8) median 1.552 [1.349, 1.860] {cluster 1.349, 1.890}  >1 18/18
+  E10     pilot_W_bf   ad   variant=s8        groups  20 (configs  8) median 1.996 [1.444, 2.798] {cluster 1.490, 2.704}  >1 19/20
+  E10     pilot_W_bf   deph variant=all       groups  36 (configs 11) median 1.003 [0.891, 1.081] {cluster 0.875, 1.185}  >1 18/36
+  E10     pilot_W_bf   deph variant=s7        groups  16 (configs  5) median 1.079 [0.934, 1.357] {cluster 0.871, 1.357}  >1 12/16
+  E10     pilot_W_bf   deph variant=s8        groups  20 (configs  6) median 0.931 [0.759, 1.028] {cluster 0.786, 1.030}  >1 6/20
+  E10     ideal_W_bf   ad   variant=all       groups  62 (configs 26) median 1.292 [0.954, 1.461] {cluster 0.900, 1.486}  >1 39/62
+  E10     ideal_W_bf   ad   variant=h0.7      groups   7 (configs  3) median 0.750 [0.458, 0.870] {cluster 0.626, 0.810}  >1 0/7
+  E10     ideal_W_bf   ad   variant=h1.4      groups  17 (configs  7) median 0.785 [0.655, 0.963] {cluster 0.669, 1.046}  >1 4/17
+  E10     ideal_W_bf   ad   variant=s7        groups  18 (configs  8) median 1.485 [1.187, 1.727] {cluster 1.259, 1.715}  >1 16/18
+  E10     ideal_W_bf   ad   variant=s8        groups  20 (configs  8) median 1.752 [1.332, 2.558] {cluster 1.332, 3.026}  >1 19/20
+  E10     ideal_W_bf   deph variant=all       groups  36 (configs 11) median 0.925 [0.798, 1.050] {cluster 0.786, 1.095}  >1 14/36
+  E10     ideal_W_bf   deph variant=s7        groups  16 (configs  5) median 1.042 [0.826, 1.274] {cluster 0.786, 1.298}  >1 9/16
+  E10     ideal_W_bf   deph variant=s8        groups  20 (configs  6) median 0.848 [0.687, 0.994] {cluster 0.524, 0.960}  >1 5/20
+  E11Q1   single_W_bf  ad   variant=all       groups  65 (configs 25) median 1.315 [1.153, 1.475] {cluster 1.145, 1.506}  >1 57/65
+  E11Q1   single_W_bf  ad   variant=h1.0      groups  16 (configs  6) median 1.142 [0.983, 1.327] {cluster 1.064, 1.417}  >1 12/16
+  E11Q1   single_W_bf  ad   variant=h1.2      groups  18 (configs  6) median 1.066 [0.991, 1.315] {cluster 0.996, 1.309}  >1 14/18
+  E11Q1   single_W_bf  ad   variant=s10       groups  17 (configs  7) median 1.753 [1.444, 3.095] {cluster 1.604, 2.152}  >1 17/17
+  E11Q1   single_W_bf  ad   variant=s9        groups  14 (configs  6) median 1.480 [1.136, 2.155] {cluster 1.218, 2.125}  >1 14/14
+  E11Q1   single_W_bf  deph variant=all       groups  30 (configs 12) median 1.047 [0.861, 1.135] {cluster 0.850, 1.216}  >1 17/30
+  E11Q1   single_W_bf  deph variant=s10       groups  16 (configs  6) median 0.988 [0.832, 1.073] {cluster 0.819, 1.245}  >1 7/16
+  E11Q1   single_W_bf  deph variant=s9        groups  14 (configs  6) median 1.098 [0.848, 1.234] {cluster 0.823, 1.368}  >1 10/14
+  E11Q2   W_multi      ad   variant=all       configs  25 (configs 25) median 1.339 [1.183, 1.767]  >1 23/25
+  E11Q2   W_multi      ad   variant=h1.0      configs   6 (configs  6) median 1.342 [0.944, 2.888]  >1 5/6
+  E11Q2   W_multi      ad   variant=h1.2      configs   6 (configs  6) median 1.312 [0.869, 2.864]  >1 5/6
+  E11Q2   W_multi      ad   variant=s10       configs   7 (configs  7) median 1.339 [1.101, 2.920]  >1 7/7
+  E11Q2   W_multi      ad   variant=s9        configs   6 (configs  6) median 1.435 [1.078, 2.007]  >1 6/6
+  E11Q2   W_multi      deph variant=all       configs  12 (configs 12) median 1.076 [0.970, 1.280]  >1 8/12
+  E11Q2   W_multi      deph variant=s10       configs   6 (configs  6) median 1.107 [0.875, 1.685]  >1 4/6
+  E11Q2   W_multi      deph variant=s9        configs   6 (configs  6) median 1.033 [0.707, 1.433]  >1 4/6
+
+circuit instances per experiment (variant values):
+  E10: ['h0.7', 'h1.4', 's7', 's8'] (4 instances; families {'brickwork': 2, 'ising': 2})
+  E11: ['h1.0', 'h1.2', 's10', 's9'] (4 instances; families {'brickwork': 2, 'ising': 2})

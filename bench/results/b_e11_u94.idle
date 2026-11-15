@@ -1,0 +1,17 @@
+START main
+Fri Nov 13 12:44:15 PM KST 2026
+0 %, 5 MiB
+ 12:44:15 up 8 days, 23:52,  2 users,  load average: 0.02, 0.65, 1.22
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+   6709 cyyou     20   0  261.7g 157096  94676 S  33.3   0.5   1:11.19 Runner.+
+    379 root      20   0  102908  16472  13088 S   8.3   0.1      7,26 plymout+
+ 901874 cyyou     20   0   13820   6392   4260 R   8.3   0.0   0:00.02 top
+      1 root      20   0   27008  17412  10920 S   0.0   0.1   6:49.38 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.20 kthreadd
+root        5579  0.0  0.0  49444 29800 ?        Ss   Nov04   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root        5855  0.0  0.0 128712 32044 ?        Ssl  Nov04   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+cyyou     901858  0.0  0.0  10652  4600 ?        Ss   12:44   0:00 bash -c cd ~/work/qiskit-co && cat > e11_run.sh <<"EOF" #!/bin/bash source ~/miniforge3/etc/profile.d/conda.sh; conda activate qsim13 cd ~/work/qiskit-co R=bench/results { echo START main; date; nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader; nvidia-smi --query-compute-apps=pid,used_memory --format=csv,noheader; uptime; top -b -n1 -o %CPU | sed -n 7,12p; ps aux | grep -E "[p]ython|[R]unner.Worker"; } > $R/b_e11_u94.idle python bench/scripts/b_e11.py --order $R/b_e11_scope.txt --out $R/b_e11_u94.csv --raw $R/b_e11_raw { echo END main; date; nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader; uptime; } >> $R/b_e11_u94.idle echo MAINDONE EOF chmod +x e11_run.sh; setsid nohup ./e11_run.sh > bench/results/b_e11_u94.log 2>&1 < /dev/null & disown; sleep 3; date "+%F %T"; pgrep -af b_e11.py
+END main
+Sat Nov 14 04:49:56 PM KST 2026
+99 %, 5 MiB
+ 16:49:56 up 10 days,  3:57,  2 users,  load average: 1.13, 1.04, 1.01

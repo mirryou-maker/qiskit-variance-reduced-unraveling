@@ -1,0 +1,25 @@
+POST HOC: median static-table W_bf vs N_prod (one-time costs amortized over N_prod); 98.75% bootstrap
+  E10   pilot ad   N_prod   2000: groups 62 median W_bf 1.262 [1.107, 1.441]  median t_s/t_f 1.094
+  E10   pilot deph N_prod   2000: groups 36 median W_bf 0.918 [0.816, 0.996]  median t_s/t_f 1.097
+  E10   pilot ad   N_prod  20000: groups 62 median W_bf 1.374 [1.185, 1.571]  median t_s/t_f 1.009
+  E10   pilot deph N_prod  20000: groups 36 median W_bf 1.003 [0.903, 1.081]  median t_s/t_f 1.009
+  E10   pilot ad   N_prod 100000: groups 62 median W_bf 1.386 [1.218, 1.583]  median t_s/t_f 1.002
+  E10   pilot deph N_prod 100000: groups 36 median W_bf 1.012 [0.899, 1.089]  median t_s/t_f 1.001
+  E10   ideal ad   N_prod   2000: groups 62 median W_bf 1.284 [0.952, 1.472]  median t_s/t_f 1.007
+  E10   ideal deph N_prod   2000: groups 36 median W_bf 0.920 [0.794, 1.055]  median t_s/t_f 1.005
+  E10   ideal ad   N_prod  20000: groups 62 median W_bf 1.292 [0.954, 1.478]  median t_s/t_f 1.001
+  E10   ideal deph N_prod  20000: groups 36 median W_bf 0.925 [0.798, 1.047]  median t_s/t_f 1.000
+  E10   ideal ad   N_prod 100000: groups 62 median W_bf 1.292 [0.959, 1.445]  median t_s/t_f 1.000
+  E10   ideal deph N_prod 100000: groups 36 median W_bf 0.925 [0.798, 1.047]  median t_s/t_f 0.999
+  E11Q1 pilot ad   N_prod   2000: groups 65 median W_bf 1.214 [1.079, 1.354]  median t_s/t_f 1.087
+  E11Q1 pilot deph N_prod   2000: groups 30 median W_bf 0.954 [0.795, 1.034]  median t_s/t_f 1.104
+  E11Q1 pilot ad   N_prod  20000: groups 65 median W_bf 1.315 [1.172, 1.477]  median t_s/t_f 1.009
+  E11Q1 pilot deph N_prod  20000: groups 30 median W_bf 1.047 [0.863, 1.135]  median t_s/t_f 1.010
+  E11Q1 pilot ad   N_prod 100000: groups 65 median W_bf 1.323 [1.160, 1.488]  median t_s/t_f 1.002
+  E11Q1 pilot deph N_prod 100000: groups 30 median W_bf 1.056 [0.867, 1.145]  median t_s/t_f 1.002
+  E11Q2 multi ad   N_prod   2000: configs 25 median W_multi 1.147 [0.996, 1.534]
+  E11Q2 multi deph N_prod   2000: configs 12 median W_multi 0.909 [0.798, 1.118]
+  E11Q2 multi ad   N_prod  20000: configs 25 median W_multi 1.339 [1.183, 1.767]
+  E11Q2 multi deph N_prod  20000: configs 12 median W_multi 1.076 [0.931, 1.280]
+  E11Q2 multi ad   N_prod 100000: configs 25 median W_multi 1.364 [1.203, 1.791]
+  E11Q2 multi deph N_prod 100000: configs 12 median W_multi 1.090 [0.946, 1.298]

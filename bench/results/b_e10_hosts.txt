@@ -1,0 +1,14 @@
+groups: ubuntu94 98, V100 98, common 98
+t_f(best) V100 / u94: median 0.359
+
+Per channel x table, all groups: median W_bf [98.75% group] (u94 | V100); R_bf; t_s/t_f; per-group W_V100/W_u94 [98.75%]; same best fixed; table identical across hosts
+  pilot ad   W_bf 1.374 [1.207, 1.572] | 1.364 [1.198, 1.560] {1.105, 1.572}; R_bf 1.388 | 1.388; t_s/t_f 1.009 | 1.016; W_V/W_u 0.993 [0.992, 0.993]; same best 1.000; table identical 62/62 (mean entry agreement 1.0000)
+  pilot deph W_bf 1.003 [0.889, 1.079] | 0.995 [0.882, 1.070] {0.864, 1.174}; R_bf 1.014 | 1.014; t_s/t_f 1.009 | 1.017; W_V/W_u 0.991 [0.991, 0.992]; same best 1.000; table identical 36/36 (mean entry agreement 1.0000)
+  ideal ad   W_bf 1.292 [0.949, 1.444] | 1.284 [0.943, 1.433] {0.890, 1.475}; R_bf 1.294 | 1.294; t_s/t_f 1.001 | 1.008; W_V/W_u 0.993 [0.993, 0.994]; same best 1.000; table identical 61/62 (mean entry agreement 1.0000)
+  ideal deph W_bf 0.925 [0.798, 1.047] | 0.918 [0.793, 1.038] {0.781, 1.096}; R_bf 0.925 | 0.925; t_s/t_f 1.000 | 1.007; W_V/W_u 0.993 [0.992, 0.993]; same best 1.000; table identical 36/36 (mean entry agreement 1.0000)
+
+REPLICATION RULE (pre-registered): E10's positive cell (ad, pilot) is replicated on V100 iff its V100 median W_bf > 1 with 98.75% group-bootstrap lower bound > 1 (decision-line draw, rng 7, as analyze_e10).
+  ad   pilot u94 median 1.374 lower 1.185 -> PASS; V100 median 1.364 lower 1.179 -> PASS  (agrees)
+  deph pilot u94 median 1.003 lower 0.896 -> fail; V100 median 0.995 lower 0.888 -> fail  (agrees)
+  ad   ideal u94 median 1.292 lower 0.954 -> fail; V100 median 1.284 lower 0.947 -> fail  (agrees)
+  deph ideal u94 median 0.925 lower 0.798 -> fail; V100 median 0.918 lower 0.793 -> fail  (agrees)

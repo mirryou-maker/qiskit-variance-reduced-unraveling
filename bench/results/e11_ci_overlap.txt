@@ -1,0 +1,25 @@
+E11 main-run ledger: 341 timed runs in 37 configurations, 2026-11-13 12:44:18.702400 .. 2026-11-14 16:49:56 (KST)
+CI Worker logs found: 1304; CI jobs intersecting the main-run period: 8
+  actions-runner-ssamm         Worker_20261113-042259-utc.log  2026-11-13 13:22:59 .. 2026-11-13 13:27:56
+  actions-runner-ssamm         Worker_20261113-051501-utc.log  2026-11-13 14:15:01 .. 2026-11-13 14:15:48
+  actions-runner-ssamm         Worker_20261113-055744-utc.log  2026-11-13 14:57:44 .. 2026-11-13 15:02:40
+  actions-runner-ssamm         Worker_20261113-060515-utc.log  2026-11-13 15:05:15 .. 2026-11-13 15:10:24
+  actions-runner-ssamm         Worker_20261113-085726-utc.log  2026-11-13 17:57:26 .. 2026-11-13 18:02:32
+  actions-runner-ssamm         Worker_20261114-050418-utc.log  2026-11-14 14:04:18 .. 2026-11-14 14:05:11
+  actions-runner-ssamm         Worker_20261114-051545-utc.log  2026-11-14 14:15:45 .. 2026-11-14 14:20:41
+  actions-runner-ssamm         Worker_20261114-061255-utc.log  2026-11-14 15:12:55 .. 2026-11-14 15:17:51
+
+timed runs with a CI job starting during the run: 8 of 341, in 6 configurations; runs intersecting a CI job at all: 8
+  diagnostic, window widened by 5 s: runs intersecting a CI job 9, in 6 configurations (same configurations: True)
+  ad ising h1.0 L16 gt0.03 single pilot     obs=zc  window 2026-11-13 13:19:42.648000 .. 2026-11-13 13:24:59  tau 0.14727 s, vs same-config reference runs +0.1608%
+  ad brickwork s10 L16 gt0.01 fixed  hom2.356  obs=zz  window 2026-11-13 14:13:48.305900 .. 2026-11-13 14:17:26  tau 0.10835 s, vs same-config reference runs +0.0162%
+  ad ising h1.0 L16 gt0.01 fixed  jump      obs=zc  window 2026-11-13 14:55:58.894100 .. 2026-11-13 15:00:55  tau 0.14755 s, vs same-config reference runs +0.2945%
+  ad ising h1.0 L16 gt0.01 fixed  hom0.000  obs=zc  window 2026-11-13 15:02:57.483500001 .. 2026-11-13 15:07:53  tau 0.14726 s, vs same-config reference runs +0.0942%
+  deph brickwork s10 L32 gt0.01 fixed  analog0.300 obs=zz  window 2026-11-13 17:56:05.851000 .. 2026-11-13 18:03:11  tau 0.21207 s, vs same-config reference runs +0.2856%
+  ad brickwork s9 L32 gt0.01 single pilot     obs=zz  window 2026-11-14 14:04:09.851600 .. 2026-11-14 14:11:57  tau 0.21099 s, vs same-config reference runs +0.0121%
+  ad brickwork s9 L32 gt0.01 multi  multi     obs=zz  window 2026-11-14 14:11:58.130400 .. 2026-11-14 14:20:36  tau 0.21141 s, vs same-config reference runs +0.2103%
+  ad brickwork s9 L8 gt0.03 single pilot     obs=zz  window 2026-11-14 15:10:50.097000 .. 2026-11-14 15:12:56  tau 0.05646 s, vs same-config reference runs -0.0121%
+
+POST HOC sensitivity, configurations with an overlapped run excluded:
+  ad   Q1 median single_W_bf 1.315 [1.099, 1.480] (51 groups, 20 configs);  Q2 median W_multi 1.328 [1.127, 1.662] (20 configs)
+  deph Q1 median single_W_bf 1.065 [0.863, 1.188] (26 groups, 11 configs);  Q2 median W_multi 1.088 [0.970, 1.433] (11 configs)

@@ -1,0 +1,34 @@
+(A) decision-line intervals (same draws as the pre-specified decision lines; 98.75%)
+  E10      pilot ad   groups 62: median 1.374 decision [1.185, 1.571]
+  E10      pilot deph groups 36: median 1.003 decision [0.896, 1.079]
+  E10      ideal ad   groups 62: median 1.292 decision [0.954, 1.429]
+  E10      ideal deph groups 36: median 0.925 decision [0.798, 1.042]
+  E10-V100 pilot ad   groups 62: median 1.364 decision [1.179, 1.560]
+  E10-V100 pilot deph groups 36: median 0.995 decision [0.888, 1.070]
+  E10-V100 ideal ad   groups 62: median 1.284 decision [0.947, 1.418]
+  E10-V100 ideal deph groups 36: median 0.918 decision [0.793, 1.034]
+  E11 Q1   pilot ad   groups 65: median 1.315 decision [1.162, 1.478]
+  E11 Q2   multi ad   configs 25: median 1.339 decision [1.183, 1.767]
+  E11 Q1   pilot deph groups 30: median 1.047 decision [0.863, 1.135]
+  E11 Q2   multi deph configs 12: median 1.076 decision [0.931, 1.280]
+
+(B) POST HOC family-wise: E10 ad pilot at 1 - 0.05/12 (12 cells: E9b 4, E9e 4, E10 4)
+  level 0.99583: median 1.374 [1.170, 1.605]
+  (same level, E11 Q1 ad, for comparison): median 1.315 [1.136, 1.483]
+
+(C) POST HOC PP practical weight on the 98 E9b/E10 groups
+  groups 98 (by channel {'ad': 62, 'deph': 36}); not TN at cap 1e7: 79 (by channel {'ad': 54, 'deph': 25}); TN at 1e7: 19
+  solved groups with an M* on the grid: 79/79; M* distribution {100.0: 1, 100000.0: 1, 1000000.0: 50, 3000000.0: 14, 10000000.0: 13}
+  t_PP(M*) + t_PP(partner) over t_traj20k, solved groups: median 1.137e-02 (1/88), IQR [5.332e-03, 2.310e-02], max 9.956e-01, < 1 in 79/79
+  TN@1e7 groups: classification cost t(1e7) + t(1e8) over t_traj20k: median 1.130e+00, max 1.304e+00 (19 groups)
+
+(D) POST HOC E11 selection: TN only through the |z| >= 4 clause
+  TN groups (non-deterministic) 100; converged PP differences but |z_pp1e6| >= 4: 3; of these in the 95 E11 groups run: 3
+    ad ising h1.0 L16 gt0.01 zc: z = -4.6, r_hard 11.02, run True
+    ad ising h1.0 L32 gt0.01 zc: z = -18.3, r_hard 7.01, run True
+    ad ising h1.0 L32 gt0.01 zz: z = -4.1, r_hard 4.84, run True
+
+(E) POST HOC hard proxy r > 10
+  E11 selected TN groups 100: hard 31; of the 95 run: hard 31 (ad 17, deph 14), not hard 64
+  E9b calibration, hard=False: groups 77, TN@1e7 8, not TN@1e7 69 (89.6%)
+  E9b calibration, hard=True: groups 21, TN@1e7 11, not TN@1e7 10 (47.6%)

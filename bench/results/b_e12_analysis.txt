@@ -1,0 +1,31 @@
+E12 analysis of /scratch/cyyou68/qiskit-co/bench/results/b_e12_v100.csv
+groups 98 (configs 37), rows 490 -> /scratch/cyyou68/qiskit-co/bench/results/b_e12_summary.csv
+identity check: min match 1.00000; groups < 0.99: 0
+idle record: gpu_other ['none']; other_py ['none']; gpu_util max 0.0 %; load1 max 1.77
+bias |z| vs E9b best-fixed mean: max 3.06, n(|z|>4) 0 of 490
+
+SENSITIVITY (not a decision test). Median over groups [98.75% group bootstrap] {98.75% config-cluster}
+  ad   p37_M100   groups 62  W_bf 1.405 [1.186, 1.533] {1.089, 1.584}  R_bf 1.426 [1.183, 1.569] {1.127, 1.631}  W/W_ref 1.002 [0.971, 1.023]  t_s/t_f 1.013 build_s 4.44 bp_s 2.74 nonstd 0.727 agree_ref 0.855
+  ad   p74_M100   groups 62  W_bf 1.383 [1.171, 1.553] {1.129, 1.607}  R_bf 1.404 [1.198, 1.583] {1.144, 1.640}  W/W_ref 1.000 [1.000, 1.000]  t_s/t_f 1.020 build_s 8.96 bp_s 2.74 nonstd 0.731 agree_ref 1.000
+  ad   p296_M100  groups 62  W_bf 1.337 [1.180, 1.491] {1.109, 1.509}  R_bf 1.430 [1.254, 1.604] {1.152, 1.615}  W/W_ref 0.983 [0.953, 1.012]  t_s/t_f 1.059 build_s 37.17 bp_s 2.74 nonstd 0.728 agree_ref 0.863
+  ad   p74_M10    groups 62  W_bf 0.889 [0.822, 1.012] {0.807, 0.988}  R_bf 0.899 [0.831, 1.000] {0.817, 0.991}  W/W_ref 0.644 [0.581, 0.754]  t_s/t_f 1.012 build_s 4.40 bp_s 2.48 nonstd 0.522 agree_ref 0.352
+  ad   p74_M1000  groups 62  W_bf 1.775 [1.380, 2.088] {1.286, 2.137}  R_bf 1.928 [1.435, 2.241] {1.352, 2.328}  W/W_ref 1.215 [1.147, 1.357]  t_s/t_f 1.059 build_s 41.66 bp_s 3.20 nonstd 0.750 agree_ref 0.519
+  deph p37_M100   groups 36  W_bf 1.005 [0.862, 1.105] {0.858, 1.172}  R_bf 1.018 [0.871, 1.119] {0.869, 1.188}  W/W_ref 1.011 [0.977, 1.037]  t_s/t_f 1.012 build_s 3.68 bp_s 2.03 nonstd 0.210 agree_ref 0.963
+  deph p74_M100   groups 36  W_bf 1.022 [0.851, 1.053] {0.845, 1.222}  R_bf 1.044 [0.867, 1.074] {0.864, 1.229}  W/W_ref 1.000 [1.000, 1.000]  t_s/t_f 1.019 build_s 7.40 bp_s 2.03 nonstd 0.209 agree_ref 1.000
+  deph p296_M100  groups 36  W_bf 0.973 [0.837, 1.016] {0.815, 1.141}  R_bf 1.036 [0.886, 1.086] {0.858, 1.197}  W/W_ref 0.958 [0.927, 0.983]  t_s/t_f 1.063 build_s 30.45 bp_s 2.03 nonstd 0.209 agree_ref 0.963
+  deph p74_M10    groups 36  W_bf 0.829 [0.762, 0.924] {0.757, 0.962}  R_bf 0.838 [0.772, 0.935] {0.763, 0.975}  W/W_ref 0.871 [0.799, 0.931]  t_s/t_f 1.012 build_s 4.08 bp_s 1.98 nonstd 0.138 agree_ref 0.770
+  deph p74_M1000  groups 36  W_bf 1.070 [0.992, 1.314] {0.966, 1.641}  R_bf 1.146 [1.073, 1.392] {1.041, 1.682}  W/W_ref 1.111 [1.046, 1.282]  t_s/t_f 1.072 build_s 37.19 bp_s 2.35 nonstd 0.260 agree_ref 0.757
+
+== breakdown (POST HOC): median W_bf by L ==
+L                     4      8      16     32
+channel setting                              
+ad      p296_M100  3.087  1.730  1.328  1.188
+        p37_M100   3.176  1.707  1.388  1.135
+        p74_M10    1.077  0.874  0.913  0.834
+        p74_M100   3.200  1.833  1.356  1.171
+        p74_M1000  6.333  2.715  1.561  1.279
+deph    p296_M100    NaN  1.126  0.984  0.798
+        p37_M100     NaN  1.186  1.058  0.815
+        p74_M10      NaN  0.860  0.866  0.741
+        p74_M100     NaN  1.155  1.031  0.831
+        p74_M1000    NaN  1.605  1.070  0.931

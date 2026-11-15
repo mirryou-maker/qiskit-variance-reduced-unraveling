@@ -1,0 +1,14 @@
+reproduction of b_e9a_summary.csv by classify(): 1152 groups compared, mismatches 0
+fresh groups 384 (deterministic 24); non-deterministic TN 100/360 = 27.8%; gpu_other ['none']
+                           sum  count
+channel family    variant            
+ad      brickwork s10       17     48
+                  s9        14     48
+        ising     h1.0      16     48
+                  h1.2      20     48
+deph    brickwork s10       19     48
+                  s9        14     48
+        ising     h1.0       0     36
+                  h1.2       0     36
+-> b_e11_groups.csv: 100 groups, 40 configs (by channel {'ad': 67, 'deph': 33}, configs {'ad': 27, 'deph': 13}); hard (r > 10.0) 31
+all-z |PP_1e6 - traj| >= 4 among TN: 11

@@ -1,0 +1,96 @@
+E11 analysis of bench/results/b_e11_smoke.csv: configs 2 ({'ad': 1, 'deph': 1}), groups 5
+idle record: gpu_other ['none']; other_py ['none']; runner max 0; gpu_util max 0.0 %; gpu_mem max 1990.0 MiB; load1 max 2.72
+bias |z| vs best-fixed mean (single, target observables): max 2.36, n(|z|>4) 0
+bias |z| vs best-fixed mean (multi, target observables): max 0.73, n(|z|>4) 0
+bias |z| over ALL 4 observables of every static run: max 2.41, n(|z|>4) 0 of 28
+single: t_s/t_f(best) median 1.009; build_s median 10.75 s; bp_s median 0.42 s; non-std median 0.569; table = best fixed median 0.250
+
+######## Q1 (single-target E10 pilot table vs oracle best fixed, per target observable)
+median [98.75% group bootstrap] {98.75% config-cluster}; per-group 95% CI>1 / CI<1 counts
+
+== subset all (5 groups) ==
+  ad   single_W_bf    groups   2  1.982 [1.314, 2.649] {nan, nan}  >1 2/2  CI>1 2 CI<1 0
+  ad   single_R_bf    groups   2  2.002 [1.330, 2.675] {nan, nan}  >1 2/2
+  ad   single_W_std   groups   2  2.558 [2.468, 2.649] {nan, nan}  >1 2/2  CI>1 2 CI<1 0
+  ad   multi_W1_bf    groups   2  1.757 [1.346, 2.167] {nan, nan}  >1 2/2
+  ad   multi_R_bf     groups   2  1.790 [1.372, 2.208] {nan, nan}  >1 2/2
+  deph single_W_bf    groups   3  1.464 [1.221, 1.722] {nan, nan}  >1 3/3  CI>1 2 CI<1 0
+  deph single_R_bf    groups   3  1.477 [1.230, 1.732] {nan, nan}  >1 3/3
+  deph single_W_std   groups   3  1.478 [1.441, 1.722] {nan, nan}  >1 3/3  CI>1 3 CI<1 0
+  deph multi_W1_bf    groups   3  1.175 [0.948, 1.433] {nan, nan}  >1 2/3
+  deph multi_R_bf     groups   3  1.197 [0.964, 1.457] {nan, nan}  >1 2/3
+
+== subset hard (0 groups) ==
+
+== Q1 breakdown (POST HOC): median single_W_bf ==
+family   brickwork
+channel           
+ad           1.982
+deph         1.464
+variant     s7
+channel       
+ad       1.982
+deph     1.464
+L            8
+channel       
+ad       1.982
+deph     1.464
+gt        0.01   0.03
+channel              
+ad       1.982    NaN
+deph       NaN  1.464
+obs          x     xc     zc     zz
+channel                            
+ad       2.649    NaN    NaN  1.314
+deph     1.464  1.722  1.221    NaN
+
+######## Q2 (multi-target table, one run for all observables of the config)
+multi table: tau/t_std median 1.000; build_s median 18.91 s; bp_s median 1.16 s; non-std median 0.681; |O_k| distribution {2: 1, 3: 1}
+
+== eps=A20k subset=all
+  ad   W_multi   configs  1  1.825 [1.825, 1.825]  >1 1/1
+  ad   W_F1_S1   configs  1  1.189 [1.189, 1.189]  >1 1/1
+  ad   W_S1_Sm   configs  1  1.535 [1.535, 1.535]  >1 1/1
+  ad   W_F2_Sm   configs  1  2.676 [2.676, 2.676]  >1 1/1
+  ad   W_F3_Sm   configs  1  1.825 [1.825, 1.825]  >1 1/1
+  ad   W_F1_Smp  configs  1  1.836 [1.836, 1.836]  >1 1/1
+  deph W_multi   configs  1  1.119 [1.119, 1.119]  >1 1/1
+  deph W_F1_S1   configs  1  0.564 [0.564, 0.564]  >1 0/1
+  deph W_S1_Sm   configs  1  1.983 [1.983, 1.983]  >1 1/1
+  deph W_F2_Sm   configs  1  2.845 [2.845, 2.845]  >1 1/1
+  deph W_F3_Sm   configs  1  1.119 [1.119, 1.119]  >1 1/1
+  deph W_F1_Smp  configs  1  1.118 [1.118, 1.118]  >1 1/1
+
+== eps=A100k subset=all
+  ad   W_multi   configs  1  1.859 [1.859, 1.859]  >1 1/1
+  ad   W_F1_S1   configs  1  1.206 [1.206, 1.206]  >1 1/1
+  ad   W_S1_Sm   configs  1  1.541 [1.541, 1.541]  >1 1/1
+  ad   W_F2_Sm   configs  1  2.726 [2.726, 2.726]  >1 1/1
+  ad   W_F3_Sm   configs  1  1.859 [1.859, 1.859]  >1 1/1
+  ad   W_F1_Smp  configs  1  1.836 [1.836, 1.836]  >1 1/1
+  deph W_multi   configs  1  1.135 [1.135, 1.135]  >1 1/1
+  deph W_F1_S1   configs  1  0.570 [0.570, 0.570]  >1 0/1
+  deph W_S1_Sm   configs  1  1.991 [1.991, 1.991]  >1 1/1
+  deph W_F2_Sm   configs  1  2.885 [2.885, 2.885]  >1 1/1
+  deph W_F3_Sm   configs  1  1.135 [1.135, 1.135]  >1 1/1
+  deph W_F1_Smp  configs  1  1.118 [1.118, 1.118]  >1 1/1
+
+== eps=Brel subset=all (observables excluded, unresolved mean: 0)
+  ad   W_multi   configs  1  2.124 [2.124, 2.124]  >1 1/1
+  ad   W_F1_S1   configs  1  1.773 [1.773, 1.773]  >1 1/1
+  ad   W_S1_Sm   configs  1  1.198 [1.198, 1.198]  >1 1/1
+  ad   W_F2_Sm   configs  1  2.601 [2.601, 2.601]  >1 1/1
+  ad   W_F3_Sm   configs  1  2.124 [2.124, 2.124]  >1 1/1
+  ad   W_F1_Smp  configs  1  2.167 [2.167, 2.167]  >1 1/1
+  deph W_multi   configs  1  1.182 [1.182, 1.182]  >1 1/1
+  deph W_F1_S1   configs  1  0.617 [0.617, 0.617]  >1 0/1
+  deph W_S1_Sm   configs  1  1.917 [1.917, 1.917]  >1 1/1
+  deph W_F2_Sm   configs  1  2.832 [2.832, 2.832]  >1 1/1
+  deph W_F3_Sm   configs  1  1.182 [1.182, 1.182]  >1 1/1
+  deph W_F1_Smp  configs  1  1.186 [1.186, 1.186]  >1 1/1
+
+######## DECISIONS (pre-registered; 98.75% = Bonferroni over 4 tests; ad primary, deph secondary)
+  Q1 ad  : median W_bf 1.982 [1.314, 2.649] groups 2 -> REPLICATED (median > 1, lower > 1)
+  Q2 ad  : median W_multi 1.825 [1.825, 1.825] configs 1 -> PASS (multi-target table beats one oracle fixed run on all observables)
+  Q1 deph: median W_bf 1.464 [1.221, 1.722] groups 3 -> REPLICATED (median > 1, lower > 1)
+  Q2 deph: median W_multi 1.119 [1.119, 1.119] configs 1 -> PASS (multi-target table beats one oracle fixed run on all observables)

@@ -1,0 +1,148 @@
+E11 analysis of /home/cyyou/work/qiskit-co/bench/results/b_e11_u94.csv: configs 37 ({'ad': 25, 'deph': 12}), groups 95
+idle record: gpu_other ['none']; other_py ['none']; runner max 0; gpu_util max 0.0 %; gpu_mem max 1990.0 MiB; load1 max 3.4
+bias |z| vs best-fixed mean (single, target observables): max 2.38, n(|z|>4) 0
+bias |z| vs best-fixed mean (multi, target observables): max 3.01, n(|z|>4) 0
+bias |z| over ALL 4 observables of every static run: max 3.01, n(|z|>4) 0 of 528
+single: t_s/t_f(best) median 1.009; build_s median 22.60 s; bp_s median 1.54 s; non-std median 0.689; table = best fixed median 0.338
+
+######## Q1 (single-target E10 pilot table vs oracle best fixed, per target observable)
+median [98.75% group bootstrap] {98.75% config-cluster}; per-group 95% CI>1 / CI<1 counts
+
+== subset all (95 groups) ==
+  ad   single_W_bf    groups  65  1.315 [1.153, 1.475] {1.136, 1.483}  >1 57/65  CI>1 47 CI<1 2
+  ad   single_R_bf    groups  65  1.325 [1.162, 1.492] {1.149, 1.499}  >1 57/65
+  ad   single_W_std   groups  65  2.251 [1.819, 3.266] {1.753, 3.355}  >1 65/65  CI>1 64 CI<1 0
+  ad   multi_W1_bf    groups  65  1.138 [0.939, 1.243] {0.939, 1.359}  >1 38/65
+  ad   multi_R_bf     groups  65  1.171 [0.982, 1.282] {0.960, 1.394}  >1 40/65
+  deph single_W_bf    groups  30  1.047 [0.861, 1.135] {0.854, 1.216}  >1 17/30  CI>1 10 CI<1 11
+  deph single_R_bf    groups  30  1.058 [0.870, 1.154] {0.856, 1.242}  >1 18/30
+  deph single_W_std   groups  30  1.085 [0.963, 1.231] {0.928, 1.281}  >1 20/30  CI>1 14 CI<1 7
+  deph multi_W1_bf    groups  30  0.983 [0.948, 1.054] {0.948, 1.065}  >1 12/30
+  deph multi_R_bf     groups  30  1.011 [0.973, 1.072] {0.975, 1.076}  >1 17/30
+
+== subset hard (31 groups) ==
+  ad   single_W_bf    groups  17  1.806 [1.325, 1.978] {1.467, 2.330}  >1 15/17  CI>1 14 CI<1 1
+  ad   single_R_bf    groups  17  1.821 [1.482, 2.875] {1.482, 2.419}  >1 15/17
+  ad   single_W_std   groups  17  2.115 [1.506, 4.290] {1.847, 4.290}  >1 17/17  CI>1 16 CI<1 0
+  ad   multi_W1_bf    groups  17  1.228 [0.910, 1.703] {1.076, 1.703}  >1 13/17
+  ad   multi_R_bf     groups  17  1.264 [1.164, 1.575] {1.047, 2.069}  >1 13/17
+  deph single_W_bf    groups  14  0.932 [0.771, 1.116] {0.782, 1.234}  >1 6/14  CI>1 3 CI<1 7
+  deph single_R_bf    groups  14  0.942 [0.778, 1.129] {0.789, 1.247}  >1 7/14
+  deph single_W_std   groups  14  1.071 [0.884, 1.202] {0.879, 1.245}  >1 8/14  CI>1 5 CI<1 4
+  deph multi_W1_bf    groups  14  0.977 [0.786, 0.997] {0.776, 0.997}  >1 3/14
+  deph multi_R_bf     groups  14  0.999 [0.809, 1.021] {0.788, 1.021}  >1 7/14
+
+== Q1 breakdown (POST HOC): median single_W_bf ==
+family   brickwork  ising
+channel                  
+ad           1.604  1.087
+deph         1.047    NaN
+variant   h1.0   h1.2    s10     s9
+channel                            
+ad       1.142  1.066  1.753  1.480
+deph       NaN    NaN  0.988  1.098
+L           4      8      16     32
+channel                            
+ad       2.415  1.684  1.265  1.133
+deph     1.511  1.234  1.062  0.821
+gt        0.01   0.03   0.10
+channel                     
+ad       1.832  1.182  1.075
+deph     1.044  1.047    NaN
+obs          x     xc     zc     zz
+channel                            
+ad       1.136  1.302  1.604  1.384
+deph     1.056  0.911  0.840  1.135
+
+######## Q2 (multi-target table, one run for all observables of the config)
+multi table: tau/t_std median 1.000; build_s median 42.16 s; bp_s median 2.39 s; non-std median 0.719; |O_k| distribution {1: 9, 2: 11, 3: 4, 4: 13}
+
+== eps=A20k subset=all
+  ad   W_multi   configs 25  1.339 [1.183, 1.767]  >1 23/25
+  ad   W_F1_S1   configs 25  0.751 [0.585, 0.972]  >1 6/25
+  ad   W_S1_Sm   configs 25  1.767 [1.463, 2.430]  >1 22/25
+  ad   W_F2_Sm   configs 25  2.813 [2.430, 3.085]  >1 24/25
+  ad   W_F3_Sm   configs 25  1.339 [1.183, 1.583]  >1 23/25
+  ad   W_F1_Smp  configs 25  1.347 [1.187, 1.758]  >1 23/25
+  deph W_multi   configs 12  1.076 [0.931, 1.280]  >1 8/12
+  deph W_F1_S1   configs 12  0.480 [0.288, 1.122]  >1 3/12
+  deph W_S1_Sm   configs 12  2.123 [1.052, 3.469]  >1 11/12
+  deph W_F2_Sm   configs 12  1.978 [1.685, 3.044]  >1 12/12
+  deph W_F3_Sm   configs 12  1.076 [0.931, 1.280]  >1 8/12
+  deph W_F1_Smp  configs 12  1.075 [0.928, 1.283]  >1 8/12
+
+== eps=A20k subset=hard_r
+  ad   W_multi   configs 10  1.421 [0.911, 2.392]  >1 8/10
+  ad   W_F1_S1   configs 10  1.251 [0.813, 2.605]  >1 6/10
+  ad   W_S1_Sm   configs 10  0.989 [0.825, 1.694]  >1 5/10
+  ad   W_F2_Sm   configs 10  2.243 [0.911, 2.888]  >1 8/10
+  ad   W_F3_Sm   configs 10  1.421 [0.911, 2.392]  >1 8/10
+  ad   W_F1_Smp  configs 10  1.434 [0.910, 2.418]  >1 8/10
+  deph W_multi   configs  6  0.996 [0.651, 1.142]  >1 3/6
+  deph W_F1_S1   configs  6  0.519 [0.258, 1.157]  >1 2/6
+  deph W_S1_Sm   configs  6  2.050 [0.865, 3.505]  >1 4/6
+  deph W_F2_Sm   configs  6  1.866 [0.991, 3.281]  >1 5/6
+  deph W_F3_Sm   configs  6  0.996 [0.651, 1.142]  >1 3/6
+  deph W_F1_Smp  configs  6  0.997 [0.643, 1.137]  >1 3/6
+
+== eps=A100k subset=all
+  ad   W_multi   configs 25  1.364 [1.203, 1.791]  >1 23/25
+  ad   W_F1_S1   configs 25  0.761 [0.589, 0.978]  >1 6/25
+  ad   W_S1_Sm   configs 25  1.772 [1.463, 2.455]  >1 22/25
+  ad   W_F2_Sm   configs 25  2.870 [2.477, 3.127]  >1 24/25
+  ad   W_F3_Sm   configs 25  1.364 [1.203, 1.613]  >1 23/25
+  ad   W_F1_Smp  configs 25  1.347 [1.187, 1.758]  >1 23/25
+  deph W_multi   configs 12  1.090 [0.946, 1.298]  >1 9/12
+  deph W_F1_S1   configs 12  0.485 [0.290, 1.133]  >1 3/12
+  deph W_S1_Sm   configs 12  2.134 [1.052, 3.518]  >1 11/12
+  deph W_F2_Sm   configs 12  2.006 [1.707, 3.098]  >1 12/12
+  deph W_F3_Sm   configs 12  1.090 [0.946, 1.298]  >1 9/12
+  deph W_F1_Smp  configs 12  1.075 [0.928, 1.283]  >1 8/12
+
+== eps=A100k subset=hard_r
+  ad   W_multi   configs 10  1.456 [0.926, 2.443]  >1 8/10
+  ad   W_F1_S1   configs 10  1.265 [0.822, 2.655]  >1 6/10
+  ad   W_S1_Sm   configs 10  0.994 [0.836, 1.704]  >1 5/10
+  ad   W_F2_Sm   configs 10  2.279 [0.926, 2.941]  >1 8/10
+  ad   W_F3_Sm   configs 10  1.456 [0.926, 2.443]  >1 8/10
+  ad   W_F1_Smp  configs 10  1.434 [0.910, 2.418]  >1 8/10
+  deph W_multi   configs  6  1.015 [0.660, 1.164]  >1 4/6
+  deph W_F1_S1   configs  6  0.524 [0.260, 1.169]  >1 2/6
+  deph W_S1_Sm   configs  6  2.063 [0.869, 3.545]  >1 4/6
+  deph W_F2_Sm   configs  6  1.892 [1.015, 3.344]  >1 6/6
+  deph W_F3_Sm   configs  6  1.015 [0.660, 1.164]  >1 4/6
+  deph W_F1_Smp  configs  6  0.997 [0.643, 1.137]  >1 3/6
+
+== eps=Brel subset=all (observables excluded, unresolved mean: 5)
+  ad   W_multi   configs 24  1.335 [1.184, 1.520]  >1 22/24
+  ad   W_F1_S1   configs 24  1.178 [0.937, 1.571]  >1 16/24
+  ad   W_S1_Sm   configs 24  1.115 [0.952, 1.386]  >1 16/24
+  ad   W_F2_Sm   configs 24  1.909 [1.533, 2.081]  >1 22/24
+  ad   W_F3_Sm   configs 24  1.335 [1.184, 1.520]  >1 22/24
+  ad   W_F1_Smp  configs 24  1.341 [1.190, 1.539]  >1 22/24
+  deph W_multi   configs 12  0.995 [0.876, 1.245]  >1 5/12
+  deph W_F1_S1   configs 12  0.781 [0.585, 1.162]  >1 3/12
+  deph W_S1_Sm   configs 12  1.174 [1.025, 1.474]  >1 11/12
+  deph W_F2_Sm   configs 12  1.395 [1.061, 1.685]  >1 10/12
+  deph W_F3_Sm   configs 12  0.995 [0.876, 1.245]  >1 5/12
+  deph W_F1_Smp  configs 12  0.995 [0.874, 1.248]  >1 5/12
+
+== eps=Brel subset=hard_r (observables excluded, unresolved mean: 0)
+  ad   W_multi   configs 10  1.506 [0.911, 2.637]  >1 8/10
+  ad   W_F1_S1   configs 10  1.669 [1.024, 2.605]  >1 9/10
+  ad   W_S1_Sm   configs 10  0.884 [0.685, 1.314]  >1 3/10
+  ad   W_F2_Sm   configs 10  1.539 [0.911, 2.876]  >1 8/10
+  ad   W_F3_Sm   configs 10  1.506 [0.911, 2.637]  >1 8/10
+  ad   W_F1_Smp  configs 10  1.522 [0.910, 2.711]  >1 8/10
+  deph W_multi   configs  6  0.958 [0.592, 1.056]  >1 2/6
+  deph W_F1_S1   configs  6  0.715 [0.504, 1.157]  >1 2/6
+  deph W_S1_Sm   configs  6  1.239 [0.865, 1.629]  >1 4/6
+  deph W_F2_Sm   configs  6  1.072 [0.701, 1.782]  >1 4/6
+  deph W_F3_Sm   configs  6  0.958 [0.592, 1.056]  >1 2/6
+  deph W_F1_Smp  configs  6  0.958 [0.586, 1.056]  >1 2/6
+
+######## DECISIONS (pre-registered; 98.75% = Bonferroni over 4 tests; ad primary, deph secondary)
+  Q1 ad  : median W_bf 1.315 [1.162, 1.478] groups 65 -> REPLICATED (median > 1, lower > 1)
+  Q2 ad  : median W_multi 1.339 [1.183, 1.767] configs 25 -> PASS (multi-target table beats one oracle fixed run on all observables)
+  Q1 deph: median W_bf 1.047 [0.863, 1.135] groups 30 -> NOT replicated
+  Q2 deph: median W_multi 1.076 [0.931, 1.280] configs 12 -> FAIL

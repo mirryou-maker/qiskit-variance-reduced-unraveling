@@ -10,7 +10,9 @@ Static per-location table vs best fixed / default / greedy (M = 100) on the 98 E
 W = Var_ref t_ref / (Var_static t_static), R = Var_ref / Var_static. Per-group bootstrap B = 500 (best fixed re-chosen per
 replicate). Median over groups with group-bootstrap 98.75% interval (primary) and config-cluster 98.75% (secondary).
 Decision: some channel and table type with median W_bf > 1 and lower bound > 1.
-Usage (ubuntu94, env sci): python bench/scripts/analyze_e10.py [b_e10 csv [raw dir]] > bench/results/b_e10_analysis.txt
+Usage (ubuntu94, env sci): python bench/scripts/analyze_e10.py [b_e10 csv [raw dir [e9e summary csv]]] > bench/results/b_e10_analysis.txt
+(E10-V100: python bench/scripts/analyze_e10.py bench/results/b_e10_v100.csv bench/results/b_e10v_raw
+ bench/results/b_e9e_summary_v100.csv -> greedy times from the same host; the default stays b_e9e_summary.csv.)
 Outputs b_e10_summary.csv (per group) and b_e10_medians.csv (per subset x table x channel); other csv names get a suffix.
 """
 import os
@@ -55,7 +57,7 @@ def main():
     tag = "" if os.path.basename(f10) == "b_e10_u94.csv" else "_" + os.path.basename(f10)[6:-4]   # smoke -> _smoke
     rng = np.random.default_rng(2026)
     d = pd.read_csv(f10).drop_duplicates(KEYS + ["kind", "scheme"], keep="last")
-    e9e = pd.read_csv(os.path.join(R, "b_e9e_summary.csv")).set_index(KEYS)
+    e9e = pd.read_csv(sys.argv[3] if len(sys.argv) > 3 else os.path.join(R, "b_e9e_summary.csv")).set_index(KEYS)
     rows = []
     for k, g in d.groupby(KEYS):
         ch, fam, var, n, L, gt, o = k

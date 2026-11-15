@@ -1,0 +1,30 @@
+#!/bin/bash
+#PBS -N e10v_e12
+#PBS -q v100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=100gb
+#PBS -l walltime=72:00:00
+#PBS -j oe
+#PBS -r n
+# E10-V100 then E12 (pre-registered in docs/plan_B_characterization_2026-11-06.md), sequential, one GPU; ledger-resumable.
+cd /scratch/cyyou68/qiskit-co
+. /etc/profile.d/modules.sh
+module load ANACONDA/1-2024.10 >/dev/null 2>&1
+source activate qiskit 2>/dev/null || conda activate qiskit
+hostname; date
+nvidia-smi --query-gpu=index,name,memory.used,utilization.gpu --format=csv,noheader
+nvidia-smi --query-compute-apps=pid,gpu_uuid,used_memory --format=csv,noheader
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F", " "\$2 < 100 {print \$1; exit}")
+echo "free GPU: $FREE"; export CUDA_VISIBLE_DEVICES=$FREE
+E12_SUBSET=none
+python bench/scripts/b_e10.py --idle pbs --out bench/results/b_e10_v100.csv --raw bench/results/b_e10v_raw >> b_e10_v100.log 2>&1
+echo "E10-V100 runner exit $? $(date)"
+if [ "$E12_SUBSET" = "none" ]; then
+  python bench/scripts/b_e12.py --idle pbs --out bench/results/b_e12_v100.csv --raw bench/results/b_e12_raw >> b_e12_v100.log 2>&1
+else
+  python bench/scripts/b_e12.py --idle pbs --subset $E12_SUBSET --out bench/results/b_e12_v100.csv --raw bench/results/b_e12_raw >> b_e12_v100.log 2>&1
+fi
+echo "E12 runner exit $? $(date)"
+python bench/scripts/analyze_e10.py bench/results/b_e10_v100.csv bench/results/b_e10v_raw bench/results/b_e9e_summary_v100.csv > bench/results/b_e10_v100_analysis.txt 2>&1
+python bench/scripts/compare_e10_hosts.py > bench/results/b_e10_hosts.txt 2>&1
+python bench/scripts/analyze_e12.py > bench/results/b_e12_analysis.txt 2>&1
+echo done $(date)
