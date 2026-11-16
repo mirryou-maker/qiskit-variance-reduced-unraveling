@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -N e13main
+#PBS -q P100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=120gb
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -r n
+# E13 main run (plan doc "E13 pre-registration"): one b_e13.py worker per node on one free GPU (whole node reserved,
+# so timings are not shared with another worker); configs shared via claim files, order from b_e13_scope.txt.
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1; exit}')
+echo "free GPU: $FREE"; export CUDA_VISIBLE_DEVICES=$FREE
+J=${PBS_JOBID%%.*}
+uptime
+/usr/bin/time -v python bench/scripts/b_e13.py --order bench/results/b_e13_scope.txt --max_hours 44 > b_e13_main_$(hostname)_g${FREE}_${J}.log 2>&1
+echo "main exit $? $(date)"

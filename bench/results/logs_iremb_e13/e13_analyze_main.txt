@@ -1,0 +1,135 @@
+E13 analysis: configs 42 ({'ad': 28, 'deph': 14}), groups 94; configs with a duplicate complete run (first used): []
+hosts ['iREMB-E-110', 'iREMB-E-148', 'iREMB-E-169', 'iREMB-E-48', 'iREMB-E-68', 'iREMB-E-90']; gpus ['Tesla P100-PCIE-16GB']
+idle record: gpu_other ['none']; other_py ['none']; gpu_util max 0.0 %; gpu_mem max 2156.0 MiB; load1 max 1.47
+  bias |z_st| max 2.92, n(>4) 0
+  bias |z_cv0_crossfit| max 3.14, n(>4) 0
+  bias |z_cv0_beta1| max 3.12, n(>4) 0
+  bias |z_cv0_insample| max 3.14, n(>4) 0
+  bias |z_S_cv0| max 3.07, n(>4) 0
+  bias |z_cvbf_crossfit| max 3.14, n(>4) 0
+  bias |z_cvbf_beta1| max 3.12, n(>4) 0
+  bias |z_cvbf_insample| max 3.14, n(>4) 0
+  bias |z_S_cvbf| max 2.94, n(>4) 0
+  bias |z_stcv_crossfit| max 2.67, n(>4) 0
+  bias |z_stcv_beta1| max 2.63, n(>4) 0
+  bias |z_stcv_insample| max 2.66, n(>4) 0
+  bias |z_S_stcv| max 3.10, n(>4) 0
+bias |z| of the PLAIN estimates of all 4 observables in every ST / CV run vs best fixed: max 3.67, n(>4) 0 of 1236
+[ad] t_ST/t_bf 1.016; t_cv0/t_0 3.82; t_stcv/t_0 3.82; ST build_s 17.2 s; bp_s 2.73 s; ST non-std 0.634; CVbf = CV0 in 52/64; best fixed {'jump': 52, 'hom0.785': 5, 'hom1.571': 3, 'hom0.000': 2, 'hom2.356': 2}; within-run CV variance reduction Var(f)/Var(Y) CV0 2.13, CVbf 2.13, STCV 1.33
+[deph] t_ST/t_bf 1.015; t_cv0/t_0 3.51; t_stcv/t_0 3.51; ST build_s 22.4 s; bp_s 3.18 s; ST non-std 0.224; CVbf = CV0 in 15/30; best fixed {'std': 15, 'analog0.050': 6, 'analog0.300': 4, 'analog0.785': 2, 'analog0.100': 2, 'analog0.200': 1}; within-run CV variance reduction Var(f)/Var(Y) CV0 1.53, CVbf 1.53, STCV 1.48
+
+######## per-group metrics: median [98.75% group bootstrap] {98.75% config-cluster} <98.75% seed-cluster>
+
+== ad: 64 groups, 28 configs, 14 circuit instances (seeds)
+  Q1  W_ST_bf              1.448 [1.307, 1.576] {1.307, 1.559} <1.319, 1.551>  >1 64/64  CI>1 57 CI<1 0  seeds>1 14/14 sign p 0.000122
+  Q2a W_CV0_bf             0.565 [0.493, 0.652] {0.497, 0.635} <0.495, 0.658>  >1 9/64  CI>1 8 CI<1 52  seeds>1 0/14 sign p 0.000122
+  Q2b W_STCV_CV0           0.938 [0.873, 1.016] {0.855, 1.011} <0.875, 1.005>  >1 26/64  CI>1 10 CI<1 26  seeds>1 4/14 sign p 0.18
+  sec R_ST_bf              1.473 [1.315, 1.603] {1.338, 1.579} <1.338, 1.579>  >1 64/64  seeds>1 14/14 sign p 0.000122
+  sec R_CV0_bf             2.140 [1.904, 2.441] {1.916, 2.447} <1.918, 2.441>  >1 64/64  seeds>1 14/14 sign p 0.000122
+  sec R_STCV_CV0           0.942 [0.878, 1.023] {0.860, 1.024} <0.878, 1.015>  >1 27/64  seeds>1 5/14 sign p 0.424
+  sec W_ST_std             1.501 [1.344, 1.591] {1.319, 1.578} <1.351, 1.578>  >1 64/64  seeds>1 14/14 sign p 0.000122
+  sec W_CVbf_bf            0.565 [0.489, 0.649] {0.495, 0.635} <0.495, 0.658>  >1 12/64  seeds>1 0/14 sign p 0.000122
+  sec W_STCV_bf            0.529 [0.447, 0.595] {0.463, 0.597} <0.469, 0.588>  >1 9/64  seeds>1 0/14 sign p 0.000122
+  sec W_ST_CV0             2.546 [2.327, 2.744] {2.399, 2.718} <2.389, 2.718>  >1 63/64  seeds>1 14/14 sign p 0.000122
+  sec W_STCV_CVbest        0.904 [0.842, 0.984] {0.832, 0.982} <0.832, 0.961>  >1 21/64  seeds>1 2/14 sign p 0.0129
+  sec W_CV0_bf_beta1       0.561 [0.492, 0.644] {0.502, 0.638} <0.496, 0.648>  >1 9/64  seeds>1 0/14 sign p 0.000122
+  sec W_STCV_CV0_beta1     0.956 [0.883, 1.022] {0.868, 1.027} <0.888, 1.013>  >1 27/64  seeds>1 5/14 sign p 0.424
+  sec W_CV0_bf_insample    0.566 [0.492, 0.650] {0.500, 0.637} <0.496, 0.649>  >1 9/64  seeds>1 0/14 sign p 0.000122
+  sec W_STCV_CV0_insample  0.939 [0.871, 1.010] {0.842, 1.010} <0.871, 1.004>  >1 26/64  seeds>1 4/14 sign p 0.18
+  sec W_CVbf_bf_beta1      0.561 [0.494, 0.644] {0.505, 0.636} <0.496, 0.652>  >1 12/64  seeds>1 0/14 sign p 0.000122
+
+== deph: 30 groups, 14 configs, 7 circuit instances (seeds)
+  Q1  W_ST_bf              0.889 [0.836, 0.969] {0.861, 0.984} <0.868, 0.955>  >1 7/30  CI>1 5 CI<1 17  seeds>1 0/7 sign p 0.0156
+  Q2a W_CV0_bf             0.419 [0.380, 0.515] {0.383, 0.539} <0.379, 0.455>  >1 2/30  CI>1 1 CI<1 27  seeds>1 0/7 sign p 0.0156
+  Q2b W_STCV_CV0           0.890 [0.809, 0.939] {0.822, 0.927} <0.796, 0.917>  >1 5/30  CI>1 1 CI<1 17  seeds>1 0/7 sign p 0.0156
+  sec R_ST_bf              0.904 [0.848, 0.984] {0.873, 0.999} <0.882, 0.970>  >1 7/30  seeds>1 0/7 sign p 0.0156
+  sec R_CV0_bf             1.489 [1.366, 1.719] {1.380, 1.813} <1.363, 1.674>  >1 29/30  seeds>1 7/7 sign p 0.0156
+  sec R_STCV_CV0           0.894 [0.799, 0.943] {0.825, 0.930} <0.799, 0.920>  >1 6/30  seeds>1 0/7 sign p 0.0156
+  sec W_ST_std             0.966 [0.868, 1.136] {0.868, 1.145} <0.898, 1.072>  >1 13/30  seeds>1 2/7 sign p 0.453
+  sec W_CVbf_bf            0.427 [0.392, 0.516] {0.397, 0.534} <0.419, 0.471>  >1 3/30  seeds>1 0/7 sign p 0.0156
+  sec W_STCV_bf            0.359 [0.342, 0.425] {0.342, 0.435} <0.342, 0.400>  >1 1/30  seeds>1 0/7 sign p 0.0156
+  sec W_ST_CV0             2.149 [1.749, 2.437] {1.785, 2.368} <1.785, 2.406>  >1 29/30  seeds>1 7/7 sign p 0.0156
+  sec W_STCV_CVbest        0.829 [0.778, 0.894] {0.796, 0.876} <0.794, 0.876>  >1 1/30  seeds>1 0/7 sign p 0.0156
+  sec W_CV0_bf_beta1       0.420 [0.375, 0.504] {0.384, 0.516} <0.373, 0.457>  >1 1/30  seeds>1 0/7 sign p 0.0156
+  sec W_STCV_CV0_beta1     0.901 [0.809, 0.954] {0.825, 0.951} <0.796, 0.917>  >1 6/30  seeds>1 0/7 sign p 0.0156
+  sec W_CV0_bf_insample    0.421 [0.380, 0.479] {0.385, 0.504} <0.378, 0.459>  >1 2/30  seeds>1 0/7 sign p 0.0156
+  sec W_STCV_CV0_insample  0.887 [0.797, 0.940] {0.820, 0.928} <0.795, 0.917>  >1 6/30  seeds>1 0/7 sign p 0.0156
+  sec W_CVbf_bf_beta1      0.427 [0.393, 0.520] {0.393, 0.540} <0.421, 0.471>  >1 2/30  seeds>1 0/7 sign p 0.0156
+
+== POST HOC breakdown (median by L / obs) ==
+W_ST_bf
+L           16     32
+channel              
+ad       1.503  1.397
+deph     0.969  0.853
+obs          x     xc     zc     zz
+channel                            
+ad       1.427  1.409  1.932  1.349
+deph     0.928  0.884  0.969  0.819
+W_CV0_bf
+L           16     32
+channel              
+ad       0.534  0.567
+deph     0.550  0.396
+obs          x     xc     zc     zz
+channel                            
+ad       0.509  0.779  1.436  0.469
+deph     0.385  0.408  0.455  0.301
+W_STCV_CV0
+L           16     32
+channel              
+ad       1.032  0.833
+deph     0.912  0.869
+obs          x     xc     zc     zz
+channel                            
+ad       0.930  0.915  1.147  0.925
+deph     0.873  0.913  0.869  0.904
+W_ST_CV0
+L           16     32
+channel              
+ad       2.697  2.416
+deph     2.148  2.161
+obs          x     xc     zc     zz
+channel                            
+ad       2.736  1.994  1.795  2.863
+deph     2.479  2.224  1.813  2.728
+
+== per-seed medians (instance level, secondary) ==
+                 W_CV0_bf  W_STCV_CV0  W_ST_bf
+channel variant                               
+ad      s11         0.538       0.961    1.285
+        s12         0.461       0.968    1.241
+        s13         0.698       0.755    1.726
+        s14         0.495       1.036    1.479
+        s15         0.470       1.001    1.504
+        s16         0.771       1.147    1.578
+        s17         0.779       0.813    1.554
+        s18         0.620       1.120    1.343
+        s19         0.658       0.832    1.578
+        s20         0.522       0.935    1.401
+        s21         0.538       0.956    1.497
+        s22         0.508       0.875    1.296
+        s23         0.562       0.921    1.512
+        s24         0.483       0.997    1.437
+deph    s11         0.412       0.785    0.838
+        s12         0.420       0.873    0.888
+        s13         0.484       0.797    0.868
+        s14         0.455       0.909    0.984
+        s15         0.328       0.928    0.838
+        s16         0.442       0.912    0.885
+        s17         0.408       0.924    0.909
+
+== SECONDARY all-observable accounting (per config; one oracle fixed run for all TN observables vs one per-target run each, one-time costs paid per target): median [98.75% config bootstrap]
+  ad   W_F1_ST    configs 28  0.732 [0.656, 0.892]  >1 7/28
+  ad   W_F1_CV0   configs 28  0.275 [0.234, 0.377]  >1 0/28
+  ad   W_F1_STCV  configs 28  0.263 [0.241, 0.350]  >1 0/28
+  deph W_F1_ST    configs 14  0.453 [0.321, 0.781]  >1 2/14
+  deph W_F1_CV0   configs 14  0.211 [0.151, 0.414]  >1 1/14
+  deph W_F1_STCV  configs 14  0.174 [0.137, 0.378]  >1 1/14
+
+######## DECISIONS (pre-registered; 4 tests, Bonferroni 98.75%: Q1 ad, Q2a ad, Q2b ad, Q2a deph)
+  Q1  ad   W_ST_bf     median 1.448 [1.296, 1.577] groups 64 -> PASS (median > 1, lower > 1)
+  Q2a ad   W_CV0_bf    median 0.565 [0.493, 0.646] groups 64 -> FAIL
+  Q2b ad   W_STCV_CV0  median 0.938 [0.875, 1.016] groups 64 -> FAIL
+  Q2a deph W_CV0_bf    median 0.419 [0.380, 0.470] groups 30 -> FAIL
+  (secondary, same level) deph W_ST_bf 0.889 [0.836, 0.962]; deph W_STCV_CV0 0.890 [0.797, 0.939]

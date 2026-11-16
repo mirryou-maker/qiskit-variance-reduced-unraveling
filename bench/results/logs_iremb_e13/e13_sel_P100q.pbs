@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -N e13sel
+#PBS -q P100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=120gb
+#PBS -l walltime=48:00:00
+#PBS -j oe
+#PBS -r n
+# E13 selection (plan doc "E13 pre-registration"): one b_e13_select.py worker per free GPU; work shared via claim files.
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1}')
+echo "free GPUs: $FREE"
+J=${PBS_JOBID%%.*}
+for g in $FREE; do
+  CUDA_VISIBLE_DEVICES=$g /usr/bin/time -v python bench/scripts/b_e13_select.py --worker $(hostname)-g$g-$J --max_hours 42 > b_e13_sel_$(hostname)_g${g}_${J}.log 2>&1 &
+  sleep 20
+done
+wait
+echo done $(date)

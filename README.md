@@ -33,7 +33,11 @@ Current findings (n = 20 qubits, see the result files named below for the number
   are withdrawn; they were too strong and are not supported by the later experiments. Results under
   `bench/results/a*` and the `validation/probe_*`/`test_a*` scripts belong to that earlier stage and are
   kept for provenance only.
-- Experiment E13 (hard regime, control variate) is in progress; no results are reported here yet.
+- E13 (pre-specified, 94 fresh groups where Pauli propagation does not converge at a 10^7-term cap; P100):
+  the static table again gave a wall-clock gain for amplitude damping, median 1.45 (98.75% CI 1.30-1.58),
+  but not for dephasing (0.89, secondary). The Doob-martingale control variate lowered the variance within a
+  run (2.1x ad, 1.5x deph) but cost 3.5-3.8x per trajectory, so it lost in wall-clock terms in every
+  pre-specified test (`bench/results/logs_iremb_e13/e13_analyze_main.txt`, `b_e13_summary.csv`).
 
 ## Repository layout
 

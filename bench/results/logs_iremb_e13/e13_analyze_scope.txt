@@ -1,0 +1,3 @@
+smoke ad_brickwork_s7_n20_L16_gt0.01: t_f [0.0578 0.0578 0.0578 0.0578 0.0578] s; calibration measured/model 0.534; t_cv/t_0 3.64; build_s/t_0 268; bp_s 2.57
+smoke deph_brickwork_s7_n20_L32_gt0.01: t_f [0.1113 0.1113 0.1113 0.1113 0.1113 0.1113 0.1113] s; calibration measured/model 0.527; t_cv/t_0 3.55; build_s/t_0 263; bp_s 4.03
+# calibration {'ad': 0.534165881416025, 'deph': 0.5270430363367047}; t_cv/t_0 {'ad': 3.641398386522026, 'deph': 3.5523466799364023}; projected full main run 63.4 node-h; budget 120.0 node-h; kept 42/42 configs (94 groups), projected 63.4 node-h

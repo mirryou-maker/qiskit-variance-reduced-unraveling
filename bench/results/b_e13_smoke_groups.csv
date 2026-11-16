@@ -1,0 +1,4 @@
+channel,family,variant,n,L,gt,obs
+ad,brickwork,s7,20,16,0.01,xc
+ad,brickwork,s7,20,16,0.01,zz
+deph,brickwork,s7,20,32,0.01,zc

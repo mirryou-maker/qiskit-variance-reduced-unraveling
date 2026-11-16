@@ -1,0 +1,12 @@
+#!/bin/bash
+#PBS -N e13anm
+#PBS -q workq
+#PBS -l select=1:ncpus=4:mem=32gb
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -r n
+# E13: pre-registered main analysis (CPU only).
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+export CUDA_VISIBLE_DEVICES=
+python bench/scripts/analyze_e13.py main bench/results/b_e13_main bench/results/b_e13_raw > e13_analyze_main.txt 2>&1
+echo exit $? $(date)

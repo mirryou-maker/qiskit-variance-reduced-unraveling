@@ -1,0 +1,10 @@
+iREMB-E-167
+Sun Nov 15 22:12:53 KST 2026
+0, Tesla P100-PCIE-16GB, 0 MiB, 0 %
+1, Tesla P100-PCIE-16GB, 0 MiB, 0 %
+free GPU: 0
+tests exit 0 Sun Nov 15 22:15:59 KST 2026
+........................................................................ [ 81%]
+................                                                         [100%]
+88 passed in 180.98s (0:03:00)
+smoke exit 0 Sun Nov 15 22:32:30 KST 2026

@@ -1,0 +1,18 @@
+e13_rules.caps() vs b_e9d_summary.csv: 1080 groups; mismatches {'TN100000': 0, 'TN1000000': 0, 'TN3000000': 0, 'TN10000000': 0}
+selection ledgers 8; groups 168 (deterministic 0); workers ['iREMB-E-110-g0-389152', 'iREMB-E-110-g1-389152', 'iREMB-E-147-g0-388894', 'iREMB-E-147-g1-388894', 'iREMB-E-68-g0-389150', 'iREMB-E-68-g1-389150', 'iREMB-E-90-g0-389151', 'iREMB-E-90-g1-389151']; gpus ['Tesla P100-PCIE-16GB', 'Tesla V100-SXM2-32GB']; gpu_other ['1118345, 10618 MiB', '1118345, 10930 MiB', '1118345, 11084 MiB', '1118345, 11110 MiB', '1118345, 11212 MiB', '1118345, 12706 MiB']
+stage B needed 145, missing 0; stage C needed 112, missing 0; oom rows 0
+  TN         : 145/168  ad 97/112  deph 48/56
+  TN100000   : 142/168  ad 96/112  deph 46/56
+  TN1000000  : 130/168  ad 87/112  deph 43/56
+  TN3000000  : 112/168  ad 77/112  deph 35/56
+  TN10000000 :  94/168  ad 64/112  deph 30/56
+-> b_e13_groups.csv: 94 groups TN at cap 1e7, 42 configs; by channel groups {'ad': 64, 'deph': 30}, configs {'ad': 28, 'deph': 14}
+            groups  configs
+channel L                  
+ad      16      36       14
+        32      28       14
+deph    16      15        7
+        32      15        7
+by variant: {('ad', 's11'): 5, ('ad', 's12'): 4, ('ad', 's13'): 5, ('ad', 's14'): 4, ('ad', 's15'): 3, ('ad', 's16'): 3, ('ad', 's17'): 5, ('ad', 's18'): 4, ('ad', 's19'): 5, ('ad', 's20'): 4, ('ad', 's21'): 6, ('ad', 's22'): 5, ('ad', 's23'): 6, ('ad', 's24'): 5, ('deph', 's11'): 4, ('deph', 's12'): 5, ('deph', 's13'): 3, ('deph', 's14'): 3, ('deph', 's15'): 4, ('deph', 's16'): 5, ('deph', 's17'): 6}
+by obs: {('ad', 'x'): 22, ('ad', 'xc'): 15, ('ad', 'zc'): 9, ('ad', 'zz'): 18, ('deph', 'x'): 9, ('deph', 'xc'): 10, ('deph', 'zc'): 9, ('deph', 'zz'): 2}
+t_PP(1e8): median 2438 s, max 6227 s; |PP_1e7 - PP_1e8|/eps over TN@1e7 groups median 4.26

@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -N e13tsmoke
+#PBS -q P100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=100gb
+#PBS -l walltime=06:00:00
+#PBS -j oe
+#PBS -r n
+# E13 (plan doc "E13 pre-registration"): unit tests on the compute host, then the main-run smoke (N = 296, seed tag smoke).
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F", " "\$2 < 100 {print \$1; exit}")
+echo "free GPU: $FREE"; export CUDA_VISIBLE_DEVICES=$FREE
+python -m pytest -q validation/test_cv_martingale.py validation/test_static_table.py validation/test_traj_kraus.py validation/test_sparse_policy.py > e13_tests_p100.log 2>&1
+echo "tests exit $? $(date)"; tail -3 e13_tests_p100.log
+python bench/scripts/b_e13.py --groups bench/results/b_e13_smoke_groups.csv --N 296 --seed_tag smoke --workdir bench/results/b_e13_smoke_main --raw bench/results/b_e13_smoke_raw --claims e13_claims_smoke > b_e13_smoke_main.log 2>&1
+echo "smoke exit $? $(date)"

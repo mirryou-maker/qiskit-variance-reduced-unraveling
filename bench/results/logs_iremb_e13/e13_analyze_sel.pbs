@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -N e13ana
+#PBS -q workq
+#PBS -l select=1:ncpus=4:mem=32gb
+#PBS -l walltime=02:00:00
+#PBS -j oe
+#PBS -r n
+# E13: analyze selection ledgers -> b_e13_groups.csv, then pre-registered scope -> b_e13_scope.txt (CPU only).
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+export CUDA_VISIBLE_DEVICES=
+python bench/scripts/analyze_e13.py select bench/results/b_e13_sel > e13_analyze_select.txt 2>&1 && \
+python bench/scripts/analyze_e13.py scope bench/results/b_e13_smoke_main > e13_analyze_scope.txt 2>&1
+echo exit $? $(date)

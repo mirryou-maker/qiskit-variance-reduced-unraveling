@@ -1,0 +1,85 @@
+# calibration {'ad': 0.534165881416025, 'deph': 0.5270430363367047}; t_cv/t_0 {'ad': 3.641398386522026, 'deph': 3.5523466799364023}; projected full main run 63.4 node-h; budget 120.0 node-h; kept 42/42 configs (94 groups), projected 63.4 node-h
+# ad_brickwork_s23_n20_L32_gt0.01          obs 3 proj   2.60 node-h IN
+# ad_brickwork_s16_n20_L16_gt0.01          obs 2 proj   0.95 node-h IN
+# ad_brickwork_s13_n20_L16_gt0.01          obs 2 proj   0.95 node-h IN
+# ad_brickwork_s16_n20_L32_gt0.01          obs 1 proj   1.08 node-h IN
+# ad_brickwork_s22_n20_L32_gt0.01          obs 3 proj   2.60 node-h IN
+# ad_brickwork_s19_n20_L16_gt0.01          obs 2 proj   0.95 node-h IN
+# ad_brickwork_s21_n20_L16_gt0.01          obs 3 proj   1.34 node-h IN
+# ad_brickwork_s18_n20_L32_gt0.01          obs 1 proj   1.08 node-h IN
+# ad_brickwork_s11_n20_L16_gt0.01          obs 3 proj   1.34 node-h IN
+# ad_brickwork_s15_n20_L16_gt0.01          obs 2 proj   0.95 node-h IN
+# ad_brickwork_s20_n20_L32_gt0.01          obs 2 proj   1.84 node-h IN
+# ad_brickwork_s17_n20_L16_gt0.01          obs 3 proj   1.34 node-h IN
+# ad_brickwork_s12_n20_L16_gt0.01          obs 3 proj   1.34 node-h IN
+# ad_brickwork_s22_n20_L16_gt0.01          obs 2 proj   0.95 node-h IN
+# ad_brickwork_s15_n20_L32_gt0.01          obs 1 proj   1.08 node-h IN
+# ad_brickwork_s12_n20_L32_gt0.01          obs 1 proj   1.08 node-h IN
+# ad_brickwork_s19_n20_L32_gt0.01          obs 3 proj   2.60 node-h IN
+# ad_brickwork_s18_n20_L16_gt0.01          obs 3 proj   1.34 node-h IN
+# ad_brickwork_s14_n20_L32_gt0.01          obs 2 proj   1.84 node-h IN
+# ad_brickwork_s20_n20_L16_gt0.01          obs 2 proj   0.95 node-h IN
+# ad_brickwork_s13_n20_L32_gt0.01          obs 3 proj   2.60 node-h IN
+# ad_brickwork_s24_n20_L32_gt0.01          obs 1 proj   1.08 node-h IN
+# ad_brickwork_s11_n20_L32_gt0.01          obs 2 proj   1.84 node-h IN
+# ad_brickwork_s23_n20_L16_gt0.01          obs 3 proj   1.34 node-h IN
+# ad_brickwork_s21_n20_L32_gt0.01          obs 3 proj   2.60 node-h IN
+# ad_brickwork_s14_n20_L16_gt0.01          obs 2 proj   0.95 node-h IN
+# ad_brickwork_s17_n20_L32_gt0.01          obs 2 proj   1.84 node-h IN
+# ad_brickwork_s24_n20_L16_gt0.01          obs 4 proj   1.73 node-h IN
+# deph_brickwork_s16_n20_L16_gt0.01        obs 2 proj   0.98 node-h IN
+# deph_brickwork_s17_n20_L16_gt0.01        obs 4 proj   1.74 node-h IN
+# deph_brickwork_s15_n20_L32_gt0.01        obs 2 proj   1.90 node-h IN
+# deph_brickwork_s14_n20_L32_gt0.01        obs 1 proj   1.17 node-h IN
+# deph_brickwork_s13_n20_L32_gt0.01        obs 2 proj   1.90 node-h IN
+# deph_brickwork_s17_n20_L32_gt0.01        obs 2 proj   1.90 node-h IN
+# deph_brickwork_s12_n20_L16_gt0.01        obs 3 proj   1.36 node-h IN
+# deph_brickwork_s12_n20_L32_gt0.01        obs 2 proj   1.90 node-h IN
+# deph_brickwork_s11_n20_L16_gt0.01        obs 1 proj   0.60 node-h IN
+# deph_brickwork_s13_n20_L16_gt0.01        obs 1 proj   0.60 node-h IN
+# deph_brickwork_s11_n20_L32_gt0.01        obs 3 proj   2.64 node-h IN
+# deph_brickwork_s14_n20_L16_gt0.01        obs 2 proj   0.98 node-h IN
+# deph_brickwork_s16_n20_L32_gt0.01        obs 3 proj   2.64 node-h IN
+# deph_brickwork_s15_n20_L16_gt0.01        obs 2 proj   0.98 node-h IN
+ad_brickwork_s23_n20_L32_gt0.01
+ad_brickwork_s16_n20_L16_gt0.01
+ad_brickwork_s13_n20_L16_gt0.01
+ad_brickwork_s16_n20_L32_gt0.01
+ad_brickwork_s22_n20_L32_gt0.01
+ad_brickwork_s19_n20_L16_gt0.01
+ad_brickwork_s21_n20_L16_gt0.01
+ad_brickwork_s18_n20_L32_gt0.01
+ad_brickwork_s11_n20_L16_gt0.01
+ad_brickwork_s15_n20_L16_gt0.01
+ad_brickwork_s20_n20_L32_gt0.01
+ad_brickwork_s17_n20_L16_gt0.01
+ad_brickwork_s12_n20_L16_gt0.01
+ad_brickwork_s22_n20_L16_gt0.01
+ad_brickwork_s15_n20_L32_gt0.01
+ad_brickwork_s12_n20_L32_gt0.01
+ad_brickwork_s19_n20_L32_gt0.01
+ad_brickwork_s18_n20_L16_gt0.01
+ad_brickwork_s14_n20_L32_gt0.01
+ad_brickwork_s20_n20_L16_gt0.01
+ad_brickwork_s13_n20_L32_gt0.01
+ad_brickwork_s24_n20_L32_gt0.01
+ad_brickwork_s11_n20_L32_gt0.01
+ad_brickwork_s23_n20_L16_gt0.01
+ad_brickwork_s21_n20_L32_gt0.01
+ad_brickwork_s14_n20_L16_gt0.01
+ad_brickwork_s17_n20_L32_gt0.01
+ad_brickwork_s24_n20_L16_gt0.01
+deph_brickwork_s16_n20_L16_gt0.01
+deph_brickwork_s17_n20_L16_gt0.01
+deph_brickwork_s15_n20_L32_gt0.01
+deph_brickwork_s14_n20_L32_gt0.01
+deph_brickwork_s13_n20_L32_gt0.01
+deph_brickwork_s17_n20_L32_gt0.01
+deph_brickwork_s12_n20_L16_gt0.01
+deph_brickwork_s12_n20_L32_gt0.01
+deph_brickwork_s11_n20_L16_gt0.01
+deph_brickwork_s13_n20_L16_gt0.01
+deph_brickwork_s11_n20_L32_gt0.01
+deph_brickwork_s14_n20_L16_gt0.01
+deph_brickwork_s16_n20_L32_gt0.01
+deph_brickwork_s15_n20_L16_gt0.01

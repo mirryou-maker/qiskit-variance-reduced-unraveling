@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -N e13selsm
+#PBS -q P100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=100gb
+#PBS -l walltime=08:00:00
+#PBS -j oe
+#PBS -r n
+# E13 selection smoke: one E9 group with known E9c/E9d PP values (ad brickwork s8 L16 gt0.01, obs x) through stage C on a P100.
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F", " "\$2 < 100 {print \$1; exit}")
+echo "free GPU: $FREE"; export CUDA_VISIBLE_DEVICES=$FREE
+/usr/bin/time -v python bench/scripts/b_e13_select.py --only ad_brickwork_s8_n20_L16_gt0.01 --only_obs x --workdir bench/results/b_e13_sel_smoke --claims e13_claims_selsmoke > b_e13_sel_smoke.log 2>&1
+echo "exit $? $(date)"
