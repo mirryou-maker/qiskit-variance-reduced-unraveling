@@ -1,0 +1,16 @@
+POST HOC (review 5, minor 12): timing scatter from repeated timings that already exist (no new runs).
+RTX 2060, E9e vs E10: b_e9e_u94.csv vs b_e10_u94.csv
+  unique fixed runs paired 207 (of 207 / 207); gpu_other ['none'] / ['none']
+  ratio t2/t1: median 1.0010  IQR [1.0003, 1.0022]  2.5-97.5% [0.9997, 1.0049]  min 0.9994 max 1.0061
+  SD(log ratio) 0.0016  -> per-run timing log-SD s = 0.0011
+  |ratio - 1| > 0.05 in 0 of 207 runs
+V100, E9e vs E10-V100: b_e9e_v100.csv vs b_e10_v100.csv
+  unique fixed runs paired 207 (of 207 / 207); gpu_other ['none'] / ['none']
+  ratio t2/t1: median 0.9985  IQR [0.9929, 1.0003]  2.5-97.5% [0.8711, 1.0037]  min 0.7974 max 1.0128
+  SD(log ratio) 0.0424  -> per-run timing log-SD s = 0.0300
+  |ratio - 1| > 0.05 in 27 of 207 runs
+V100, E10-V100 vs E12: b_e10_v100.csv vs b_e12_v100.csv
+  unique fixed runs paired 207 (of 207 / 207); gpu_other ['none'] / ['none']
+  ratio t2/t1: median 0.9998  IQR [0.9994, 1.0003]  2.5-97.5% [0.9970, 1.0024]  min 0.9851 max 1.0114
+  SD(log ratio) 0.0019  -> per-run timing log-SD s = 0.0013
+  |ratio - 1| > 0.05 in 0 of 207 runs

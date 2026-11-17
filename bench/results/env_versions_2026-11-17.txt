@@ -1,0 +1,13 @@
+# Software versions read on the hosts on 2026-11-17 (revision 5; read-only queries, no computation).
+# Python/NumPy/CuPy/Qiskit from the run environments (ubuntu94 qsim13, ubuntu98 qsim, iREMB qiskit); cuda_runtime = cupy.cuda.runtime.runtimeGetVersion().
+# Not recorded in the run files; earlier runs may have used other patch versions.
+WS-A ubuntu94 (env qsim13):
+{'python': '3.11.18', 'numpy': '2.4.6', 'scipy': '1.17.1', 'pandas': '3.1.1', 'cupy': '14.2.0', 'qiskit': 'n/a', 'qiskit_aer': 'n/a', 'cuda_runtime': 13020}
+NVIDIA GeForce RTX 2060, 595.99.02
+WS-B ubuntu98 (env qsim):
+{'python': '3.11.18', 'numpy': '2.4.6', 'scipy': '1.17.1', 'pandas': 'n/a', 'cupy': '13.6.0', 'qiskit': 'n/a', 'qiskit_aer': 'n/a', 'cuda_runtime': 11080}
+NVIDIA GeForce RTX 3070 Ti, 580.178.04
+HPC iREMB login node (env qiskit, used by all HPC jobs):
+{'python': '3.11.18', 'numpy': '2.2.6', 'scipy': '1.17.1', 'pandas': '3.1.0', 'cupy': '14.2.0', 'qiskit': '1.2.4', 'qiskit_aer': '0.15.1', 'cuda_runtime': 12090}
+HPC V100 driver: 550.163.01 (bench/results/a5_stage2.log, nvidia-smi header)
+HPC P100 driver: 550.54.15 (nvidia-smi on iREMB-E-48, inspected 2026-11-17, recorded in paper/pra/number_sources.md)
