@@ -5,3 +5,18 @@ leading-order criterion vs exact comparison (gt = 0.01, 4 phases): agree in 640 
 == Realistic case: brickwork s11, n = 8, L = 16, gt = 0.01, exact back-propagated Ot, counting trajectories ==
 events checked: 2048; candidate values compared (V > 1e-14): 22516; max relative difference 2.95e-10
 per-event argmin over the 11 candidates (counts; 0 counting, 1-4 homodyne, 5-10 mixed): 320 236 220 268 264 140 64 56 152 180 148
+zero-variance angle th* at ph = pi/4 on these events: C Re(e^(i pi/4) B) > 0 (th* < pi/4) in 1120 of 2048; max V(th*)/V_count over 2044 events with V_count > 1e-14: 5.94e-22
+== Exact criterion (added after the Sec. II D check) ==
+exact criterion vs exact comparison on the 640 cases above (gt = 0.01, 4 phases): agree in 640 of 640
+ensemble: 2000 random (psi, Ot, noisy qubit) at n = 3 (default_rng(20261119)), same ensemble at every gt; 4 homodyne phases -> 8000 comparisons per gt; computed comparison = code increment_vars (candidates 0-4)
+gt = 0.001: exact criterion agrees in 8000 of 8000; leading-order criterion disagrees in 3 of 8000; direct dense Eq. (2) comparison agrees with code comparison in 8000 of 8000
+gt = 0.01: exact criterion agrees in 8000 of 8000; leading-order criterion disagrees in 3 of 8000; direct dense Eq. (2) comparison agrees with code comparison in 8000 of 8000
+gt = 0.1: exact criterion agrees in 8000 of 8000; leading-order criterion disagrees in 48 of 8000; direct dense Eq. (2) comparison agrees with code comparison in 8000 of 8000
+gt = 0.5: exact criterion agrees in 8000 of 8000; leading-order criterion disagrees in 220 of 8000; direct dense Eq. (2) comparison agrees with code comparison in 8000 of 8000
+gt = 1.0: exact criterion agrees in 8000 of 8000; leading-order criterion disagrees in 429 of 8000; direct dense Eq. (2) comparison agrees with code comparison in 8000 of 8000
+== Zero-variance angle th* (tan 2 th* = sqrt(g) C / Re(e^{i ph} B), th* in [0, pi/2)) ==
+400 random cases (n = 2..5, gt in (0.001, 0.01, 0.1, 0.5, 1.0), ph uniform in [0, pi)): max V(th*)/V_count 4.82e-25 (direct dense Eq. (2)), 5.60e-25 (code increment_vars)
+th* < pi/4 iff C Re(e^(i ph) B) > 0: holds in 400 of 400 (th* < pi/4 in 202)
+relabeling V(pi/2 - th, ph) = V(th, ph + pi), random th: max relative difference 2.63e-13
+== Edge case p1 = 0 (noisy qubit in |0>) ==
+V (counting, 4 homodyne phases) at gt = 0.01: 0.0e+00 0.0e+00 0.0e+00 0.0e+00 0.0e+00
