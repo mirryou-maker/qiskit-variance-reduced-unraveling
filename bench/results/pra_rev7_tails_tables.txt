@@ -1,0 +1,45 @@
+== (1) heavy tails and subsampling (E13 groups TN at 1e7; POST HOC) ==
+ad: groups 64
+  excess kurtosis candidate 0: median 2.47, 90th pct 31.70, max 101.51
+  excess kurtosis oracle best fixed: median 2.11, 90th pct 4.86, max 45.81
+  excess kurtosis pilot table: median 0.37, 90th pct 0.99, max 80.50
+  median W_ST/bf: N=2000 1.448; first 1000 1.440; second 1000 1.391
+  groups with W>1: N=2000 64; first 1000 63; second 1000 64
+  per-group |log(W_h1/W_h2)|: median 0.094, 90th pct 0.161
+deph: groups 30
+  excess kurtosis candidate 0: median 0.48, 90th pct 2.48, max 3.58
+  excess kurtosis oracle best fixed: median 0.21, 90th pct 1.05, max 3.58
+  excess kurtosis pilot table: median 0.46, 90th pct 5.28, max 12.33
+  median W_ST/bf: N=2000 0.889; first 1000 0.900; second 1000 0.900
+  groups with W>1: N=2000 7; first 1000 7; second 1000 9
+  per-group |log(W_h1/W_h2)|: median 0.099, 90th pct 0.216
+== (2) Var_0 at N = 2000 vs the 10^6-trajectory reference variance (E13-ref groups) ==
+  ad s24 L16 x: Var0(2000)/Var_ref(1e6) = 0.967
+  ad s24 L16 zz: Var0(2000)/Var_ref(1e6) = 0.962
+  ad s24 L16 xc: Var0(2000)/Var_ref(1e6) = 1.066
+  ad s24 L16 zc: Var0(2000)/Var_ref(1e6) = 0.950
+  deph s17 L16 x: Var0(2000)/Var_ref(1e6) = 0.947
+  deph s17 L16 zz: Var0(2000)/Var_ref(1e6) = 0.993
+  deph s17 L16 xc: Var0(2000)/Var_ref(1e6) = 1.065
+  deph s17 L16 zc: Var0(2000)/Var_ref(1e6) = 0.981
+== (3) E13 amplitude-damping pilot tables: median fraction of table entries per candidate ==
+cand  hom0.000  hom0.785  hom1.571  hom2.356    jump
+obs                                                 
+x       0.1984    0.1367    0.1773    0.1578  0.3336
+xc      0.1594    0.1234    0.1438    0.1156  0.4469
+zc      0.1594    0.1125    0.1609    0.1156  0.4344
+zz      0.2094    0.1516    0.1812    0.1539  0.2875
+all observables:
+cand
+hom0.000    0.1852
+hom0.785    0.1336
+hom1.571    0.1703
+hom2.356    0.1406
+jump        0.3664
+mean over groups:
+cand
+hom0.000    0.1858
+hom0.785    0.1370
+hom1.571    0.1696
+hom2.356    0.1400
+jump        0.3676

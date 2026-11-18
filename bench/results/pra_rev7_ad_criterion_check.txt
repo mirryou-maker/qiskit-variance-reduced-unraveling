@@ -1,0 +1,7 @@
+== Random states and random Hermitian Ot ==
+cases: n = 3..6, 40 random (psi, Ot) each, gt in (0.001, 0.01, 0.1, 1.0), 11 candidates
+max relative |V_code - V_closed| over all candidates: 4.80e-12
+leading-order criterion vs exact comparison (gt = 0.01, 4 phases): agree in 640 of 640
+== Realistic case: brickwork s11, n = 8, L = 16, gt = 0.01, exact back-propagated Ot, counting trajectories ==
+events checked: 2048; candidate values compared (V > 1e-14): 22516; max relative difference 2.95e-10
+per-event argmin over the 11 candidates (counts; 0 counting, 1-4 homodyne, 5-10 mixed): 320 236 220 268 264 140 64 56 152 180 148
