@@ -1,0 +1,17 @@
+#!/bin/bash
+#PBS -N rev6dT
+#PBS -q P100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=120gb
+#PBS -l walltime=16:00:00
+#PBS -j oe
+#PBS -r n
+# Rev6 D (plan doc "Rev6 C/D pre-registration"): long default-unraveling reference runs; two workers (one per GPU)
+# share blocks via claim files with every other rev6dT job. Not a timing run. Resubmission skips finished blocks.
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+J=${PBS_JOBID%%.*}
+KEYS=ad_brickwork_s24_n20_L16_gt0.01,deph_brickwork_s17_n20_L16_gt0.01
+for G in $(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1}'); do
+  CUDA_VISIBLE_DEVICES=$G python bench/scripts/b_rev6d.py traj --keys $KEYS > b_rev6d_traj_$(hostname)_g${G}_${J}.log 2>&1 &
+done
+wait
+echo "rev6dT exit $(date)"

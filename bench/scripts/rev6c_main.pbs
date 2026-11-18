@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -N rev6c
+#PBS -q P100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=120gb:host=__HOST__
+#PBS -l walltime=10:00:00
+#PBS -j oe
+#PBS -r n
+# Rev6 C (plan doc "Rev6 C/D pre-registration"): fixed partially-mixed AD candidates on the E13 ad configs that ran on
+# this node in E13; one worker per reserved node on one free GPU. Resubmission skips finished configs (claims).
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1; exit}')
+echo "free GPU: $FREE"; export CUDA_VISIBLE_DEVICES=$FREE
+J=${PBS_JOBID%%.*}
+uptime; top -b -n1 | sed -n 1,12p
+python bench/scripts/b_rev6c.py __ARGS__ > b_rev6c_$(hostname)_g${FREE}_${J}.log 2>&1
+echo "rev6c exit $? $(date)"

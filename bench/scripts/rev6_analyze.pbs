@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -N rev6ana
+#PBS -q workq
+#PBS -l select=1:ncpus=4:mem=32gb
+#PBS -l walltime=03:00:00
+#PBS -j oe
+#PBS -r n
+# Rev6 analyses (CPU only): __WHAT__ in {c, d}
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+export CUDA_VISIBLE_DEVICES=
+for W in __WHAT__; do
+  python bench/scripts/analyze_rev6${W}.py > b_rev6${W}_analysis.txt 2>&1
+  echo "analyze_rev6${W} exit $? $(date)"
+done

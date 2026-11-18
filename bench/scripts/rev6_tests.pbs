@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -N rev6test
+#PBS -q P100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=120gb
+#PBS -l walltime=03:00:00
+#PBS -j oe
+#PBS -r n
+# Rev6 C: unit tests of the partially-mixed AD unravelings + existing trajectory/table/CV tests on a P100 compute host.
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1; exit}')
+export CUDA_VISIBLE_DEVICES=$FREE; echo "free GPU: $FREE"
+python -m pytest -q validation/test_ad_mix.py validation/test_traj_kraus.py validation/test_static_table.py validation/test_cv_martingale.py > rev6_tests_p100.log 2>&1
+echo "tests exit $? $(date)"; tail -5 rev6_tests_p100.log

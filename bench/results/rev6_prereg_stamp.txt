@@ -1,0 +1,116 @@
+Rev6 C/D pre-registration stamp (docs/plan_B_characterization_2026-11-06.md, section 'Rev6 C/D pre-registration')
+entry header time: 2026-11-18 07:51:23 KST
+stamp written (date): 2026-11-18 07:51:23 +0900
+date -u: Tue Nov 17 22:51:23 UTC 2026
+sha256 of the plan file after the append:
+b7ae6c941e256b0916a976d7a3c75510b5a58325a150da084022caec719390e4 *docs/plan_B_characterization_2026-11-06.md
+sha256 of the appended entry text (exactly the bytes appended, below between the markers):
+9600ecca54c8686d1f7926b7395183001f7b05c6fc0d45a3ecec8986695bd659  rev6_entry.md
+----- BEGIN ENTRY -----
+
+## Rev6 C/D pre-registration (referee review 6, majors 1 and 2) (written 2026-11-18 07:51:23 KST, time from `date` at the moment this section was appended; before any Rev6 C or D smoke or main run; compute on iREMB only)
+**Context.** Referee report `paper/pra/review_independent6_2026-11-18.md`. Already done before this entry (no new data, POST HOC):
+Rev6 A (major 4), `bench/scripts/pra_rev6_nprod_e13.py` on ubuntu94 CPU at 07:46 -> `bench/results/pra_rev6_nprod_e13.{txt,csv}`
+(E13 W recomputed for N_prod in {2000, 5000, 10000, 20000, 1e5}). Also before this entry: the new code (`traj_kraus.ad_mix_set`,
+`amp_damp_mix`, `validation/test_ad_mix.py`, `bench/scripts/b_rev6c.py`, `b_rev6d.py`) and a unit-test job on a P100 node
+(job 397077, tests only, no outcome data).
+
+### C (major 1): fixed partially-mixed amplitude-damping unravelings as additional best-fixed candidates
+**Family (principled choice).** Every unitary mixing K'_a = sum_b U_ab K_b of the AD pair {K0, K1} is an unraveling. We use the
+one-parameter rotation family at fixed phase phi: U = [[c, e^{i phi} s], [s, -e^{i phi} c]], c = cos(theta), s = sin(theta), i.e.
+K'_0 = c K0 + e^{i phi} s K1, K'_1 = s K0 - e^{i phi} c K1. theta = 0 is photon counting (E13 candidate 0, up to a sign), theta = pi/4 is
+the balanced homodyne set (K0 +/- e^{i phi} K1)/sqrt2 (E13 candidate hom<phi>), so the family interpolates continuously between the two
+E13 endpoint types. Unlike the convex lambda-mixtures of Sec. II.C the increment variance is not linear in theta, so an interior
+optimum is possible (the referee's point). **Angles:** theta in {pi/16, pi/8, 3pi/16} (equally spaced interior points of (0, pi/4), the
+referee's suggestion). **Phase:** phi = pi/4, fixed by a rule on existing E13 data only: hom0.785 (phi = pi/4) is the most frequent
+non-jump oracle best fixed candidate in E13 ad (5 of the 12 non-jump groups; jump 52/64). One phase only (3 new candidates);
+other phases are not tested (limitation, reported). Implementation: channel `ad_mix` = the 5 ad_phase candidates (indices 0-4,
+bit-identical) + indices 5, 6, 7 = theta pi/16, pi/8, 3pi/16 at phi = pi/4. Validation (`validation/test_ad_mix.py`, must pass on the
+P100 compute host before the main run): Kraus completeness on a theta x phi grid, same channel as counting on random rho, endpoints
+(theta = 0 counting, theta = pi/4 homodyne), indices 0-4 reproduce ad_phase runs trajectory by trajectory, and trajectory means of
+candidates 5-7 agree with the exact density-matrix mean at n = 4, 5, 6 (20000 trajectories, |z| < 4.5).
+**Runs (`bench/scripts/b_rev6c.py`).** The 28 E13 ad configs (64 groups), same circuits, n = 20, gamma t = 0.01, L 16/32, N = 2000,
+all 4 observables per run, opt2, chunk 37 (identical call to E13 step 1). Per config, in order: an anchor re-run of candidate 0 (jump;
+seed tag `rev6c-anchor`), then candidates 5, 6, 7 (seed `seed_of("rev6c-fixed", k, c)`). Hardware: P100q, one worker per reserved node
+(whole node, one GPU), **each config on the same node that ran it in E13** (PBS host pinning; if a node is unavailable for > 12 h its
+configs run on another P100q node and this is recorded as a deviation). Idle wait before each timed run (E13 rule), idle state in the row.
+**Time of a new candidate (primary):** t_c = (wall_c / N) x t_jump,E13 / t_anchor (calibrated to the E13 session of that config, so all
+compared times refer to the E13 session; all AD candidates have the same 2-operator kernel cost). Secondary: raw wall_c / N.
+**Analysis (`bench/scripts/analyze_rev6c.py`, CPU on iREMB workq).** Variances from the E13 fixed runs (candidates 0-4) and the new runs
+(5-7), all N = 2000. bf8 = argmin over the 8 candidate variances (oracle, uncharged, as E13); C_bf8 = Var_bf8 t_bf8. ST unchanged from
+E13 (same Var_ST; t_ST with N_prod = 20000 as in the E13 decision).
+- **Primary (Q1-rev6, ad): W_ST_bf8 = C_bf8 / (Var_ST t_ST).** PASS iff median over the 64 groups > 1 and the 98.75% group-bootstrap
+  lower bound > 1 (B = 2000, default_rng(7), as the E13 decision line). Single test; the 98.75% level is kept for comparability.
+- Secondary: 98.75% config-cluster and instance (seed)-cluster intervals; the same at N_prod = 2000 (one-time cost charged over the
+  production length actually run); R_ST_bf8 (variance only); W_bf5_bf8 = C_bf5 / C_bf8 (gain of the enlarged baseline); number of
+  groups (and seeds) where a new candidate is bf8, by theta; raw-time version; per-group bootstrap (B = 500, bf8 re-chosen per
+  replicate) CI>1 / CI<1 counts; bias |z| of every new-candidate mean vs the E13 best-fixed mean (count > 4).
+**Falsification statements (stated before data exist).**
+- Q1-rev6 FAILS -> the headline is weakened: we report that the static table gives no significant wall-clock gain over the best fixed
+  unraveling once fixed partially-mixed AD unravelings are allowed; the E13 positive result then holds only against "the best of five
+  discrete AD unravelings" and must be stated that way in the abstract and conclusion.
+- Q1-rev6 PASSES but median W_ST_bf8 < 1.30 (more than ~10% below the E13 1.448) -> we report that a fixed mixed unraveling captures a
+  material part of the table's gain, with the new number replacing the headline.
+- Q1-rev6 PASSES with median >= 1.30 -> the E13 conclusion stands against the enlarged baseline (one phase, three angles).
+- Expected (stated so it can be wrong): new candidates become bf8 in a minority of groups (E7: extra phases barely moved bf),
+  W_ST_bf8 1.35-1.45. Note: a minimum over 8 instead of 5 noisy variances favours the baseline slightly more (selection noise); not
+  corrected.
+- Not done (limitation): letting the static table choose among the new candidates (needs new pilot + production runs).
+
+### D (major 2): independent high-accuracy reference values for E13 groups
+**Groups (rule fixed here).** Primary: ad_brickwork_s24_n20_L16_gt0.01, the only ad L16 config with 4 E13 groups (largest number;
+L16 is cheaper); all 4 groups (x, zz, xc, zc). Secondary: deph_brickwork_s17_n20_L16_gt0.01 (the deph config with the most E13 groups,
+4; dephasing is secondary in E13). PP 1e7 / 1e8 values come from `bench/results/b_e13_select_summary.csv` (no cap above 1e8 exists for
+these groups in bench/results or on iREMB).
+**Reference (`bench/scripts/b_rev6d.py traj`).** Default unraveling (candidate 0 of the E13 channel set: photon-count jump / std Pauli
+jump; no O~, no PP, independent of every estimator under test), N_ref = 1,000,000 trajectories per config (100 blocks x 10000, seeds
+`seed_of("rev6d-ref", k, block)`), all 4 observables, P100q workers sharing blocks via claim files (not a timing run). Expected
+SE_ref ~ 0.14 eps (eps = sqrt(Var_std / 20000)), far below the N = 2000 estimator spread (~3.2 eps).
+**PP at higher caps (secondary, `b_rev6d.py pp`, primary config only):** propagate_big at 3e8 for all 4 observables, then 1e9; on v100q
+(V100 32 GB, 128 GB host); completed values reported, OOM / walltime failures reported as such.
+**Metrics (`bench/scripts/analyze_rev6d.py`).** Per group: ref +/- SE_ref; d_M = |PP_M - ref| / eps for M = 1e7, 1e8 (and 3e8, 1e9 if
+run); z of every E13 estimate vs ref (5 or 7 fixed candidates, ST, CV0, CVbf, ST+CV cross-fitted; the E13 selection 1000-trajectory mean).
+**Labels (per group, per cap):** PP_M "inaccurate" iff |PP_M - ref| > eps + 2 SE_ref; "accurate" iff |PP_M - ref| < eps - 2 SE_ref;
+else "ambiguous". The E13 label "PP unconverged at 1e7" is a convergence diagnostic; it is CONFIRMED as an accuracy failure for a
+group iff PP_1e7 is inaccurate.
+**Statements (stated before data exist).**
+- PP_1e7 accurate in >= half of the reference groups of a channel -> we report that in these groups PP at 1e7 was already accurate to
+  eps and the E13 "hard regime" reflects the failure of the convergence diagnostic, not of PP accuracy; this weakens the
+  practical-significance argument for that channel.
+- PP_1e8 accurate in all reference groups of a channel -> we report that PP at 1e8 (median 2438 s on a P100 in the E13 selection) is a
+  viable non-trajectory competitor there, compared with the trajectory cost to reach eps (20000 t_bf).
+- Any E13 estimator with |z| > 4 vs the reference -> reported as a bias concern.
+- Expected: PP_1e7 inaccurate in most groups (median |PP_1e7 - PP_1e8| / eps = 4.26 in E13), PP_1e8 closer but not within eps everywhere.
+----- END ENTRY -----
+
+====================================================================
+Rev6 C amendment 1 stamp
+entry header time: 2026-11-18 08:03:39 KST
+stamp written (date): 2026-11-18 08:03:39 +0900
+date -u: Tue Nov 17 23:03:40 UTC 2026
+sha256 of the plan file after the append:
+e96fbaee47b916787d962d71ddb5f70dbfba7f54228872d9f6849320c40e2e31 *docs/plan_B_characterization_2026-11-06.md
+sha256 of the appended amendment text:
+6748396bd63e89604aa4a8091ce0b42005d2ab094c05d6f81471b2a6241e57bf  rev6_amend.md
+----- BEGIN AMENDMENT -----
+
+### Rev6 C amendment 1: smaller mixing angles (written 2026-11-18 08:03:39 KST, time from `date`; AFTER seeing partial Rev6 C results, BEFORE any run of the added angles)
+**What was seen (debug analysis job 397091 on the first 3 completed configs, 6 groups, s13/s16/s19 L16):** all three pre-registered
+angles theta = pi/16, pi/8, 3pi/16 have about 1.8x the variance of the E13 best fixed (Var_bf5 / Var_new medians 0.56, 0.54, 0.55), never
+best; W_ST_bf8 = W_ST_bf5 there. **Why (physics, not data dredging):** with K'_1 = s K0 - e^{i phi} c K1, the probability of the "jump"
+K'_1 is ~ s^2 + c^2 g p_1, and K'_1 is a counting jump only when tan(theta) << sqrt(g); at gamma t = 0.01, sqrt(g) = 0.0998, while
+tan(pi/16) = 0.199 ~ 2 sqrt(g). So all three pre-registered angles are already on the homodyne side of the family, and the counting-to-
+homodyne crossover (where an interior optimum would sit) is at tan(theta) ~ sqrt(g), which the referee's grid misses at this noise level.
+**Amendment (added, nothing removed):** three further fixed candidates at tan(theta) = x sqrt(g), x in {0.25, 0.5, 1}, phi = pi/4
+(theta = 0.0249, 0.0498, 0.0994 rad at gamma t = 0.01), as `ad_mix` indices 8, 9, 10 (indices 0-7 unchanged). Same runner, design and
+hardware rules as Rev6 C (same E13 host per config, an anchor jump re-run in the same session, N = 2000, all 4 observables), seed tag
+`rev6c2` (`seed_of("rev6c2-fixed", k, c)`, anchor `rev6c2-anchor`), separate ledger/raw dirs (`b_rev6c2_main`, `b_rev6c2_raw`). Unit
+tests (`test_ad_mix.py`, now also indices 8-10) must pass on a P100 compute host first.
+**Analysis / decision.** The pre-registered primary Q1-rev6 (8 candidates) is reported unchanged. Added test **Q1-rev6b (ad):
+W_ST_bf11 = C_bf11 / (Var_ST t_ST)** with bf11 = argmin over all 11 candidates (each new-candidate time calibrated by the anchor of
+its own session), same PASS rule (median > 1 and 98.75% group-bootstrap lower bound > 1, default_rng(7)), same secondary intervals and
+counts. It is labelled "amended after partial data" wherever reported. The falsification statements of Rev6 C apply to Q1-rev6b in
+the same form (FAIL -> headline restricted to the best of five discrete AD unravelings; PASS with median < 1.30 -> a fixed mixed
+unraveling captures a material part of the gain). Expected (can be wrong): x = 0.25 close to counting (variance within a few % of
+jump), x = 1 closer to homodyne; whether an interior x beats counting is not predicted.
+----- END AMENDMENT -----

@@ -169,8 +169,38 @@ def amp_damp_phase(gt,phis=(0.0, np.pi / 4, np.pi / 2, 3 * np.pi / 4)):
     return Channel("ad_phase", _pad(sets), ["jump"] + [f"hom{f:.3f}" for f in phis])
 
 
+def ad_mix_set(gt, theta, phi):
+    """Rev6 C: unitary mixing of the AD Kraus pair {K0, K1} by U = [[c, e^{i phi} s], [s, -e^{i phi} c]],
+    c = cos(theta), s = sin(theta):  K'_0 = c K0 + e^{i phi} s K1,  K'_1 = s K0 - e^{i phi} c K1.
+    theta = 0: photon counting {K0, -K1}; theta = pi/4: balanced homodyne (K0 +/- e^{i phi} K1)/sqrt2 (= ad_phase hom phi)."""
+    g = 1.0 - np.exp(-gt)
+    K0 = np.diag([1.0, np.sqrt(1 - g)]).astype(complex)
+    K1 = np.array([[0.0, np.sqrt(g)], [0.0, 0.0]], complex)
+    c, s, e = np.cos(theta), np.sin(theta), np.exp(1j * phi)
+    return [c * K0 + e * s * K1, s * K0 - e * c * K1]
+
+
+AD_MIX_THETAS = (np.pi / 16, np.pi / 8, 3 * np.pi / 16)
+AD_MIX_PHI = np.pi / 4
+
+
+AD_MIX_X2 = (0.25, 0.5, 1.0)       # Rev6 C amendment 1: tan(theta) = x sqrt(g) (counting-to-homodyne crossover scale)
+
+
+def amp_damp_mix(gt, thetas=AD_MIX_THETAS, phi=AD_MIX_PHI, xs2=AD_MIX_X2):
+    """Rev6 C: the 5 ad_phase candidates (indices 0-4 unchanged, so E13 tables / indices stay valid) followed by fixed
+    partially-mixed unravelings ad_mix_set(theta, phi) for each theta (indices 5, 6, 7), then (amendment 1) the angles
+    theta = arctan(x sqrt(g)), g = 1 - exp(-gt), for x in xs2 (indices 8, 9, 10)."""
+    base = amp_damp_phase(gt)
+    g = 1.0 - np.exp(-gt)
+    th_all = list(thetas) + [float(np.arctan(x * np.sqrt(g))) for x in xs2]
+    sets = [list(base.cands[c]) for c in range(base.cands.shape[0])] + [ad_mix_set(gt, th, phi) for th in th_all]
+    return Channel("ad_mix", _pad(sets), list(base.labels) + [f"mix{th:.3f}p{phi:.3f}" for th in th_all])
+
+
 CHANNELS = {"depol": depolarizing, "ad": amp_damp, "deph": dephasing, "deph_tjm": dephasing_tjm,
-            "deph_sweep": dephasing_sweep, "ad_phase": amp_damp_phase, "deph_small": dephasing_small}
+            "deph_sweep": dephasing_sweep, "ad_phase": amp_damp_phase, "deph_small": dephasing_small,
+            "ad_mix": amp_damp_mix}
 
 
 def with_channel(ops, chan):

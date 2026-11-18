@@ -1,0 +1,45 @@
+set rev6c (cands (5, 6, 7)): configs 28; duplicate complete runs (first used) []
+set rev6c2 (cands (8, 9, 10)): configs 28; duplicate complete runs (first used) []
+Rev6 C analysis: E13 ad configs 28
+groups 64, configs 28, seeds 14
+[rev6c] hosts ['iREMB-E-110', 'iREMB-E-148', 'iREMB-E-169', 'iREMB-E-48', 'iREMB-E-68', 'iREMB-E-90']; same host as E13 in 64/64 groups; idle: gpu_other ['none'], other_py ['none'], gpu_util max 0.0 %, load1 max 1.5
+[rev6c] timing anchor t_anchor / t_jump,E13: median 1.0002, range [0.9983, 1.0018]
+[rev6c] raw t_new / t_anchor per candidate (5, 6, 7) (median over configs): [1.0001 1.0001 1.    ]
+[rev6c2] hosts ['iREMB-E-110', 'iREMB-E-148', 'iREMB-E-169', 'iREMB-E-48', 'iREMB-E-68', 'iREMB-E-90']; same host as E13 in 64/64 groups; idle: gpu_other ['none'], other_py ['none'], gpu_util max 0.0 %, load1 max 2.25
+[rev6c2] timing anchor t_anchor / t_jump,E13: median 1.0000, range [0.9985, 1.0017]
+[rev6c2] raw t_new / t_anchor per candidate (8, 9, 10) (median over configs): [1. 1. 1.]
+bias |z| new candidates vs E13 best-fixed mean: max 3.58, n(>4) 0 of 384
+variance ratio Var_bf5 / Var_c (median over groups, > 1 = candidate c has lower variance than the E13 bf):
+   cand 5 mix0.196p0.785   median 0.549  (> 1 in 2/64)
+   cand 6 mix0.393p0.785   median 0.544  (> 1 in 3/64)
+   cand 7 mix0.589p0.785   median 0.539  (> 1 in 3/64)
+   cand 8 mix0.025p0.785   median 0.830  (> 1 in 6/64)
+   cand 9 mix0.050p0.785   median 0.741  (> 1 in 4/64)
+   cand 10 mix0.099p0.785   median 0.613  (> 1 in 1/64)
+best fixed over 8 candidates: {'jump': 52, 'hom0.785': 2, 'hom0.000': 2, 'hom1.571': 2, 'mix0.196p0.785': 2, 'hom2.356': 2, 'mix0.393p0.785': 1, 'mix0.589p0.785': 1}; new candidate best in 4/64 groups (seeds with >= 1 such group 3/14)
+best fixed over 11 candidates: {'jump': 46, 'mix0.025p0.785': 6, 'hom0.785': 2, 'hom0.000': 2, 'hom1.571': 2, 'hom2.356': 2, 'mix0.050p0.785': 1, 'mix0.393p0.785': 1, 'mix0.196p0.785': 1, 'mix0.589p0.785': 1}; new candidate best in 10/64 groups (seeds with >= 1 such group 8/14)
+
+######## Q1-rev6 (pre-registered, 8 candidates): median [98.75% group bootstrap] {98.75% config-cluster} <98.75% seed-cluster>
+  W_ST_bf5             1.448 [1.296, 1.577] {1.296, 1.565} <1.319, 1.532>  >1 64/64  seeds>1 14/14
+  W_ST_bf8             1.448 [1.296, 1.577] {1.296, 1.565} <1.319, 1.532>  >1 64/64  seeds>1 14/14  CI>1 57 CI<1 0
+  W_ST_bf8_n2000       1.276 [1.142, 1.371] {1.142, 1.363} <1.168, 1.340>  >1 57/64  seeds>1 14/14
+  W_ST_bf8_rawtime     1.448 [1.296, 1.577] {1.296, 1.565} <1.319, 1.532>  >1 64/64  seeds>1 14/14
+  R_ST_bf8             1.473 [1.316, 1.604] {1.316, 1.591} <1.338, 1.557>  >1 64/64  seeds>1 14/14
+  W_bf5_bf8            1.000 [1.000, 1.000] {1.000, 1.000} <1.000, 1.000>  >1 4/64  seeds>1 0/14
+
+######## Q1-rev6b (amended after partial data, 11 candidates): median [98.75% group bootstrap] {98.75% config-cluster} <98.75% seed-cluster>
+  W_ST_bf11            1.436 [1.296, 1.565] {1.296, 1.552} <1.319, 1.525>  >1 62/64  seeds>1 14/14  CI>1 56 CI<1 1
+  W_ST_bf11_n2000      1.264 [1.141, 1.364] {1.141, 1.356} <1.168, 1.333>  >1 56/64  seeds>1 13/14
+  W_ST_bf11_rawtime    1.436 [1.296, 1.565] {1.296, 1.552} <1.319, 1.525>  >1 62/64  seeds>1 14/14
+  R_ST_bf11            1.457 [1.316, 1.591] {1.316, 1.578} <1.338, 1.550>  >1 62/64  seeds>1 14/14
+  W_bf5_bf11           1.000 [1.000, 1.000] {1.000, 1.000} <1.000, 1.000>  >1 10/64  seeds>1 1/14
+
+per-seed medians (instance level):
+variant      s11    s12    s13    s14    s15    s16    s17    s18    s19    s20    s21    s22    s23    s24
+W_ST_bf5   1.285  1.241  1.726  1.479  1.504  1.578  1.554  1.343  1.578  1.401  1.497  1.296  1.512  1.437
+W_ST_bf8   1.285  1.241  1.726  1.479  1.504  1.578  1.554  1.343  1.578  1.401  1.497  1.296  1.512  1.437
+W_ST_bf11  1.285  1.147  1.726  1.473  1.385  1.578  1.554  1.343  1.578  1.401  1.497  1.296  1.512  1.437
+
+######## DECISIONS
+  Q1-rev6 (pre-registered) ad W_ST_bf8 median 1.448 [1.296, 1.577] groups 64 -> PASS -> median >= 1.30: the E13 conclusion stands against the enlarged baseline (phi = pi/4, theta = pi/16, pi/8, 3pi/16)
+  Q1-rev6b (amended after partial data) ad W_ST_bf11 median 1.436 [1.296, 1.565] groups 64 -> PASS -> median >= 1.30: the E13 conclusion stands against the enlarged baseline (phi = pi/4, six angles incl. tan(theta) = 0.25, 0.5, 1 x sqrt(g))

@@ -1,0 +1,55 @@
+Rev6 D: trajectory blocks 200 (rows 800); workers 8 on ['iREMB-E-10', 'iREMB-E-130', 'iREMB-E-28', 'iREMB-E-46']; gpu_other {'2105927, 2048 MiB': 100, '1587788, 2048 MiB': 100, '4006646, 2048 MiB': 100, '1694772, 2048 MiB': 100, '1587787, 2048 MiB': 96, '2105928, 2048 MiB': 96, '4006647, 2048 MiB': 96, '1694771, 2048 MiB': 96, 'none': 16} (not a timing run)
+PP beyond 1e8 (b_rev6d.py pp, propagate_big): x M=3e+08 oom (182 s, Tesla V100-SXM2-32GB); xc M=3e+08 oom (230 s, Tesla V100-SXM2-32GB); zc M=3e+08 oom (230 s, Tesla V100-SXM2-32GB); zz M=3e+08 oom (259 s, Tesla V100-SXM2-32GB); x M=1e+09 oom (756 s, Tesla V100-SXM2-32GB); xc M=1e+09 oom (879 s, Tesla V100-SXM2-32GB); zc M=1e+09 oom (874 s, Tesla V100-SXM2-32GB); zz M=1e+09 oom (828 s, Tesla V100-SXM2-32GB)
+
+== ad_brickwork_s24_n20_L16_gt0.01
+  x   E13 group: ref +0.0111999 +/- 1.33e-05 (N 1000000, SE/eps 0.146); eps 9.145e-05; selection 1000-traj mean z +0.34
+      |PP_M - ref|/eps: 1e+05 51.84(inac)  1e+06 25.78(inac)  3e+06 31.00(inac)  1e+07 13.00(inac)  3e+07 5.51(inac)  1e+08 1.64(inac)
+      PP 1e8 time 2056 s (P100/V100, E13 selection); trajectory cost to eps (20000 t_bf) 1157 s
+  zz  E13 group: ref -0.0085362 +/- 1.50e-05 (N 1000000, SE/eps 0.139); eps 1.081e-04; selection 1000-traj mean z -0.85
+      |PP_M - ref|/eps: 1e+05 1.41(inac)  1e+06 15.89(inac)  3e+06 12.00(inac)  1e+07 3.65(inac)  3e+07 3.70(inac)  1e+08 1.31(inac)
+      PP 1e8 time 2466 s (P100/V100, E13 selection); trajectory cost to eps (20000 t_bf) 1157 s
+  xc  E13 group: ref +0.0593129 +/- 7.88e-05 (N 1000000, SE/eps 0.139); eps 5.656e-04; selection 1000-traj mean z -0.35
+      |PP_M - ref|/eps: 1e+05 9.95(inac)  1e+06 19.86(inac)  3e+06 17.63(inac)  1e+07 11.23(inac)  3e+07 5.15(inac)  1e+08 1.76(inac)
+      PP 1e8 time 2143 s (P100/V100, E13 selection); trajectory cost to eps (20000 t_bf) 1158 s
+  zc  E13 group: ref +0.0622833 +/- 8.86e-05 (N 1000000, SE/eps 0.173); eps 5.116e-04; selection 1000-traj mean z -2.69
+      |PP_M - ref|/eps: 1e+05 15.57(inac)  1e+06 9.48(inac)  3e+06 1.40(inac)  1e+07 8.48(inac)  3e+07 6.18(inac)  1e+08 3.27(inac)
+      PP 1e8 time 2118 s (P100/V100, E13 selection); trajectory cost to eps (20000 t_bf) 1158 s
+
+== deph_brickwork_s17_n20_L16_gt0.01
+  x   E13 group: ref +0.0101824 +/- 1.46e-05 (N 1000000, SE/eps 0.144); eps 1.016e-04; selection 1000-traj mean z +2.11
+      |PP_M - ref|/eps: 1e+05 14.83(inac)  1e+06 3.33(inac)  3e+06 10.17(inac)  1e+07 0.66(accu)  3e+07 0.86(ambi)  1e+08 0.48(accu)
+      PP 1e8 time 1338 s (P100/V100, E13 selection); trajectory cost to eps (20000 t_bf) 1143 s
+  zz  E13 group: ref -0.0147092 +/- 1.82e-05 (N 1000000, SE/eps 0.133); eps 1.365e-04; selection 1000-traj mean z -1.18
+      |PP_M - ref|/eps: 1e+05 13.41(inac)  1e+06 5.77(inac)  3e+06 9.04(inac)  1e+07 2.75(inac)  3e+07 0.25(accu)  1e+08 1.25(ambi)
+      PP 1e8 time 1374 s (P100/V100, E13 selection); trajectory cost to eps (20000 t_bf) 1143 s
+  xc  E13 group: ref +0.0247066 +/- 4.14e-05 (N 1000000, SE/eps 0.147); eps 2.814e-04; selection 1000-traj mean z +1.69
+      |PP_M - ref|/eps: 1e+05 19.75(inac)  1e+06 5.10(inac)  3e+06 6.01(inac)  1e+07 0.97(ambi)  3e+07 0.22(accu)  1e+08 0.62(accu)
+      PP 1e8 time 1270 s (P100/V100, E13 selection); trajectory cost to eps (20000 t_bf) 1143 s
+  zc  E13 group: ref +0.0074250 +/- 2.58e-05 (N 1000000, SE/eps 0.144); eps 1.787e-04; selection 1000-traj mean z -0.38
+      |PP_M - ref|/eps: 1e+05 19.14(inac)  1e+06 35.40(inac)  3e+06 3.41(inac)  1e+07 10.28(inac)  3e+07 2.75(inac)  1e+08 2.87(inac)
+      PP 1e8 time 1269 s (P100/V100, E13 selection); trajectory cost to eps (20000 t_bf) 1143 s
+
+== E13 / rev6c estimators vs reference: |z| summary
+                count   max  n(|z|>4)
+channel source                       
+ad      E13        46  2.22         0
+        rev6c      12  2.11         0
+        rev6c2     12  1.12         0
+deph    E13        53  2.48         0
+  no estimator with |z| > 3
+
+######## Labels (pre-registered) over E13 groups (TN at cap 1e7)
+  ad   PP 1e+05: {'inaccurate': 4}
+  ad   PP 1e+06: {'inaccurate': 4}
+  ad   PP 3e+06: {'inaccurate': 4}
+  ad   PP 1e+07: {'inaccurate': 4}
+  ad   PP 3e+07: {'inaccurate': 4}
+  ad   PP 1e+08: {'inaccurate': 4}
+  ad: 'PP unconverged at 1e7' CONFIRMED as accuracy failure in 4/4 groups; PP_1e7 accurate in 0/4 -> fewer than half accurate (label holds); PP_1e8 accurate in 0/4
+  deph PP 1e+05: {'inaccurate': 4}
+  deph PP 1e+06: {'inaccurate': 4}
+  deph PP 3e+06: {'inaccurate': 4}
+  deph PP 1e+07: {'inaccurate': 2, 'accurate': 1, 'ambiguous': 1}
+  deph PP 3e+07: {'accurate': 2, 'ambiguous': 1, 'inaccurate': 1}
+  deph PP 1e+08: {'accurate': 2, 'ambiguous': 1, 'inaccurate': 1}
+  deph: 'PP unconverged at 1e7' CONFIRMED as accuracy failure in 2/4 groups; PP_1e7 accurate in 1/4 -> fewer than half accurate (label holds); PP_1e8 accurate in 2/4

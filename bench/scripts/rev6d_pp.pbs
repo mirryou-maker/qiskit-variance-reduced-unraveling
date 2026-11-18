@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -N rev6dPP
+#PBS -q v100q
+#PBS -l select=1:ncpus=20:ngpus=2:mem=120gb
+#PBS -l walltime=72:00:00
+#PBS -j oe
+#PBS -r n
+# Rev6 D secondary: Pauli propagation at 3e8 then 1e9 (propagate_big) for the 4 groups of ad s24 L16; one worker.
+source /scratch/cyyou68/qiskit-co/e13_head.inc
+FREE=$(nvidia-smi --query-gpu=index,memory.used --format=csv,noheader,nounits | awk -F', ' '$2 < 100 {print $1; exit}')
+echo "free GPU: $FREE"; export CUDA_VISIBLE_DEVICES=$FREE
+J=${PBS_JOBID%%.*}
+/usr/bin/time -v python bench/scripts/b_rev6d.py pp --keys ad_brickwork_s24_n20_L16_gt0.01 --caps 300000000,1000000000 > b_rev6d_pp_$(hostname)_g${FREE}_${J}.log 2>&1
+echo "rev6dPP exit $? $(date)"
